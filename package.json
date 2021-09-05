@@ -1,0 +1,33 @@
+{
+  "name": "fineract_sdk",
+  "version": "0.0.2",
+  "description": "Wrapper around fineract api.",
+  "author": {
+    "email": "katakampavan.btech@gmail.com",
+    "name": "Pavan Kumar",
+    "url": "https://github.com/knvpk"
+  },
+  "keywords": [
+    "axios",
+    "typescript",
+    "openapi-client",
+    "openapi-generator",
+    "fineract_sdk",
+    "fineract",
+    "cbs"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --outDir dist/",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.5",
+    "typescript": "^3.6.4"
+  }
+}

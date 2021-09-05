@@ -1,0 +1,8 @@
+{
+    "withSeparateModelsAndApi": true,
+    "apiPackage": "api", 
+    "modelPackage": "models",
+    "npmName": "fineract_sdk",
+    "npmRepository": "https://github.com/knvpk/fineract_sdk",
+    "npmVersion": "0.0.1"
+}
