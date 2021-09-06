@@ -21,9 +21,13 @@
   "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc --outDir dist/",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "generator": "openapi-generator-cli",
+    "generate": "openapi-generator-cli generate -i openapi.json -g typescript-axios -o ./ -c ./config.json -t ./templates --skip-validate-spec",
+    "templates": "openapi-generator-cli author template -g typescript-axios -o ./templates"
   },
   "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.4.1",
     "axios": "^0.21.1",
     "jsonpatch": "^3.0.1"
   },
