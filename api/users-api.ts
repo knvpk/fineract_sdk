@@ -272,13 +272,17 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             };
         },
         /**
-         * Example Requests:  users   users?fields=id,username,email,officeName
-         * @summary Retrieve list of users
+         * Example Requests:  users/1   users/1?template=true   users/1?fields=username,officeName
+         * @summary Retrieve a User
+         * @param {number} userId userId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAllUsers: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/users`;
+        retrieveUser: async (userId: number, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('retrieveUser', 'userId', userId)
+            const localVarPath = `/users/{userId}`
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -309,17 +313,13 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             };
         },
         /**
-         * Example Requests:  users/1   users/1?template=true   users/1?fields=username,officeName
-         * @summary Retrieve a User
-         * @param {number} userId userId
+         * Example Requests:  users   users?fields=id,username,email,officeName
+         * @summary Retrieve list of users
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveUser: async (userId: number, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userId' is not null or undefined
-            assertParamExists('retrieveUser', 'userId', userId)
-            const localVarPath = `/users/{userId}`
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+        retrieveUsers: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -463,16 +463,6 @@ export const UsersApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Example Requests:  users   users?fields=id,username,email,officeName
-         * @summary Retrieve list of users
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveAllUsers(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetUsersResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAllUsers(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * Example Requests:  users/1   users/1?template=true   users/1?fields=username,officeName
          * @summary Retrieve a User
          * @param {number} userId userId
@@ -481,6 +471,16 @@ export const UsersApiFp = function(configuration?: Configuration) {
          */
         async retrieveUser(userId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUsersUserIdResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveUser(userId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Example Requests:  users   users?fields=id,username,email,officeName
+         * @summary Retrieve list of users
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveUsers(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetUsersResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveUsers(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -557,15 +557,6 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
             return localVarFp.postUsersTemplate(file, locale, dateFormat, options).then((request) => request(axios, basePath));
         },
         /**
-         * Example Requests:  users   users?fields=id,username,email,officeName
-         * @summary Retrieve list of users
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveAllUsers(options?: any): AxiosPromise<Array<GetUsersResponse>> {
-            return localVarFp.retrieveAllUsers(options).then((request) => request(axios, basePath));
-        },
-        /**
          * Example Requests:  users/1   users/1?template=true   users/1?fields=username,officeName
          * @summary Retrieve a User
          * @param {number} userId userId
@@ -574,6 +565,15 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          */
         retrieveUser(userId: number, options?: any): AxiosPromise<GetUsersUserIdResponse> {
             return localVarFp.retrieveUser(userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Example Requests:  users   users?fields=id,username,email,officeName
+         * @summary Retrieve list of users
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveUsers(options?: any): AxiosPromise<Array<GetUsersResponse>> {
+            return localVarFp.retrieveUsers(options).then((request) => request(axios, basePath));
         },
         /**
          * When updating a password you must provide the repeatPassword parameter also.
@@ -658,17 +658,6 @@ export class UsersApi extends BaseAPI {
     }
 
     /**
-     * Example Requests:  users   users?fields=id,username,email,officeName
-     * @summary Retrieve list of users
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public retrieveAllUsers(options?: any) {
-        return UsersApiFp(this.configuration).retrieveAllUsers(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Example Requests:  users/1   users/1?template=true   users/1?fields=username,officeName
      * @summary Retrieve a User
      * @param {number} userId userId
@@ -678,6 +667,17 @@ export class UsersApi extends BaseAPI {
      */
     public retrieveUser(userId: number, options?: any) {
         return UsersApiFp(this.configuration).retrieveUser(userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Example Requests:  users   users?fields=id,username,email,officeName
+     * @summary Retrieve list of users
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public retrieveUsers(options?: any) {
+        return UsersApiFp(this.configuration).retrieveUsers(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

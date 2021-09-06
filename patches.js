@@ -4,7 +4,7 @@ let userPatches = [
     {
         "op": "replace",
         "path": "/paths/~1users/get/operationId",
-        "value": "retrieveAllUsers"
+        "value": "retrieveUsers"
     },
     {
         "op": "replace",
