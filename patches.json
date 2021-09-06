@@ -2,32 +2,37 @@
     {
         "op": "replace",
         "path": "/paths/~1users/get/operationId",
-        "value": "retrieveAll"
+        "value": "retrieveAllUsers"
     },
     {
         "op": "replace",
         "path": "/paths/~1users/post/operationId",
-        "value": "create"
+        "value": "createUser"
     },
     {
         "op": "replace",
         "path": "/paths/~1users~1{userId}/get/operationId",
-        "value": "retrieveOne"
+        "value": "retrieveUser"
     },
     {
         "op": "replace",
         "path": "/paths/~1users~1{userId}/put/operationId",
-        "value": "update"
+        "value": "updateUser"
     },
     {
         "op": "replace",
         "path": "/paths/~1users~1{userId}/delete/operationId",
-        "value": "delete"
+        "value": "deleteUser"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1users~1downloadtemplate/get/operationId",
+        "value": "downloadUserTemplate"
     },
     {
         "op": "replace",
         "path": "/paths/~1users~1template/get/operationId",
-        "value": "template"
+        "value": "getUserTemplate"
     },
     {
         "op": "replace",
@@ -65,8 +70,18 @@
     },
     {
         "op": "replace",
+        "path": "/paths/~1reports~1template/get/operationId",
+        "value": "retrieveReportTemplate"
+    },
+    {
+        "op": "replace",
         "path": "/paths/~1offices~1template/get/operationId",
         "value": "retrieveOfficeTemplate"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1financialactivityaccounts/post/operationId",
+        "value": "createFinancialActivity"
     },
     {
         "op": "replace",
@@ -75,8 +90,18 @@
     },
     {
         "op": "replace",
+        "path": "/paths/~1financialactivityaccounts~1{mappingId}/put/operationId",
+        "value": "updateFinancialActivity"
+    },
+    {
+        "op": "replace",
         "path": "/paths/~1glaccounts~1{glAccountId}/put/operationId",
         "value": "updateGLAccount"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1financialactivityaccounts~1{mappingId}/delete/operationId",
+        "value": "deleteFinancialActivity"
     },
     {
         "op": "replace",
@@ -86,7 +111,7 @@
     {
         "op": "replace",
         "path": "/paths/~1glaccounts~1template/get/operationId",
-        "value": "retriveTemplate"
+        "value": "retriveGLAccountTemplate"
     },
     {
         "op": "replace",
@@ -134,5 +159,35 @@
                 "example": "Desc"
             }
         }
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsproducts/get/operationId",
+        "value": "retrieveSavingsProducts"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsproducts/post/operationId",
+        "value": "createSavingsProduct"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsproducts~1{productId}/get/operationId",
+        "value": "retrieveSavingsProduct"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsproducts~1{productId}/put/operationId",
+        "value": "updateSavingsProduct"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsproducts~1{productId}/delete/operationId",
+        "value": "deleteSavingsProduct"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsproducts~1template/get/operationId",
+        "value": "retriveSavingsProductTemplate"
     }
 ]

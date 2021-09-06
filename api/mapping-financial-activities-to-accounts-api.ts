@@ -43,7 +43,7 @@ export const MappingFinancialActivitiesToAccountsApiAxiosParamCreator = function
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createGLAccount: async (postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options: any = {}): Promise<RequestArgs> => {
+        createFinancialActivity: async (postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/financialactivityaccounts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -84,9 +84,9 @@ export const MappingFinancialActivitiesToAccountsApiAxiosParamCreator = function
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteGLAccount: async (mappingId: number, options: any = {}): Promise<RequestArgs> => {
+        deleteFinancialActivity: async (mappingId: number, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'mappingId' is not null or undefined
-            assertParamExists('deleteGLAccount', 'mappingId', mappingId)
+            assertParamExists('deleteFinancialActivity', 'mappingId', mappingId)
             const localVarPath = `/financialactivityaccounts/{mappingId}`
                 .replace(`{${"mappingId"}}`, encodeURIComponent(String(mappingId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -240,9 +240,9 @@ export const MappingFinancialActivitiesToAccountsApiAxiosParamCreator = function
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateGLAccount: async (mappingId: number, postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options: any = {}): Promise<RequestArgs> => {
+        updateFinancialActivity: async (mappingId: number, postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'mappingId' is not null or undefined
-            assertParamExists('updateGLAccount', 'mappingId', mappingId)
+            assertParamExists('updateFinancialActivity', 'mappingId', mappingId)
             const localVarPath = `/financialactivityaccounts/{mappingId}`
                 .replace(`{${"mappingId"}}`, encodeURIComponent(String(mappingId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -294,8 +294,8 @@ export const MappingFinancialActivitiesToAccountsApiFp = function(configuration?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createGLAccount(postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostFinancialActivityAccountsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createGLAccount(postFinancialActivityAccountsRequest, options);
+        async createFinancialActivity(postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostFinancialActivityAccountsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createFinancialActivity(postFinancialActivityAccountsRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -305,8 +305,8 @@ export const MappingFinancialActivitiesToAccountsApiFp = function(configuration?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteGLAccount(mappingId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteFinancialActivityAccountsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteGLAccount(mappingId, options);
+        async deleteFinancialActivity(mappingId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteFinancialActivityAccountsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteFinancialActivity(mappingId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -347,8 +347,8 @@ export const MappingFinancialActivitiesToAccountsApiFp = function(configuration?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateGLAccount(mappingId: number, postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutFinancialActivityAccountsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateGLAccount(mappingId, postFinancialActivityAccountsRequest, options);
+        async updateFinancialActivity(mappingId: number, postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutFinancialActivityAccountsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateFinancialActivity(mappingId, postFinancialActivityAccountsRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -368,8 +368,8 @@ export const MappingFinancialActivitiesToAccountsApiFactory = function (configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createGLAccount(postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options?: any): AxiosPromise<PostFinancialActivityAccountsResponse> {
-            return localVarFp.createGLAccount(postFinancialActivityAccountsRequest, options).then((request) => request(axios, basePath));
+        createFinancialActivity(postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options?: any): AxiosPromise<PostFinancialActivityAccountsResponse> {
+            return localVarFp.createFinancialActivity(postFinancialActivityAccountsRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -378,8 +378,8 @@ export const MappingFinancialActivitiesToAccountsApiFactory = function (configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteGLAccount(mappingId: number, options?: any): AxiosPromise<DeleteFinancialActivityAccountsResponse> {
-            return localVarFp.deleteGLAccount(mappingId, options).then((request) => request(axios, basePath));
+        deleteFinancialActivity(mappingId: number, options?: any): AxiosPromise<DeleteFinancialActivityAccountsResponse> {
+            return localVarFp.deleteFinancialActivity(mappingId, options).then((request) => request(axios, basePath));
         },
         /**
          * Example Requests:  financialactivityaccounts/1
@@ -416,8 +416,8 @@ export const MappingFinancialActivitiesToAccountsApiFactory = function (configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateGLAccount(mappingId: number, postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options?: any): AxiosPromise<PutFinancialActivityAccountsResponse> {
-            return localVarFp.updateGLAccount(mappingId, postFinancialActivityAccountsRequest, options).then((request) => request(axios, basePath));
+        updateFinancialActivity(mappingId: number, postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options?: any): AxiosPromise<PutFinancialActivityAccountsResponse> {
+            return localVarFp.updateFinancialActivity(mappingId, postFinancialActivityAccountsRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -437,8 +437,8 @@ export class MappingFinancialActivitiesToAccountsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MappingFinancialActivitiesToAccountsApi
      */
-    public createGLAccount(postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options?: any) {
-        return MappingFinancialActivitiesToAccountsApiFp(this.configuration).createGLAccount(postFinancialActivityAccountsRequest, options).then((request) => request(this.axios, this.basePath));
+    public createFinancialActivity(postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options?: any) {
+        return MappingFinancialActivitiesToAccountsApiFp(this.configuration).createFinancialActivity(postFinancialActivityAccountsRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -449,8 +449,8 @@ export class MappingFinancialActivitiesToAccountsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MappingFinancialActivitiesToAccountsApi
      */
-    public deleteGLAccount(mappingId: number, options?: any) {
-        return MappingFinancialActivitiesToAccountsApiFp(this.configuration).deleteGLAccount(mappingId, options).then((request) => request(this.axios, this.basePath));
+    public deleteFinancialActivity(mappingId: number, options?: any) {
+        return MappingFinancialActivitiesToAccountsApiFp(this.configuration).deleteFinancialActivity(mappingId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -495,7 +495,7 @@ export class MappingFinancialActivitiesToAccountsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MappingFinancialActivitiesToAccountsApi
      */
-    public updateGLAccount(mappingId: number, postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options?: any) {
-        return MappingFinancialActivitiesToAccountsApiFp(this.configuration).updateGLAccount(mappingId, postFinancialActivityAccountsRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateFinancialActivity(mappingId: number, postFinancialActivityAccountsRequest?: PostFinancialActivityAccountsRequest, options?: any) {
+        return MappingFinancialActivitiesToAccountsApiFp(this.configuration).updateFinancialActivity(mappingId, postFinancialActivityAccountsRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -125,43 +125,6 @@ export const ReportsApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists  Example Request :   reports/template
-         * @summary Retrieve Report Template
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveOfficeTemplate: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/reports/template`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Example Requests:  reports/1   reports/1?template=true
          * @summary Retrieve a Report 
          * @param {number} id id
@@ -210,6 +173,43 @@ export const ReportsApiAxiosParamCreator = function (configuration?: Configurati
          */
         retrieveReportList: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/reports`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists  Example Request :   reports/template
+         * @summary Retrieve Report Template
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveReportTemplate: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/reports/template`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -319,16 +319,6 @@ export const ReportsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists  Example Request :   reports/template
-         * @summary Retrieve Report Template
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveOfficeTemplate(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetReportsTemplateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveOfficeTemplate(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * Example Requests:  reports/1   reports/1?template=true
          * @summary Retrieve a Report 
          * @param {number} id id
@@ -347,6 +337,16 @@ export const ReportsApiFp = function(configuration?: Configuration) {
          */
         async retrieveReportList(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetReportsResponse>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveReportList(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists  Example Request :   reports/template
+         * @summary Retrieve Report Template
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveReportTemplate(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetReportsTemplateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveReportTemplate(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -392,15 +392,6 @@ export const ReportsApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.deleteReport(id, options).then((request) => request(axios, basePath));
         },
         /**
-         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists  Example Request :   reports/template
-         * @summary Retrieve Report Template
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveOfficeTemplate(options?: any): AxiosPromise<GetReportsTemplateResponse> {
-            return localVarFp.retrieveOfficeTemplate(options).then((request) => request(axios, basePath));
-        },
-        /**
          * Example Requests:  reports/1   reports/1?template=true
          * @summary Retrieve a Report 
          * @param {number} id id
@@ -418,6 +409,15 @@ export const ReportsApiFactory = function (configuration?: Configuration, basePa
          */
         retrieveReportList(options?: any): AxiosPromise<Array<GetReportsResponse>> {
             return localVarFp.retrieveReportList(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists  Example Request :   reports/template
+         * @summary Retrieve Report Template
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveReportTemplate(options?: any): AxiosPromise<GetReportsTemplateResponse> {
+            return localVarFp.retrieveReportTemplate(options).then((request) => request(axios, basePath));
         },
         /**
          * Only the useReport description can be updated for core reports.
@@ -465,17 +465,6 @@ export class ReportsApi extends BaseAPI {
     }
 
     /**
-     * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists  Example Request :   reports/template
-     * @summary Retrieve Report Template
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ReportsApi
-     */
-    public retrieveOfficeTemplate(options?: any) {
-        return ReportsApiFp(this.configuration).retrieveOfficeTemplate(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Example Requests:  reports/1   reports/1?template=true
      * @summary Retrieve a Report 
      * @param {number} id id
@@ -496,6 +485,17 @@ export class ReportsApi extends BaseAPI {
      */
     public retrieveReportList(options?: any) {
         return ReportsApiFp(this.configuration).retrieveReportList(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists  Example Request :   reports/template
+     * @summary Retrieve Report Template
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ReportsApi
+     */
+    public retrieveReportTemplate(options?: any) {
+        return ReportsApiFp(this.configuration).retrieveReportTemplate(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

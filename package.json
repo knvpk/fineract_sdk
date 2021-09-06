@@ -23,7 +23,7 @@
     "build": "tsc --outDir dist/",
     "prepublishOnly": "yarn build",
     "generator": "openapi-generator-cli",
-    "generate": "yarn patch && openapi-generator-cli generate -i openapi.json -g typescript-axios -o ./ -c ./config.json -t ./templates --skip-validate-spec",
+    "generate": "yarn patch && openapi-generator-cli generate -i openapi.json -g typescript-axios -o ./ -c ./config.json -t ./templates",
     "templates": "openapi-generator-cli author template -g typescript-axios -o ./templates",
     "patch": "node ./patch.js"
   },

@@ -340,7 +340,7 @@ export const GeneralLedgerAccountApiAxiosParamCreator = function (configuration?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retriveTemplate: async (type?: number, options: any = {}): Promise<RequestArgs> => {
+        retriveGLAccountTemplate: async (type?: number, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/glaccounts/template`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -509,8 +509,8 @@ export const GeneralLedgerAccountApiFp = function(configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retriveTemplate(type?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetGLAccountsTemplateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retriveTemplate(type, options);
+        async retriveGLAccountTemplate(type?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetGLAccountsTemplateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retriveGLAccountTemplate(type, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -608,8 +608,8 @@ export const GeneralLedgerAccountApiFactory = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retriveTemplate(type?: number, options?: any): AxiosPromise<GetGLAccountsTemplateResponse> {
-            return localVarFp.retriveTemplate(type, options).then((request) => request(axios, basePath));
+        retriveGLAccountTemplate(type?: number, options?: any): AxiosPromise<GetGLAccountsTemplateResponse> {
+            return localVarFp.retriveGLAccountTemplate(type, options).then((request) => request(axios, basePath));
         },
         /**
          * Once an accounting closure is created, only the comments associated with it may be edited  
@@ -718,8 +718,8 @@ export class GeneralLedgerAccountApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof GeneralLedgerAccountApi
      */
-    public retriveTemplate(type?: number, options?: any) {
-        return GeneralLedgerAccountApiFp(this.configuration).retriveTemplate(type, options).then((request) => request(this.axios, this.basePath));
+    public retriveGLAccountTemplate(type?: number, options?: any) {
+        return GeneralLedgerAccountApiFp(this.configuration).retriveGLAccountTemplate(type, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

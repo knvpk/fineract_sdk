@@ -45,56 +45,15 @@ import { PutUsersUserIdResponse } from '../models';
 export const UsersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Removes the user and the associated roles and permissions.
-         * @summary Delete a User
-         * @param {number} userId userId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        _delete: async (userId: number, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userId' is not null or undefined
-            assertParamExists('_delete', 'userId', userId)
-            const localVarPath = `/users/{userId}`
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Adds new application user.  Note: Password information is not required (or processed). Password details at present are auto-generated and then sent to the email account given (which is why it can take a few seconds to complete).  Mandatory Fields:  username, firstname, lastname, email, officeId, roles, sendPasswordToEmail  Optional Fields:  staffId,passwordNeverExpires,isSelfServiceUser,clients
          * @summary Create a User
          * @param {PostUsersRequest} postUsersRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create: async (postUsersRequest: PostUsersRequest, options: any = {}): Promise<RequestArgs> => {
+        createUser: async (postUsersRequest: PostUsersRequest, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'postUsersRequest' is not null or undefined
-            assertParamExists('create', 'postUsersRequest', postUsersRequest)
+            assertParamExists('createUser', 'postUsersRequest', postUsersRequest)
             const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -129,6 +88,47 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             };
         },
         /**
+         * Removes the user and the associated roles and permissions.
+         * @summary Delete a User
+         * @param {number} userId userId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteUser: async (userId: number, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('deleteUser', 'userId', userId)
+            const localVarPath = `/users/{userId}`
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * 
          * @param {number} [officeId] 
          * @param {number} [staffId] 
@@ -136,7 +136,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserTemplate: async (officeId?: number, staffId?: number, dateFormat?: string, options: any = {}): Promise<RequestArgs> => {
+        downloadUserTemplate: async (officeId?: number, staffId?: number, dateFormat?: string, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/users/downloadtemplate`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -167,6 +167,43 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             if (dateFormat !== undefined) {
                 localVarQueryParameter['dateFormat'] = dateFormat;
             }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists Example Request:  users/template
+         * @summary Retrieve User Details Template
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserTemplate: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/users/template`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
 
 
     
@@ -240,7 +277,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAll: async (options: any = {}): Promise<RequestArgs> => {
+        retrieveAllUsers: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -278,48 +315,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOne: async (userId: number, options: any = {}): Promise<RequestArgs> => {
+        retrieveUser: async (userId: number, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
-            assertParamExists('retrieveOne', 'userId', userId)
+            assertParamExists('retrieveUser', 'userId', userId)
             const localVarPath = `/users/{userId}`
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists Example Request:  users/template
-         * @summary Retrieve User Details Template
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        template: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/users/template`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -357,11 +357,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update: async (userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options: any = {}): Promise<RequestArgs> => {
+        updateUser: async (userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
-            assertParamExists('update', 'userId', userId)
+            assertParamExists('updateUser', 'userId', userId)
             // verify required parameter 'putUsersUserIdRequest' is not null or undefined
-            assertParamExists('update', 'putUsersUserIdRequest', putUsersUserIdRequest)
+            assertParamExists('updateUser', 'putUsersUserIdRequest', putUsersUserIdRequest)
             const localVarPath = `/users/{userId}`
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -407,25 +407,25 @@ export const UsersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = UsersApiAxiosParamCreator(configuration)
     return {
         /**
-         * Removes the user and the associated roles and permissions.
-         * @summary Delete a User
-         * @param {number} userId userId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async _delete(userId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteUsersUserIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator._delete(userId, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * Adds new application user.  Note: Password information is not required (or processed). Password details at present are auto-generated and then sent to the email account given (which is why it can take a few seconds to complete).  Mandatory Fields:  username, firstname, lastname, email, officeId, roles, sendPasswordToEmail  Optional Fields:  staffId,passwordNeverExpires,isSelfServiceUser,clients
          * @summary Create a User
          * @param {PostUsersRequest} postUsersRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async create(postUsersRequest: PostUsersRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostUsersResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create(postUsersRequest, options);
+        async createUser(postUsersRequest: PostUsersRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostUsersResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createUser(postUsersRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Removes the user and the associated roles and permissions.
+         * @summary Delete a User
+         * @param {number} userId userId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteUser(userId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteUsersUserIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteUser(userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -436,8 +436,18 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserTemplate(officeId?: number, staffId?: number, dateFormat?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserTemplate(officeId, staffId, dateFormat, options);
+        async downloadUserTemplate(officeId?: number, staffId?: number, dateFormat?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.downloadUserTemplate(officeId, staffId, dateFormat, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists Example Request:  users/template
+         * @summary Retrieve User Details Template
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getUserTemplate(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUsersTemplateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserTemplate(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -458,8 +468,8 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveAll(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetUsersResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAll(options);
+        async retrieveAllUsers(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetUsersResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAllUsers(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -469,18 +479,8 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveOne(userId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUsersUserIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveOne(userId, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists Example Request:  users/template
-         * @summary Retrieve User Details Template
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async template(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUsersTemplateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.template(options);
+        async retrieveUser(userId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUsersUserIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveUser(userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -491,8 +491,8 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async update(userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutUsersUserIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update(userId, putUsersUserIdRequest, options);
+        async updateUser(userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutUsersUserIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateUser(userId, putUsersUserIdRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -506,24 +506,24 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
     const localVarFp = UsersApiFp(configuration)
     return {
         /**
-         * Removes the user and the associated roles and permissions.
-         * @summary Delete a User
-         * @param {number} userId userId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        _delete(userId: number, options?: any): AxiosPromise<DeleteUsersUserIdResponse> {
-            return localVarFp._delete(userId, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Adds new application user.  Note: Password information is not required (or processed). Password details at present are auto-generated and then sent to the email account given (which is why it can take a few seconds to complete).  Mandatory Fields:  username, firstname, lastname, email, officeId, roles, sendPasswordToEmail  Optional Fields:  staffId,passwordNeverExpires,isSelfServiceUser,clients
          * @summary Create a User
          * @param {PostUsersRequest} postUsersRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create(postUsersRequest: PostUsersRequest, options?: any): AxiosPromise<PostUsersResponse> {
-            return localVarFp.create(postUsersRequest, options).then((request) => request(axios, basePath));
+        createUser(postUsersRequest: PostUsersRequest, options?: any): AxiosPromise<PostUsersResponse> {
+            return localVarFp.createUser(postUsersRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Removes the user and the associated roles and permissions.
+         * @summary Delete a User
+         * @param {number} userId userId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteUser(userId: number, options?: any): AxiosPromise<DeleteUsersUserIdResponse> {
+            return localVarFp.deleteUser(userId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -533,8 +533,17 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserTemplate(officeId?: number, staffId?: number, dateFormat?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.getUserTemplate(officeId, staffId, dateFormat, options).then((request) => request(axios, basePath));
+        downloadUserTemplate(officeId?: number, staffId?: number, dateFormat?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.downloadUserTemplate(officeId, staffId, dateFormat, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists Example Request:  users/template
+         * @summary Retrieve User Details Template
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getUserTemplate(options?: any): AxiosPromise<GetUsersTemplateResponse> {
+            return localVarFp.getUserTemplate(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -553,8 +562,8 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAll(options?: any): AxiosPromise<Array<GetUsersResponse>> {
-            return localVarFp.retrieveAll(options).then((request) => request(axios, basePath));
+        retrieveAllUsers(options?: any): AxiosPromise<Array<GetUsersResponse>> {
+            return localVarFp.retrieveAllUsers(options).then((request) => request(axios, basePath));
         },
         /**
          * Example Requests:  users/1   users/1?template=true   users/1?fields=username,officeName
@@ -563,17 +572,8 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOne(userId: number, options?: any): AxiosPromise<GetUsersUserIdResponse> {
-            return localVarFp.retrieveOne(userId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists Example Request:  users/template
-         * @summary Retrieve User Details Template
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        template(options?: any): AxiosPromise<GetUsersTemplateResponse> {
-            return localVarFp.template(options).then((request) => request(axios, basePath));
+        retrieveUser(userId: number, options?: any): AxiosPromise<GetUsersUserIdResponse> {
+            return localVarFp.retrieveUser(userId, options).then((request) => request(axios, basePath));
         },
         /**
          * When updating a password you must provide the repeatPassword parameter also.
@@ -583,8 +583,8 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update(userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options?: any): AxiosPromise<PutUsersUserIdResponse> {
-            return localVarFp.update(userId, putUsersUserIdRequest, options).then((request) => request(axios, basePath));
+        updateUser(userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options?: any): AxiosPromise<PutUsersUserIdResponse> {
+            return localVarFp.updateUser(userId, putUsersUserIdRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -597,18 +597,6 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
  */
 export class UsersApi extends BaseAPI {
     /**
-     * Removes the user and the associated roles and permissions.
-     * @summary Delete a User
-     * @param {number} userId userId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public _delete(userId: number, options?: any) {
-        return UsersApiFp(this.configuration)._delete(userId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Adds new application user.  Note: Password information is not required (or processed). Password details at present are auto-generated and then sent to the email account given (which is why it can take a few seconds to complete).  Mandatory Fields:  username, firstname, lastname, email, officeId, roles, sendPasswordToEmail  Optional Fields:  staffId,passwordNeverExpires,isSelfServiceUser,clients
      * @summary Create a User
      * @param {PostUsersRequest} postUsersRequest 
@@ -616,8 +604,20 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public create(postUsersRequest: PostUsersRequest, options?: any) {
-        return UsersApiFp(this.configuration).create(postUsersRequest, options).then((request) => request(this.axios, this.basePath));
+    public createUser(postUsersRequest: PostUsersRequest, options?: any) {
+        return UsersApiFp(this.configuration).createUser(postUsersRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Removes the user and the associated roles and permissions.
+     * @summary Delete a User
+     * @param {number} userId userId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public deleteUser(userId: number, options?: any) {
+        return UsersApiFp(this.configuration).deleteUser(userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -629,8 +629,19 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getUserTemplate(officeId?: number, staffId?: number, dateFormat?: string, options?: any) {
-        return UsersApiFp(this.configuration).getUserTemplate(officeId, staffId, dateFormat, options).then((request) => request(this.axios, this.basePath));
+    public downloadUserTemplate(officeId?: number, staffId?: number, dateFormat?: string, options?: any) {
+        return UsersApiFp(this.configuration).downloadUserTemplate(officeId, staffId, dateFormat, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists Example Request:  users/template
+     * @summary Retrieve User Details Template
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public getUserTemplate(options?: any) {
+        return UsersApiFp(this.configuration).getUserTemplate(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -653,8 +664,8 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public retrieveAll(options?: any) {
-        return UsersApiFp(this.configuration).retrieveAll(options).then((request) => request(this.axios, this.basePath));
+    public retrieveAllUsers(options?: any) {
+        return UsersApiFp(this.configuration).retrieveAllUsers(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -665,19 +676,8 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public retrieveOne(userId: number, options?: any) {
-        return UsersApiFp(this.configuration).retrieveOne(userId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists Example Request:  users/template
-     * @summary Retrieve User Details Template
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public template(options?: any) {
-        return UsersApiFp(this.configuration).template(options).then((request) => request(this.axios, this.basePath));
+    public retrieveUser(userId: number, options?: any) {
+        return UsersApiFp(this.configuration).retrieveUser(userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -689,7 +689,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public update(userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options?: any) {
-        return UsersApiFp(this.configuration).update(userId, putUsersUserIdRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateUser(userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options?: any) {
+        return UsersApiFp(this.configuration).updateUser(userId, putUsersUserIdRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }

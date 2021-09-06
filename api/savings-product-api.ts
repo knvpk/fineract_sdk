@@ -49,9 +49,9 @@ export const SavingsProductApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create13: async (postSavingsProductsRequest: PostSavingsProductsRequest, options: any = {}): Promise<RequestArgs> => {
+        createSavingsProduct: async (postSavingsProductsRequest: PostSavingsProductsRequest, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'postSavingsProductsRequest' is not null or undefined
-            assertParamExists('create13', 'postSavingsProductsRequest', postSavingsProductsRequest)
+            assertParamExists('createSavingsProduct', 'postSavingsProductsRequest', postSavingsProductsRequest)
             const localVarPath = `/savingsproducts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -92,9 +92,9 @@ export const SavingsProductApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete19: async (productId: number, options: any = {}): Promise<RequestArgs> => {
+        deleteSavingsProduct: async (productId: number, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'productId' is not null or undefined
-            assertParamExists('delete19', 'productId', productId)
+            assertParamExists('deleteSavingsProduct', 'productId', productId)
             const localVarPath = `/savingsproducts/{productId}`
                 .replace(`{${"productId"}}`, encodeURIComponent(String(productId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -127,13 +127,17 @@ export const SavingsProductApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * Lists Savings Products  Example Requests:  savingsproducts  savingsproducts?fields=name
-         * @summary List Savings Products
+         * Retrieves a Savings Product  Example Requests:  savingsproducts/1  savingsproducts/1?template=true  savingsproducts/1?fields=name,description
+         * @summary Retrieve a Savings Product
+         * @param {number} productId productId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAll34: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/savingsproducts`;
+        retrieveSavingsProduct: async (productId: number, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'productId' is not null or undefined
+            assertParamExists('retrieveSavingsProduct', 'productId', productId)
+            const localVarPath = `/savingsproducts/{productId}`
+                .replace(`{${"productId"}}`, encodeURIComponent(String(productId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -164,17 +168,13 @@ export const SavingsProductApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * Retrieves a Savings Product  Example Requests:  savingsproducts/1  savingsproducts/1?template=true  savingsproducts/1?fields=name,description
-         * @summary Retrieve a Savings Product
-         * @param {number} productId productId
+         * Lists Savings Products  Example Requests:  savingsproducts  savingsproducts?fields=name
+         * @summary List Savings Products
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOne25: async (productId: number, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'productId' is not null or undefined
-            assertParamExists('retrieveOne25', 'productId', productId)
-            const localVarPath = `/savingsproducts/{productId}`
-                .replace(`{${"productId"}}`, encodeURIComponent(String(productId)));
+        retrieveSavingsProducts: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/savingsproducts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -210,7 +210,7 @@ export const SavingsProductApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveTemplate19: async (options: any = {}): Promise<RequestArgs> => {
+        retriveSavingsProductTemplate: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/savingsproducts/template`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -249,11 +249,11 @@ export const SavingsProductApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update20: async (productId: number, putSavingsProductsProductIdRequest: PutSavingsProductsProductIdRequest, options: any = {}): Promise<RequestArgs> => {
+        updateSavingsProduct: async (productId: number, putSavingsProductsProductIdRequest: PutSavingsProductsProductIdRequest, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'productId' is not null or undefined
-            assertParamExists('update20', 'productId', productId)
+            assertParamExists('updateSavingsProduct', 'productId', productId)
             // verify required parameter 'putSavingsProductsProductIdRequest' is not null or undefined
-            assertParamExists('update20', 'putSavingsProductsProductIdRequest', putSavingsProductsProductIdRequest)
+            assertParamExists('updateSavingsProduct', 'putSavingsProductsProductIdRequest', putSavingsProductsProductIdRequest)
             const localVarPath = `/savingsproducts/{productId}`
                 .replace(`{${"productId"}}`, encodeURIComponent(String(productId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -305,8 +305,8 @@ export const SavingsProductApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async create13(postSavingsProductsRequest: PostSavingsProductsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostSavingsProductsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create13(postSavingsProductsRequest, options);
+        async createSavingsProduct(postSavingsProductsRequest: PostSavingsProductsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostSavingsProductsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createSavingsProduct(postSavingsProductsRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -316,18 +316,8 @@ export const SavingsProductApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async delete19(productId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteSavingsProductsProductIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.delete19(productId, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Lists Savings Products  Example Requests:  savingsproducts  savingsproducts?fields=name
-         * @summary List Savings Products
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveAll34(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetSavingsProductsResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAll34(options);
+        async deleteSavingsProduct(productId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteSavingsProductsProductIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteSavingsProduct(productId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -337,8 +327,18 @@ export const SavingsProductApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveOne25(productId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSavingsProductsProductIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveOne25(productId, options);
+        async retrieveSavingsProduct(productId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSavingsProductsProductIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveSavingsProduct(productId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Lists Savings Products  Example Requests:  savingsproducts  savingsproducts?fields=name
+         * @summary List Savings Products
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveSavingsProducts(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetSavingsProductsResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveSavingsProducts(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -347,8 +347,8 @@ export const SavingsProductApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveTemplate19(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSavingsProductsTemplateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveTemplate19(options);
+        async retriveSavingsProductTemplate(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSavingsProductsTemplateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retriveSavingsProductTemplate(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -359,8 +359,8 @@ export const SavingsProductApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async update20(productId: number, putSavingsProductsProductIdRequest: PutSavingsProductsProductIdRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutSavingsProductsProductIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update20(productId, putSavingsProductsProductIdRequest, options);
+        async updateSavingsProduct(productId: number, putSavingsProductsProductIdRequest: PutSavingsProductsProductIdRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutSavingsProductsProductIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateSavingsProduct(productId, putSavingsProductsProductIdRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -380,8 +380,8 @@ export const SavingsProductApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create13(postSavingsProductsRequest: PostSavingsProductsRequest, options?: any): AxiosPromise<PostSavingsProductsResponse> {
-            return localVarFp.create13(postSavingsProductsRequest, options).then((request) => request(axios, basePath));
+        createSavingsProduct(postSavingsProductsRequest: PostSavingsProductsRequest, options?: any): AxiosPromise<PostSavingsProductsResponse> {
+            return localVarFp.createSavingsProduct(postSavingsProductsRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * Deletes a Savings Product
@@ -390,17 +390,8 @@ export const SavingsProductApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete19(productId: number, options?: any): AxiosPromise<DeleteSavingsProductsProductIdResponse> {
-            return localVarFp.delete19(productId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Lists Savings Products  Example Requests:  savingsproducts  savingsproducts?fields=name
-         * @summary List Savings Products
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveAll34(options?: any): AxiosPromise<Array<GetSavingsProductsResponse>> {
-            return localVarFp.retrieveAll34(options).then((request) => request(axios, basePath));
+        deleteSavingsProduct(productId: number, options?: any): AxiosPromise<DeleteSavingsProductsProductIdResponse> {
+            return localVarFp.deleteSavingsProduct(productId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a Savings Product  Example Requests:  savingsproducts/1  savingsproducts/1?template=true  savingsproducts/1?fields=name,description
@@ -409,8 +400,17 @@ export const SavingsProductApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOne25(productId: number, options?: any): AxiosPromise<GetSavingsProductsProductIdResponse> {
-            return localVarFp.retrieveOne25(productId, options).then((request) => request(axios, basePath));
+        retrieveSavingsProduct(productId: number, options?: any): AxiosPromise<GetSavingsProductsProductIdResponse> {
+            return localVarFp.retrieveSavingsProduct(productId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Lists Savings Products  Example Requests:  savingsproducts  savingsproducts?fields=name
+         * @summary List Savings Products
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveSavingsProducts(options?: any): AxiosPromise<Array<GetSavingsProductsResponse>> {
+            return localVarFp.retrieveSavingsProducts(options).then((request) => request(axios, basePath));
         },
         /**
          * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists Example Request:  savingsproducts/template
@@ -418,8 +418,8 @@ export const SavingsProductApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveTemplate19(options?: any): AxiosPromise<GetSavingsProductsTemplateResponse> {
-            return localVarFp.retrieveTemplate19(options).then((request) => request(axios, basePath));
+        retriveSavingsProductTemplate(options?: any): AxiosPromise<GetSavingsProductsTemplateResponse> {
+            return localVarFp.retriveSavingsProductTemplate(options).then((request) => request(axios, basePath));
         },
         /**
          * Updates a Savings Product
@@ -429,8 +429,8 @@ export const SavingsProductApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update20(productId: number, putSavingsProductsProductIdRequest: PutSavingsProductsProductIdRequest, options?: any): AxiosPromise<PutSavingsProductsProductIdResponse> {
-            return localVarFp.update20(productId, putSavingsProductsProductIdRequest, options).then((request) => request(axios, basePath));
+        updateSavingsProduct(productId: number, putSavingsProductsProductIdRequest: PutSavingsProductsProductIdRequest, options?: any): AxiosPromise<PutSavingsProductsProductIdResponse> {
+            return localVarFp.updateSavingsProduct(productId, putSavingsProductsProductIdRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -450,8 +450,8 @@ export class SavingsProductApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SavingsProductApi
      */
-    public create13(postSavingsProductsRequest: PostSavingsProductsRequest, options?: any) {
-        return SavingsProductApiFp(this.configuration).create13(postSavingsProductsRequest, options).then((request) => request(this.axios, this.basePath));
+    public createSavingsProduct(postSavingsProductsRequest: PostSavingsProductsRequest, options?: any) {
+        return SavingsProductApiFp(this.configuration).createSavingsProduct(postSavingsProductsRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -462,19 +462,8 @@ export class SavingsProductApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SavingsProductApi
      */
-    public delete19(productId: number, options?: any) {
-        return SavingsProductApiFp(this.configuration).delete19(productId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Lists Savings Products  Example Requests:  savingsproducts  savingsproducts?fields=name
-     * @summary List Savings Products
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SavingsProductApi
-     */
-    public retrieveAll34(options?: any) {
-        return SavingsProductApiFp(this.configuration).retrieveAll34(options).then((request) => request(this.axios, this.basePath));
+    public deleteSavingsProduct(productId: number, options?: any) {
+        return SavingsProductApiFp(this.configuration).deleteSavingsProduct(productId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -485,8 +474,19 @@ export class SavingsProductApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SavingsProductApi
      */
-    public retrieveOne25(productId: number, options?: any) {
-        return SavingsProductApiFp(this.configuration).retrieveOne25(productId, options).then((request) => request(this.axios, this.basePath));
+    public retrieveSavingsProduct(productId: number, options?: any) {
+        return SavingsProductApiFp(this.configuration).retrieveSavingsProduct(productId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Lists Savings Products  Example Requests:  savingsproducts  savingsproducts?fields=name
+     * @summary List Savings Products
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SavingsProductApi
+     */
+    public retrieveSavingsProducts(options?: any) {
+        return SavingsProductApiFp(this.configuration).retrieveSavingsProducts(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -496,8 +496,8 @@ export class SavingsProductApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SavingsProductApi
      */
-    public retrieveTemplate19(options?: any) {
-        return SavingsProductApiFp(this.configuration).retrieveTemplate19(options).then((request) => request(this.axios, this.basePath));
+    public retriveSavingsProductTemplate(options?: any) {
+        return SavingsProductApiFp(this.configuration).retriveSavingsProductTemplate(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -509,7 +509,7 @@ export class SavingsProductApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SavingsProductApi
      */
-    public update20(productId: number, putSavingsProductsProductIdRequest: PutSavingsProductsProductIdRequest, options?: any) {
-        return SavingsProductApiFp(this.configuration).update20(productId, putSavingsProductsProductIdRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateSavingsProduct(productId: number, putSavingsProductsProductIdRequest: PutSavingsProductsProductIdRequest, options?: any) {
+        return SavingsProductApiFp(this.configuration).updateSavingsProduct(productId, putSavingsProductsProductIdRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
