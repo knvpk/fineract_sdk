@@ -1,9 +1,9 @@
-const jsonPatcher = require("jsonpatch");
 const fs = require("fs");
+const { applyPatch } = require('fast-json-patch');
 
 let base = require("./base.json");
 let patches = require("./patches.json");
 
-const dest = jsonPatcher.apply_patch(base, patches);
+const dest = applyPatch(base, patches).newDocument;
 
 fs.writeFileSync("./openapi.json", JSON.stringify(dest));
