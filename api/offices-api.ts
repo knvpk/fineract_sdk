@@ -226,7 +226,7 @@ export const OfficesApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOfficeTemplate1: async (options: any = {}): Promise<RequestArgs> => {
+        retrieveOfficeTemplate: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/offices/template`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -416,8 +416,8 @@ export const OfficesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveOfficeTemplate1(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetOfficesTemplateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveOfficeTemplate1(options);
+        async retrieveOfficeTemplate(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetOfficesTemplateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveOfficeTemplate(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -501,8 +501,8 @@ export const OfficesApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOfficeTemplate1(options?: any): AxiosPromise<GetOfficesTemplateResponse> {
-            return localVarFp.retrieveOfficeTemplate1(options).then((request) => request(axios, basePath));
+        retrieveOfficeTemplate(options?: any): AxiosPromise<GetOfficesTemplateResponse> {
+            return localVarFp.retrieveOfficeTemplate(options).then((request) => request(axios, basePath));
         },
         /**
          * Example Requests:  offices   offices?fields=id,name,openingDate
@@ -592,8 +592,8 @@ export class OfficesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof OfficesApi
      */
-    public retrieveOfficeTemplate1(options?: any) {
-        return OfficesApiFp(this.configuration).retrieveOfficeTemplate1(options).then((request) => request(this.axios, this.basePath));
+    public retrieveOfficeTemplate(options?: any) {
+        return OfficesApiFp(this.configuration).retrieveOfficeTemplate(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

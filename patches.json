@@ -63,5 +63,32 @@
         "op": "replace",
         "path": "/paths/~1paymenttypes~1{paymentTypeId}/delete/operationId",
         "value": "deletePaymentType"
+    },
+
+    {
+        "op": "replace",
+        "path": "/paths/~1offices~1template/get/operationId",
+        "value": "retrieveOfficeTemplate"
+    },
+
+    {
+        "op": "replace",
+        "path": "/paths/~1glaccounts/post/operationId",
+        "value": "createGLAccount"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1glaccounts~1{glAccountId}/put/operationId",
+        "value": "updateGLAccount"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1glaccounts~1{glAccountId}/delete/operationId",
+        "value": "deleteGLAccount"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1glaccounts~1template/get/operationId",
+        "value": "retriveTemplate"
     }
 ]

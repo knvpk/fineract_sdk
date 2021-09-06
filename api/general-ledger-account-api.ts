@@ -49,7 +49,7 @@ export const GeneralLedgerAccountApiAxiosParamCreator = function (configuration?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createGLAccount1: async (postGLAccountsRequest?: PostGLAccountsRequest, options: any = {}): Promise<RequestArgs> => {
+        createGLAccount: async (postGLAccountsRequest?: PostGLAccountsRequest, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/glaccounts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -90,9 +90,9 @@ export const GeneralLedgerAccountApiAxiosParamCreator = function (configuration?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteGLAccount1: async (glAccountId: number, options: any = {}): Promise<RequestArgs> => {
+        deleteGLAccount: async (glAccountId: number, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'glAccountId' is not null or undefined
-            assertParamExists('deleteGLAccount1', 'glAccountId', glAccountId)
+            assertParamExists('deleteGLAccount', 'glAccountId', glAccountId)
             const localVarPath = `/glaccounts/{glAccountId}`
                 .replace(`{${"glAccountId"}}`, encodeURIComponent(String(glAccountId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -340,7 +340,7 @@ export const GeneralLedgerAccountApiAxiosParamCreator = function (configuration?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveNewAccountDetails: async (type?: number, options: any = {}): Promise<RequestArgs> => {
+        retriveTemplate: async (type?: number, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/glaccounts/template`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -383,9 +383,9 @@ export const GeneralLedgerAccountApiAxiosParamCreator = function (configuration?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateGLAccount1: async (glAccountId: number, putGLAccountsRequest?: PutGLAccountsRequest, options: any = {}): Promise<RequestArgs> => {
+        updateGLAccount: async (glAccountId: number, putGLAccountsRequest?: PutGLAccountsRequest, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'glAccountId' is not null or undefined
-            assertParamExists('updateGLAccount1', 'glAccountId', glAccountId)
+            assertParamExists('updateGLAccount', 'glAccountId', glAccountId)
             const localVarPath = `/glaccounts/{glAccountId}`
                 .replace(`{${"glAccountId"}}`, encodeURIComponent(String(glAccountId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -437,8 +437,8 @@ export const GeneralLedgerAccountApiFp = function(configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createGLAccount1(postGLAccountsRequest?: PostGLAccountsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostGLAccountsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createGLAccount1(postGLAccountsRequest, options);
+        async createGLAccount(postGLAccountsRequest?: PostGLAccountsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostGLAccountsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createGLAccount(postGLAccountsRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -448,8 +448,8 @@ export const GeneralLedgerAccountApiFp = function(configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteGLAccount1(glAccountId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteGLAccountsRequest>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteGLAccount1(glAccountId, options);
+        async deleteGLAccount(glAccountId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteGLAccountsRequest>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteGLAccount(glAccountId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -509,8 +509,8 @@ export const GeneralLedgerAccountApiFp = function(configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveNewAccountDetails(type?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetGLAccountsTemplateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveNewAccountDetails(type, options);
+        async retriveTemplate(type?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetGLAccountsTemplateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retriveTemplate(type, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -521,8 +521,8 @@ export const GeneralLedgerAccountApiFp = function(configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateGLAccount1(glAccountId: number, putGLAccountsRequest?: PutGLAccountsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutGLAccountsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateGLAccount1(glAccountId, putGLAccountsRequest, options);
+        async updateGLAccount(glAccountId: number, putGLAccountsRequest?: PutGLAccountsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutGLAccountsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateGLAccount(glAccountId, putGLAccountsRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -542,8 +542,8 @@ export const GeneralLedgerAccountApiFactory = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createGLAccount1(postGLAccountsRequest?: PostGLAccountsRequest, options?: any): AxiosPromise<PostGLAccountsResponse> {
-            return localVarFp.createGLAccount1(postGLAccountsRequest, options).then((request) => request(axios, basePath));
+        createGLAccount(postGLAccountsRequest?: PostGLAccountsRequest, options?: any): AxiosPromise<PostGLAccountsResponse> {
+            return localVarFp.createGLAccount(postGLAccountsRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * Note: Only the latest accounting closure associated with a branch may be deleted.
@@ -552,8 +552,8 @@ export const GeneralLedgerAccountApiFactory = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteGLAccount1(glAccountId: number, options?: any): AxiosPromise<DeleteGLAccountsRequest> {
-            return localVarFp.deleteGLAccount1(glAccountId, options).then((request) => request(axios, basePath));
+        deleteGLAccount(glAccountId: number, options?: any): AxiosPromise<DeleteGLAccountsRequest> {
+            return localVarFp.deleteGLAccount(glAccountId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -608,8 +608,8 @@ export const GeneralLedgerAccountApiFactory = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveNewAccountDetails(type?: number, options?: any): AxiosPromise<GetGLAccountsTemplateResponse> {
-            return localVarFp.retrieveNewAccountDetails(type, options).then((request) => request(axios, basePath));
+        retriveTemplate(type?: number, options?: any): AxiosPromise<GetGLAccountsTemplateResponse> {
+            return localVarFp.retriveTemplate(type, options).then((request) => request(axios, basePath));
         },
         /**
          * Once an accounting closure is created, only the comments associated with it may be edited  
@@ -619,8 +619,8 @@ export const GeneralLedgerAccountApiFactory = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateGLAccount1(glAccountId: number, putGLAccountsRequest?: PutGLAccountsRequest, options?: any): AxiosPromise<PutGLAccountsResponse> {
-            return localVarFp.updateGLAccount1(glAccountId, putGLAccountsRequest, options).then((request) => request(axios, basePath));
+        updateGLAccount(glAccountId: number, putGLAccountsRequest?: PutGLAccountsRequest, options?: any): AxiosPromise<PutGLAccountsResponse> {
+            return localVarFp.updateGLAccount(glAccountId, putGLAccountsRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -640,8 +640,8 @@ export class GeneralLedgerAccountApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof GeneralLedgerAccountApi
      */
-    public createGLAccount1(postGLAccountsRequest?: PostGLAccountsRequest, options?: any) {
-        return GeneralLedgerAccountApiFp(this.configuration).createGLAccount1(postGLAccountsRequest, options).then((request) => request(this.axios, this.basePath));
+    public createGLAccount(postGLAccountsRequest?: PostGLAccountsRequest, options?: any) {
+        return GeneralLedgerAccountApiFp(this.configuration).createGLAccount(postGLAccountsRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -652,8 +652,8 @@ export class GeneralLedgerAccountApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof GeneralLedgerAccountApi
      */
-    public deleteGLAccount1(glAccountId: number, options?: any) {
-        return GeneralLedgerAccountApiFp(this.configuration).deleteGLAccount1(glAccountId, options).then((request) => request(this.axios, this.basePath));
+    public deleteGLAccount(glAccountId: number, options?: any) {
+        return GeneralLedgerAccountApiFp(this.configuration).deleteGLAccount(glAccountId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -718,8 +718,8 @@ export class GeneralLedgerAccountApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof GeneralLedgerAccountApi
      */
-    public retrieveNewAccountDetails(type?: number, options?: any) {
-        return GeneralLedgerAccountApiFp(this.configuration).retrieveNewAccountDetails(type, options).then((request) => request(this.axios, this.basePath));
+    public retriveTemplate(type?: number, options?: any) {
+        return GeneralLedgerAccountApiFp(this.configuration).retriveTemplate(type, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -731,7 +731,7 @@ export class GeneralLedgerAccountApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof GeneralLedgerAccountApi
      */
-    public updateGLAccount1(glAccountId: number, putGLAccountsRequest?: PutGLAccountsRequest, options?: any) {
-        return GeneralLedgerAccountApiFp(this.configuration).updateGLAccount1(glAccountId, putGLAccountsRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateGLAccount(glAccountId: number, putGLAccountsRequest?: PutGLAccountsRequest, options?: any) {
+        return GeneralLedgerAccountApiFp(this.configuration).updateGLAccount(glAccountId, putGLAccountsRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
