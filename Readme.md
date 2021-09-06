@@ -2,7 +2,7 @@
 
 An wrapper for fineract api to work in nodejs. The base is generated using [openapi gen](https://github.com/OpenAPITools/openapi-generator) 
 
-# Notes
+### Notes
 
 1. Install using `npm i fineract_sdk`
 2. Usage 
@@ -12,14 +12,14 @@ An wrapper for fineract api to work in nodejs. The base is generated using [open
   console.log(response.data)
 ```
 
-# Code Generation
+### Code Generation
 
 1. `docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate -i /local/openapi.json -g typescript-axios -o /local -c /local/config.json -t /local/templates --skip-validate-spec`
 
 2. `docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli author template -g typescript-axios -o /local/templates`
 
 
-## TODO:
+### TODO:
 
 1. ~~Generate models and api funcs seperatly, for now getting generating error when we use `withSeparateModelsAndApi` as true.~~
 2. ~~Changing the json file using patches.~~ (Solved usong json-patch library to modify base.json)
