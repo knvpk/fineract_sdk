@@ -22,10 +22,10 @@
 export interface PutCurrenciesRequest {
     /**
      * 
-     * @type {string}
+     * @type {Array<string>}
      * @memberof PutCurrenciesRequest
      */
-    currencies?: string;
+    currencies?: Array<string>;
 }
 
 

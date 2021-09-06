@@ -47,5 +47,15 @@
                 "password"
             ]
         }
+    },
+    {
+        "op": "replace",
+        "path": "/components/schemas/PutCurrenciesRequest/properties/currencies",
+        "value": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
     }
 ]
