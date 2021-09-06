@@ -1,4 +1,6 @@
-[
+let patches = [];
+
+let userPatches = [
     {
         "op": "replace",
         "path": "/paths/~1users/get/operationId",
@@ -33,7 +35,10 @@
         "op": "replace",
         "path": "/paths/~1users~1template/get/operationId",
         "value": "getUserTemplate"
-    },
+    }
+];
+
+let authPatches = [
     {
         "op": "replace",
         "path": "/paths/~1authentication/post/requestBody/content/application~1json/schema",
@@ -52,7 +57,10 @@
                 "password"
             ]
         }
-    },
+    }
+]
+
+let currencyPatches = [
     {
         "op": "replace",
         "path": "/components/schemas/PutCurrenciesRequest/properties/currencies",
@@ -62,31 +70,38 @@
                 "type": "string"
             }
         }
-    },
+    }
+];
+
+let paymentTypePatches = [
     {
         "op": "replace",
         "path": "/paths/~1paymenttypes~1{paymentTypeId}/delete/operationId",
         "value": "deletePaymentType"
-    },
+    }
+];
+
+let reportPatches = [
     {
         "op": "replace",
         "path": "/paths/~1reports~1template/get/operationId",
         "value": "retrieveReportTemplate"
     },
+];
+
+let officePatches = [
     {
         "op": "replace",
         "path": "/paths/~1offices~1template/get/operationId",
         "value": "retrieveOfficeTemplate"
     },
+]
+
+let financialActivityPatches = [
     {
         "op": "replace",
         "path": "/paths/~1financialactivityaccounts/post/operationId",
         "value": "createFinancialActivity"
-    },
-    {
-        "op": "replace",
-        "path": "/paths/~1glaccounts/post/operationId",
-        "value": "createGLAccount"
     },
     {
         "op": "replace",
@@ -95,14 +110,24 @@
     },
     {
         "op": "replace",
-        "path": "/paths/~1glaccounts~1{glAccountId}/put/operationId",
-        "value": "updateGLAccount"
-    },
-    {
-        "op": "replace",
         "path": "/paths/~1financialactivityaccounts~1{mappingId}/delete/operationId",
         "value": "deleteFinancialActivity"
     },
+];
+
+let glAccountPatches = [
+    {
+        "op": "replace",
+        "path": "/paths/~1glaccounts/post/operationId",
+        "value": "createGLAccount"
+    },
+    
+    {
+        "op": "replace",
+        "path": "/paths/~1glaccounts~1{glAccountId}/put/operationId",
+        "value": "updateGLAccount"
+    },
+   
     {
         "op": "replace",
         "path": "/paths/~1glaccounts~1{glAccountId}/delete/operationId",
@@ -160,6 +185,25 @@
             }
         }
     },
+   
+]
+
+//SavingsProduct create related fields
+
+let savingsProductPatchesAuto = ["savingsReferenceAccountId", "savingsControlAccountId", "interestOnSavingsAccountId", "incomeFromFeeAccountId", "transfersInSuspenseAccountId", "incomeFromPenaltyAccountId"]
+    .map(field => {
+        return {
+            "op": "add",
+            "path": `/components/schemas/PostSavingsProductsRequest/properties/${field}`,
+            "value": {
+                "type": "integer",
+                "format": "int64",
+                "example": 1
+            }
+        }
+    })
+
+let savingsProductPatches = [
     {
         "op": "replace",
         "path": "/paths/~1savingsproducts/get/operationId",
@@ -189,5 +233,129 @@
         "op": "replace",
         "path": "/paths/~1savingsproducts~1template/get/operationId",
         "value": "retriveSavingsProductTemplate"
-    }
+    },
+    {
+        "op": "add",
+        "path": `/components/schemas/PostSavingsProductsRequest/properties/minRequiredOpeningBalance`,
+        "value": {
+            "type": "number",
+            "format": "double",
+            "example": 50.0
+        }
+    },
+    {
+        "op": "add",
+        "path": `/components/schemas/PostSavingsProductsRequest/properties/lockinPeriodFrequency`,
+        "value": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+        }
+    },
+    {
+        "op": "add",
+        "path": `/components/schemas/PostSavingsProductsRequest/properties/lockinPeriodFrequencyType`,
+        "value": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+        }
+    },
+    {
+        "op": "add",
+        "path": `/components/schemas/PostSavingsProductsRequest/properties/withdrawalFeeForTransfers`,
+        "value": {
+            "type": "boolean",
+            "example": false
+        }
+    },
+    {
+        "op": "add",
+        "path": `/components/schemas/PostSavingsProductsRequest/properties/paymentChannelToFundSourceMappings`,
+        "value": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    {
+        "op": "add",
+        "path": `/components/schemas/PostSavingsProductsRequest/properties/feeToIncomeAccountMappings`,
+        "value": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    {
+        "op": "add",
+        "path": `/components/schemas/PostSavingsProductsRequest/properties/penaltyToIncomeAccountMappings`,
+        "value": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    {
+        "op": "add",
+        "path": `/components/schemas/PostSavingsProductsRequest/properties/allowOverdraft`,
+        "value": {
+            "type": "boolean",
+            "example": false
+        }
+    },
+    {
+        "op": "add",
+        "path": `/components/schemas/PostSavingsProductsRequest/properties/overdraftLimit`,
+        "value": {
+            "type": "number",
+            "format": "double",
+            "example": 50.0
+        }
+    },
+    {
+        "op": "add",
+        "path": `/components/schemas/PostSavingsProductsRequest/properties/minBalanceForInterestCalculation`,
+        "value": {
+            "type": "number",
+            "format": "double",
+            "example": 50.0
+        }
+    },
+    {
+        "op": "add",
+        "path": `/components/schemas/PostSavingsProductsRequest/properties/withHoldTax`,
+        "value": {
+            "type": "number",
+            "format": "double",
+            "example": 50.0
+        }
+    },
+    {
+        "op": "add",
+        "path": `/components/schemas/PostSavingsProductsRequest/properties/taxGroupId`,
+        "value": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+        }
+    },
+];
+
+patches = [
+    ...userPatches,
+    ...authPatches,
+    ...currencyPatches,
+    ...paymentTypePatches,
+    ...reportPatches,
+    ...officePatches,
+    ...financialActivityPatches,
+    ...glAccountPatches,
+    ...savingsProductPatches, 
+    ...savingsProductPatchesAuto,
 ]
+
+module.exports = patches;

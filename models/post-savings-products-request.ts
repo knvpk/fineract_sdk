@@ -105,6 +105,114 @@ export interface PostSavingsProductsRequest {
      * @memberof PostSavingsProductsRequest
      */
     charges?: Set<PostSavingsCharges>;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    minRequiredOpeningBalance?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    lockinPeriodFrequency?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    lockinPeriodFrequencyType?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PostSavingsProductsRequest
+     */
+    withdrawalFeeForTransfers?: boolean;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof PostSavingsProductsRequest
+     */
+    paymentChannelToFundSourceMappings?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof PostSavingsProductsRequest
+     */
+    feeToIncomeAccountMappings?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof PostSavingsProductsRequest
+     */
+    penaltyToIncomeAccountMappings?: Array<string>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PostSavingsProductsRequest
+     */
+    allowOverdraft?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    overdraftLimit?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    minBalanceForInterestCalculation?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    withHoldTax?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    taxGroupId?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    savingsReferenceAccountId?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    savingsControlAccountId?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    interestOnSavingsAccountId?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    incomeFromFeeAccountId?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    transfersInSuspenseAccountId?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    incomeFromPenaltyAccountId?: number;
 }
 
 
