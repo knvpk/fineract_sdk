@@ -90,9 +90,9 @@ export const PaymentTypeApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteCode1: async (paymentTypeId: number, options: any = {}): Promise<RequestArgs> => {
+        deletePaymentType: async (paymentTypeId: number, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'paymentTypeId' is not null or undefined
-            assertParamExists('deleteCode1', 'paymentTypeId', paymentTypeId)
+            assertParamExists('deletePaymentType', 'paymentTypeId', paymentTypeId)
             const localVarPath = `/paymenttypes/{paymentTypeId}`
                 .replace(`{${"paymentTypeId"}}`, encodeURIComponent(String(paymentTypeId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -277,8 +277,8 @@ export const PaymentTypeApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteCode1(paymentTypeId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeletePaymentTypesPaymentTypeIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteCode1(paymentTypeId, options);
+        async deletePaymentType(paymentTypeId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeletePaymentTypesPaymentTypeIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePaymentType(paymentTypeId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -341,8 +341,8 @@ export const PaymentTypeApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteCode1(paymentTypeId: number, options?: any): AxiosPromise<DeletePaymentTypesPaymentTypeIdResponse> {
-            return localVarFp.deleteCode1(paymentTypeId, options).then((request) => request(axios, basePath));
+        deletePaymentType(paymentTypeId: number, options?: any): AxiosPromise<DeletePaymentTypesPaymentTypeIdResponse> {
+            return localVarFp.deletePaymentType(paymentTypeId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieve list of payment types
@@ -404,8 +404,8 @@ export class PaymentTypeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentTypeApi
      */
-    public deleteCode1(paymentTypeId: number, options?: any) {
-        return PaymentTypeApiFp(this.configuration).deleteCode1(paymentTypeId, options).then((request) => request(this.axios, this.basePath));
+    public deletePaymentType(paymentTypeId: number, options?: any) {
+        return PaymentTypeApiFp(this.configuration).deletePaymentType(paymentTypeId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

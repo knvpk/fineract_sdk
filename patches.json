@@ -57,5 +57,11 @@
                 "type": "string"
             }
         }
+    },
+
+    {
+        "op": "replace",
+        "path": "/paths/~1paymenttypes~1{paymentTypeId}/delete/operationId",
+        "value": "deletePaymentType"
     }
 ]
