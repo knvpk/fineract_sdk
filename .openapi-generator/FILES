@@ -860,6 +860,7 @@ models/hook-template-data.ts
 models/id-document.ts
 models/image.ts
 models/index.ts
+models/inline-object7.ts
 models/interop-account-data.ts
 models/interop-identifier-account-response-data.ts
 models/interop-identifier-request-data.ts

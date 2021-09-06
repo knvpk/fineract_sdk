@@ -21,6 +21,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { InlineObject7 } from '../models';
+// @ts-ignore
 import { PostAuthenticationResponse } from '../models';
 /**
  * AuthenticationHTTPBasicApi - axios parameter creator
@@ -32,11 +34,11 @@ export const AuthenticationHTTPBasicApiAxiosParamCreator = function (configurati
          * Authenticates the credentials provided and returns the set roles and permissions allowed.
          * @summary Verify authentication
          * @param {boolean} [returnClientList] 
-         * @param {string} [body] 
+         * @param {InlineObject7} [inlineObject7] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authenticate: async (returnClientList?: boolean, body?: string, options: any = {}): Promise<RequestArgs> => {
+        authenticate: async (returnClientList?: boolean, inlineObject7?: InlineObject7, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/authentication`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -67,7 +69,7 @@ export const AuthenticationHTTPBasicApiAxiosParamCreator = function (configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(inlineObject7, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -88,12 +90,12 @@ export const AuthenticationHTTPBasicApiFp = function(configuration?: Configurati
          * Authenticates the credentials provided and returns the set roles and permissions allowed.
          * @summary Verify authentication
          * @param {boolean} [returnClientList] 
-         * @param {string} [body] 
+         * @param {InlineObject7} [inlineObject7] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authenticate(returnClientList?: boolean, body?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostAuthenticationResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticate(returnClientList, body, options);
+        async authenticate(returnClientList?: boolean, inlineObject7?: InlineObject7, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostAuthenticationResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authenticate(returnClientList, inlineObject7, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -110,12 +112,12 @@ export const AuthenticationHTTPBasicApiFactory = function (configuration?: Confi
          * Authenticates the credentials provided and returns the set roles and permissions allowed.
          * @summary Verify authentication
          * @param {boolean} [returnClientList] 
-         * @param {string} [body] 
+         * @param {InlineObject7} [inlineObject7] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authenticate(returnClientList?: boolean, body?: string, options?: any): AxiosPromise<PostAuthenticationResponse> {
-            return localVarFp.authenticate(returnClientList, body, options).then((request) => request(axios, basePath));
+        authenticate(returnClientList?: boolean, inlineObject7?: InlineObject7, options?: any): AxiosPromise<PostAuthenticationResponse> {
+            return localVarFp.authenticate(returnClientList, inlineObject7, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -131,12 +133,12 @@ export class AuthenticationHTTPBasicApi extends BaseAPI {
      * Authenticates the credentials provided and returns the set roles and permissions allowed.
      * @summary Verify authentication
      * @param {boolean} [returnClientList] 
-     * @param {string} [body] 
+     * @param {InlineObject7} [inlineObject7] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthenticationHTTPBasicApi
      */
-    public authenticate(returnClientList?: boolean, body?: string, options?: any) {
-        return AuthenticationHTTPBasicApiFp(this.configuration).authenticate(returnClientList, body, options).then((request) => request(this.axios, this.basePath));
+    public authenticate(returnClientList?: boolean, inlineObject7?: InlineObject7, options?: any) {
+        return AuthenticationHTTPBasicApiFp(this.configuration).authenticate(returnClientList, inlineObject7, options).then((request) => request(this.axios, this.basePath));
     }
 }

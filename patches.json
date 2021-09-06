@@ -18,7 +18,7 @@
         "op": "replace",
         "path": "/paths/~1users~1{userId}/put/operationId",
         "value": "update"
-    },    
+    },
     {
         "op": "replace",
         "path": "/paths/~1users~1{userId}/delete/operationId",
@@ -28,5 +28,24 @@
         "op": "replace",
         "path": "/paths/~1users~1template/get/operationId",
         "value": "template"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1authentication/post/requestBody/content/application~1json/schema",
+        "value": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "username",
+                "password"
+            ]
+        }
     }
 ]

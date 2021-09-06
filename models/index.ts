@@ -723,6 +723,7 @@ export * from './header';
 export * from './hook-template-data';
 export * from './id-document';
 export * from './image';
+export * from './inline-object7';
 export * from './interop-account-data';
 export * from './interop-identifier-account-response-data';
 export * from './interop-identifier-request-data';
