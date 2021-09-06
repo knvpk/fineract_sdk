@@ -13,6 +13,7 @@
  */
 
 
+import { EnumOptionData } from './enum-option-data';
 
 /**
  * PutGLAccountsRequest
@@ -26,6 +27,48 @@ export interface PutGLAccountsRequest {
      * @memberof PutGLAccountsRequest
      */
     name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PutGLAccountsRequest
+     */
+    glCode?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PutGLAccountsRequest
+     */
+    manualEntriesAllowed?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof PutGLAccountsRequest
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PutGLAccountsRequest
+     */
+    tagId?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof PutGLAccountsRequest
+     */
+    parentId?: number;
+    /**
+     * 
+     * @type {EnumOptionData}
+     * @memberof PutGLAccountsRequest
+     */
+    usage?: EnumOptionData;
+    /**
+     * 
+     * @type {string}
+     * @memberof PutGLAccountsRequest
+     */
+    description?: string;
 }
 
 

@@ -58,19 +58,16 @@
             }
         }
     },
-
     {
         "op": "replace",
         "path": "/paths/~1paymenttypes~1{paymentTypeId}/delete/operationId",
         "value": "deletePaymentType"
     },
-
     {
         "op": "replace",
         "path": "/paths/~1offices~1template/get/operationId",
         "value": "retrieveOfficeTemplate"
     },
-
     {
         "op": "replace",
         "path": "/paths/~1glaccounts/post/operationId",
@@ -98,6 +95,44 @@
             "type": "integer",
             "format": "int64",
             "example": 1
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PutGLAccountsRequest/properties",
+        "value": {
+            "name": {
+                "type": "string",
+                "example": "Cash at Bangalore"
+            },
+            "glCode": {
+                "type": "string",
+                "example": "100001"
+            },
+            "manualEntriesAllowed": {
+                "type": "boolean",
+                "example": true
+            },
+            "type": {
+                "type": "string",
+                "example": "1"
+            },
+            "tagId": {
+                "type": "string",
+                "example": "10"
+            },
+            "parentId": {
+                "type": "integer",
+                "format": "int64",
+                "example": 1
+            },
+            "usage": {
+                "$ref": "#/components/schemas/EnumOptionData"
+            },
+            "description": {
+                "type": "string",
+                "example": "Desc"
+            }
         }
     }
 ]
