@@ -46,3 +46,4 @@ export interface DeleteLoansLoanIdChargesChargeIdResponse {
     resourceId?: number;
 }
 
+

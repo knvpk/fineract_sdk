@@ -58,3 +58,4 @@ export interface GetFixedDepositProductsProductIdCurrency {
     displayLabel?: string;
 }
 
+

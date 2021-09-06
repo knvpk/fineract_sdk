@@ -36,3 +36,4 @@ export interface GetSavingsProductsFeeToIncomeAccountMappings {
     incomeAccount?: GetSavingsProductsFeeToIncomeAccountMappingsIncomeAccount;
 }
 
+

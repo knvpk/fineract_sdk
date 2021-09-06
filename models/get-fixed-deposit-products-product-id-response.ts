@@ -154,3 +154,4 @@ export interface GetFixedDepositProductsProductIdResponse {
     activeChart?: GetFixedDepositProductsProductIdActiveChart;
 }
 
+

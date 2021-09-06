@@ -28,3 +28,4 @@ export interface DeleteRecurringDepositProductsProductIdResponse {
     resourceId?: number;
 }
 
+

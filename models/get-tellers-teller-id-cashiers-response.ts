@@ -53,3 +53,4 @@ export interface GetTellersTellerIdCashiersResponse {
     cashiers?: Array<CashierData>;
 }
 
+

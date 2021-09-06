@@ -34,3 +34,4 @@ export interface PostJournalEntriesResponse {
     transactionId?: string;
 }
 
+

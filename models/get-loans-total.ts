@@ -82,3 +82,4 @@ export interface GetLoansTotal {
     displaySymbolValue?: string;
 }
 
+

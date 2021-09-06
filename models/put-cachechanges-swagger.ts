@@ -28,3 +28,4 @@ export interface PutCachechangesSwagger {
     cacheType?: number;
 }
 
+

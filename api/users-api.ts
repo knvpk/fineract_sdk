@@ -278,9 +278,9 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOne29: async (userId: number, options: any = {}): Promise<RequestArgs> => {
+        retrieveOne: async (userId: number, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
-            assertParamExists('retrieveOne29', 'userId', userId)
+            assertParamExists('retrieveOne', 'userId', userId)
             const localVarPath = `/users/{userId}`
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -469,8 +469,8 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveOne29(userId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUsersUserIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveOne29(userId, options);
+        async retrieveOne(userId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUsersUserIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveOne(userId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -563,8 +563,8 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOne29(userId: number, options?: any): AxiosPromise<GetUsersUserIdResponse> {
-            return localVarFp.retrieveOne29(userId, options).then((request) => request(axios, basePath));
+        retrieveOne(userId: number, options?: any): AxiosPromise<GetUsersUserIdResponse> {
+            return localVarFp.retrieveOne(userId, options).then((request) => request(axios, basePath));
         },
         /**
          * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed description Lists Example Request:  users/template
@@ -665,8 +665,8 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public retrieveOne29(userId: number, options?: any) {
-        return UsersApiFp(this.configuration).retrieveOne29(userId, options).then((request) => request(this.axios, this.basePath));
+    public retrieveOne(userId: number, options?: any) {
+        return UsersApiFp(this.configuration).retrieveOne(userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

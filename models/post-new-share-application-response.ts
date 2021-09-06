@@ -28,3 +28,4 @@ export interface PostNewShareApplicationResponse {
     resourceId?: number;
 }
 
+

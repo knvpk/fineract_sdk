@@ -28,3 +28,4 @@ export interface DeleteDataTablesDatatableAppTableIdDatatableIdResponse {
     resourceId?: number;
 }
 
+

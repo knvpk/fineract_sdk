@@ -29,3 +29,4 @@ export interface AccountingTagRuleData {
     tag?: CodeValueData;
 }
 
+

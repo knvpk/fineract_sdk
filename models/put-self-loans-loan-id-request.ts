@@ -112,3 +112,4 @@ export interface PutSelfLoansLoanIdRequest {
     transactionProcessingStrategyId?: number;
 }
 
+

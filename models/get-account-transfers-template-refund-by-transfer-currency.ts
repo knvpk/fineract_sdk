@@ -64,3 +64,4 @@ export interface GetAccountTransfersTemplateRefundByTransferCurrency {
     displayLabel?: string;
 }
 
+

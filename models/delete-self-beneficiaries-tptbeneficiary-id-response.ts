@@ -28,3 +28,4 @@ export interface DeleteSelfBeneficiariesTPTBeneficiaryIdResponse {
     resourceId?: number;
 }
 
+

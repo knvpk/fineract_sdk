@@ -40,3 +40,4 @@ export interface GetSelfSavingsInterestCalculationType {
     description?: string;
 }
 
+

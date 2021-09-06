@@ -64,3 +64,4 @@ export interface GlobalConfigurationPropertyData {
     trapDoor?: boolean;
 }
 
+

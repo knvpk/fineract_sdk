@@ -46,3 +46,4 @@ export interface PostPaymentTypesRequest {
     position?: number;
 }
 
+

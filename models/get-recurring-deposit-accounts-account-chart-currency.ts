@@ -58,3 +58,4 @@ export interface GetRecurringDepositAccountsAccountChartCurrency {
     displayLabel?: string;
 }
 
+

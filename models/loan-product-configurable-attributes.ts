@@ -137,3 +137,4 @@ export interface LoanProductConfigurableAttributes {
     _new?: boolean;
 }
 
+

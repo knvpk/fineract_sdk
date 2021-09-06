@@ -70,3 +70,4 @@ export interface GetSelfClientsTimeline {
     activatedByLastname?: string;
 }
 
+

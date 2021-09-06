@@ -34,3 +34,4 @@ export interface PostTellersTellerIdCashiersCashierIdSettleResponse {
     subResourceId?: number;
 }
 
+

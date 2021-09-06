@@ -34,3 +34,4 @@ export interface PutLoanProductsProductIdRequest {
     principal?: number;
 }
 
+

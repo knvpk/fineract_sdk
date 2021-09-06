@@ -71,3 +71,4 @@ export interface GetSearchResponse {
     entityStatus?: EnumOptionData;
 }
 
+

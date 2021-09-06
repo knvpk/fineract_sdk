@@ -40,3 +40,4 @@ export interface PostLoansLoanIdChargesChargeIdRequest {
     transactionDate?: string;
 }
 
+

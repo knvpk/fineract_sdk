@@ -70,3 +70,4 @@ export interface GetFloatingRatesResponse {
     modifiedOn?: string;
 }
 
+

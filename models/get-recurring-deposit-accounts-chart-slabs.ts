@@ -60,3 +60,4 @@ export interface GetRecurringDepositAccountsChartSlabs {
     currency?: GetRecurringDepositAccountsAccountChartCurrency;
 }
 
+

@@ -35,3 +35,4 @@ export interface PutRolesRoleIdPermissionsResponse {
     permissions?: PostRolesRoleIdPermissionsResponsePermissions;
 }
 
+

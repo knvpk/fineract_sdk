@@ -88,3 +88,4 @@ export interface GetSelfLoansLoanIdTransactionsType {
     recoveryRepayment?: boolean;
 }
 
+

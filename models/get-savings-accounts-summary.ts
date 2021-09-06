@@ -41,3 +41,4 @@ export interface GetSavingsAccountsSummary {
     availableBalance?: number;
 }
 
+

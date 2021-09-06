@@ -42,3 +42,4 @@ export interface GetAccountTransferTemplateResponse {
     toAccountTypeOptions?: Set<GetFromAccountOptions>;
 }
 
+

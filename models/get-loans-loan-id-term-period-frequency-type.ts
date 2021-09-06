@@ -40,3 +40,4 @@ export interface GetLoansLoanIdTermPeriodFrequencyType {
     description?: string;
 }
 
+

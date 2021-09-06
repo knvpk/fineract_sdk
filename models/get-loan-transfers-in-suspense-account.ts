@@ -40,3 +40,4 @@ export interface GetLoanTransfersInSuspenseAccount {
     glCode?: number;
 }
 
+

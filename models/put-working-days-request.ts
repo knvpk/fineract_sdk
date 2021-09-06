@@ -47,3 +47,4 @@ export interface PutWorkingDaysRequest {
     extendTermForDailyRepayments?: boolean;
 }
 
+

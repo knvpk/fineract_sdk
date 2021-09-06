@@ -40,3 +40,4 @@ export interface GetSelfSavingsInterestCompoundingPeriodType {
     description?: string;
 }
 
+

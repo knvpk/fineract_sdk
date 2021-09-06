@@ -54,3 +54,4 @@ export interface GetProvisioningCriteriaCriteriaIdResponse {
     provisioningcriteria?: Array<ProvisioningCriteriaDefinitionData>;
 }
 
+

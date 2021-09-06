@@ -64,3 +64,4 @@ export interface SingleDebitOrCreditEntryCommand {
     commentsChanged?: boolean;
 }
 
+

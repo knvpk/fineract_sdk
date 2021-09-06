@@ -58,3 +58,4 @@ export interface PostInterestRateChartsChartIdChartSlabsIncentives {
     amount?: number;
 }
 
+

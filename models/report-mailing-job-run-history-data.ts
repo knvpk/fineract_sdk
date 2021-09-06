@@ -64,3 +64,4 @@ export interface ReportMailingJobRunHistoryData {
     errorLog?: string;
 }
 
+

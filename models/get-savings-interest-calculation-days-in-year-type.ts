@@ -40,3 +40,4 @@ export interface GetSavingsInterestCalculationDaysInYearType {
     description?: string;
 }
 
+

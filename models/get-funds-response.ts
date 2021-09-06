@@ -34,3 +34,4 @@ export interface GetFundsResponse {
     name?: string;
 }
 
+

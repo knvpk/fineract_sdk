@@ -46,3 +46,4 @@ export interface PutTellersTellerIdCashiersCashierIdResponseChanges {
     dateFormat?: string;
 }
 
+

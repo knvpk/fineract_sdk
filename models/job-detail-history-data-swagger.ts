@@ -52,3 +52,4 @@ export interface JobDetailHistoryDataSwagger {
     triggerType?: string;
 }
 
+

@@ -36,3 +36,4 @@ export interface GetSavingsProductsPaymentChannelToFundSourceMappings {
     fundSourceAccount?: GetSavingsProductsFundSourceAccount;
 }
 
+

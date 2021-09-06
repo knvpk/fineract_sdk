@@ -35,3 +35,4 @@ export interface GetSelfSavingsSummary {
     accountBalance?: number;
 }
 
+

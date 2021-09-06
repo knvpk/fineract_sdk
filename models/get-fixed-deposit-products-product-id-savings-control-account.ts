@@ -40,3 +40,4 @@ export interface GetFixedDepositProductsProductIdSavingsControlAccount {
     glCode?: number;
 }
 
+

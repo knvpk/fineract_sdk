@@ -40,3 +40,4 @@ export interface GetLoansLoanIdChargeTimeType {
     description?: string;
 }
 
+

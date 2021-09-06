@@ -106,3 +106,4 @@ export interface InteropIdentifierAccountResponseData {
     creditReport?: object;
 }
 
+

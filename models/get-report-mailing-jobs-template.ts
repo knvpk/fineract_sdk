@@ -41,3 +41,4 @@ export interface GetReportMailingJobsTemplate {
     stretchyReportParamDateOptions?: Array<EnumOptionData>;
 }
 
+

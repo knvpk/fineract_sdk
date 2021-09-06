@@ -60,3 +60,4 @@ export interface GetFixedDepositProductsProductIdActiveChart {
     periodTypes?: Set<GetFixedDepositProductsProductIdPeriodType>;
 }
 
+

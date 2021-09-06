@@ -34,3 +34,4 @@ export interface PutSelfBeneficiariesChanges {
     name?: string;
 }
 
+

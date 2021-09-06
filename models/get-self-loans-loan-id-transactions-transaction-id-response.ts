@@ -66,3 +66,4 @@ export interface GetSelfLoansLoanIdTransactionsTransactionIdResponse {
     interestPortion?: number;
 }
 
+

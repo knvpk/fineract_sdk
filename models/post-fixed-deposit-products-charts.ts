@@ -47,3 +47,4 @@ export interface PostFixedDepositProductsCharts {
     chartSlabs?: Set<PostFixedDepositProductsChartSlabs>;
 }
 
+

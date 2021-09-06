@@ -202,3 +202,4 @@ export interface GetRecurringDepositAccountsResponse {
     depositPeriodFrequency?: GetRecurringDepositAccountsDepositPeriodFrequency;
 }
 
+

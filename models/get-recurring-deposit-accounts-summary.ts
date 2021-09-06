@@ -35,3 +35,4 @@ export interface GetRecurringDepositAccountsSummary {
     accountBalance?: number;
 }
 
+

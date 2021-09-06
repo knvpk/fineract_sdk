@@ -40,3 +40,4 @@ export interface GetAccountsPurchasedSharesType {
     description?: string;
 }
 
+

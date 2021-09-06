@@ -28,3 +28,4 @@ export interface PostFinancialActivityAccountsResponse {
     resourceId?: number;
 }
 
+

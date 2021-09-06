@@ -28,3 +28,4 @@ export interface PostAccountsTypeAccountIdResponse {
     resourceId?: number;
 }
 
+

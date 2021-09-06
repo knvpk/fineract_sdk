@@ -40,3 +40,4 @@ export interface GetRecurringDepositProductsProductIdSavingsReferenceAccount {
     glCode?: number;
 }
 
+

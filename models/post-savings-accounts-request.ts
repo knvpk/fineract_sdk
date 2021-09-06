@@ -52,3 +52,4 @@ export interface PostSavingsAccountsRequest {
     submittedOnDate?: string;
 }
 
+

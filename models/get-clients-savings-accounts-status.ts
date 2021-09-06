@@ -76,3 +76,4 @@ export interface GetClientsSavingsAccountsStatus {
     closed?: boolean;
 }
 
+

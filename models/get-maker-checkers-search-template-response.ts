@@ -48,3 +48,4 @@ export interface GetMakerCheckersSearchTemplateResponse {
     processingResults?: Array<ProcessingResultLookup>;
 }
 
+

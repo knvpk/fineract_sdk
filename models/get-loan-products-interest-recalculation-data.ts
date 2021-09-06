@@ -74,3 +74,4 @@ export interface GetLoanProductsInterestRecalculationData {
     isArrearsBasedOnOriginalSchedule?: boolean;
 }
 
+

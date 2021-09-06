@@ -76,3 +76,4 @@ export interface GetGroupsGroupIdAccountsSavingStatus {
     closed?: boolean;
 }
 
+

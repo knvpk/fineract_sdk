@@ -100,3 +100,4 @@ export interface CashierData {
     fullDay?: boolean;
 }
 
+

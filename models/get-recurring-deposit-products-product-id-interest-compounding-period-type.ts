@@ -40,3 +40,4 @@ export interface GetRecurringDepositProductsProductIdInterestCompoundingPeriodTy
     description?: string;
 }
 
+

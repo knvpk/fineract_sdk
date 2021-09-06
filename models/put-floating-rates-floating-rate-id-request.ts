@@ -47,3 +47,4 @@ export interface PutFloatingRatesFloatingRateIdRequest {
     ratePeriods?: Set<PostFloatingRatesRatePeriods>;
 }
 
+

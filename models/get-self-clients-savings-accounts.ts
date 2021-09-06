@@ -60,3 +60,4 @@ export interface GetSelfClientsSavingsAccounts {
     currency?: GetSelfClientsSavingsAccountsCurrency;
 }
 
+

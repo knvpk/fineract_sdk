@@ -64,3 +64,4 @@ export interface GetSelfSavingsTransactionCurrency {
     displayLabel?: string;
 }
 
+

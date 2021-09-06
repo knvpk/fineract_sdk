@@ -94,3 +94,4 @@ export interface GetRecurringDepositAccountsStatus {
     transferOnHold?: boolean;
 }
 
+

@@ -40,3 +40,4 @@ export interface GetFixedDepositProductsAccountingRule {
     description?: string;
 }
 
+

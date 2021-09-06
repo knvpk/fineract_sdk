@@ -40,3 +40,4 @@ export interface GetProductsAccountingRule {
     description?: string;
 }
 
+

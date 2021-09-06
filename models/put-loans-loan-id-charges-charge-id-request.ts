@@ -46,3 +46,4 @@ export interface PutLoansLoanIdChargesChargeIdRequest {
     dueDate?: string;
 }
 
+

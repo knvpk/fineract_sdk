@@ -58,3 +58,4 @@ export interface PostInterestRateChartsRequest {
     fromDate?: string;
 }
 
+

@@ -40,3 +40,4 @@ export interface GetShareAccountsClientIdProductIdMinimumActivePeriodForDividend
     description?: string;
 }
 
+

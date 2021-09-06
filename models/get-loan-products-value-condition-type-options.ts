@@ -40,3 +40,4 @@ export interface GetLoanProductsValueConditionTypeOptions {
     description?: string;
 }
 
+

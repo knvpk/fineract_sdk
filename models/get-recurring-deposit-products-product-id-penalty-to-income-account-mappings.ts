@@ -36,3 +36,4 @@ export interface GetRecurringDepositProductsProductIdPenaltyToIncomeAccountMappi
     incomeAccount?: GetRecurringDepositProductsProductIdIncomeFromPenaltyAccount;
 }
 
+

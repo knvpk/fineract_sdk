@@ -72,3 +72,4 @@ export interface GetSelfClientsLoanAccounts {
     loanCycle?: number;
 }
 
+

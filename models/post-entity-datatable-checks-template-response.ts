@@ -28,3 +28,4 @@ export interface PostEntityDatatableChecksTemplateResponse {
     resourceId?: number;
 }
 
+

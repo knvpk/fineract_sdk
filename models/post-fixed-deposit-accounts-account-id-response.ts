@@ -46,3 +46,4 @@ export interface PostFixedDepositAccountsAccountIdResponse {
     resourceId?: number;
 }
 
+

@@ -35,3 +35,4 @@ export interface PutReportMailingJobsResponse {
     changes?: PutReportMailingJobsResponseChanges;
 }
 
+

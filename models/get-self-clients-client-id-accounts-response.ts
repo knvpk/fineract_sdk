@@ -36,3 +36,4 @@ export interface GetSelfClientsClientIdAccountsResponse {
     savingsAccounts?: Set<GetSelfClientsSavingsAccounts>;
 }
 
+

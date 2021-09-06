@@ -40,3 +40,4 @@ export interface GetRecurringDepositProductsProductIdInterestOnSavingsAccount {
     glCode?: number;
 }
 
+

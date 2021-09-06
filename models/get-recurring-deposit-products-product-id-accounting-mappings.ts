@@ -64,3 +64,4 @@ export interface GetRecurringDepositProductsProductIdAccountingMappings {
     transfersInSuspenseAccount?: GetRecurringDepositProductsProductIdTransfersInSuspenseAccount;
 }
 
+

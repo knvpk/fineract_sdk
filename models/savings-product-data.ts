@@ -120,3 +120,4 @@ export interface SavingsProductData {
     depositAccountType?: string;
 }
 
+

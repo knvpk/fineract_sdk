@@ -40,3 +40,4 @@ export interface GetProductsMarketPrice {
     shareValue?: number;
 }
 
+

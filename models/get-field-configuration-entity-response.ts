@@ -64,3 +64,4 @@ export interface GetFieldConfigurationEntityResponse {
     validation_regex?: string;
 }
 
+

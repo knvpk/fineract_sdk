@@ -237,3 +237,4 @@ export interface GetLoanProductsProductIdResponse {
     principalThresholdForLastInstalment?: number;
 }
 
+

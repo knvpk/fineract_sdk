@@ -52,3 +52,4 @@ export interface PostLoansLoanIdChargesChargeIdResponse {
     resourceId?: number;
 }
 
+

@@ -126,3 +126,4 @@ export interface GetFixedDepositProductsResponse {
     accountingRule?: GetFixedDepositProductsAccountingRule;
 }
 
+

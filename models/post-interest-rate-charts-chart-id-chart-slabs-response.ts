@@ -28,3 +28,4 @@ export interface PostInterestRateChartsChartIdChartSlabsResponse {
     resourceId?: number;
 }
 
+

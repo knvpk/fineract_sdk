@@ -28,3 +28,4 @@ export interface DeleteResourceTypeResourceIdNotesNoteIdResponse {
     resourceId?: number;
 }
 
+

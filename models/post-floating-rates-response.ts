@@ -28,3 +28,4 @@ export interface PostFloatingRatesResponse {
     resourceId?: number;
 }
 
+

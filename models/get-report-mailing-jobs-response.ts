@@ -119,3 +119,4 @@ export interface GetReportMailingJobsResponse {
     runAsUserId?: number;
 }
 
+

@@ -35,3 +35,4 @@ export interface PutInterestRateChartsChartIdChartSlabsChartSlabIdResponse {
     changes?: PutInterestRateChartsChartIdChartSlabsChartSlabIdRequest;
 }
 
+

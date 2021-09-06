@@ -40,3 +40,4 @@ export interface GetLoansLoanIdFeeFrequency {
     description?: string;
 }
 
+

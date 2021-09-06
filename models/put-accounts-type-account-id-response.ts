@@ -35,3 +35,4 @@ export interface PutAccountsTypeAccountIdResponse {
     changes?: PutAccountsChanges;
 }
 
+

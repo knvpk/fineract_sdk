@@ -34,3 +34,4 @@ export interface PutFixedDepositProductsChanges {
     minDepositTerm?: number;
 }
 
+

@@ -35,3 +35,4 @@ export interface PostSelfLoansDatatables {
     data?: PostSelfLoansData;
 }
 
+

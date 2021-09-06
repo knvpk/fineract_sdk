@@ -284,3 +284,4 @@ export interface GetLoansLoanIdSummary {
     overdueCharges?: Set<GetLoansLoanIdOverdueCharges>;
 }
 
+

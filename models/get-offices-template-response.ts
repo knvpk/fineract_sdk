@@ -35,3 +35,4 @@ export interface GetOfficesTemplateResponse {
     allowedParents?: Array<GetOfficesResponse>;
 }
 
+

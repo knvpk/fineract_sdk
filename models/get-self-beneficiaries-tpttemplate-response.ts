@@ -29,3 +29,4 @@ export interface GetSelfBeneficiariesTPTTemplateResponse {
     accountTypeOptions?: Set<GetSelfBeneficiariesAccountOptions>;
 }
 
+

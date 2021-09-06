@@ -40,3 +40,4 @@ export interface GetInterestRateChartsChartIdChartSlabsAttributeName {
     description?: number;
 }
 
+

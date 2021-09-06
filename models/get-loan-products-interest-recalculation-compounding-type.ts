@@ -40,3 +40,4 @@ export interface GetLoanProductsInterestRecalculationCompoundingType {
     description?: string;
 }
 
+

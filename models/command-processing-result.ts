@@ -100,3 +100,4 @@ export interface CommandProcessingResult {
     creditReport?: object;
 }
 
+

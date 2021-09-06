@@ -40,3 +40,4 @@ export interface GetLoansProductsDaysInMonthTemplateType {
     description?: string;
 }
 
+

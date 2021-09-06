@@ -58,3 +58,4 @@ export interface GetSelfClientsSavingsAccountsCurrency {
     displayLabel?: string;
 }
 
+

@@ -34,3 +34,4 @@ export interface PutFixedDepositAccountsChanges {
     locale?: string;
 }
 
+

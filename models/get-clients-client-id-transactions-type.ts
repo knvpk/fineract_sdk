@@ -40,3 +40,4 @@ export interface GetClientsClientIdTransactionsType {
     description?: string;
 }
 
+

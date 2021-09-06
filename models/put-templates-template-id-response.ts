@@ -28,3 +28,4 @@ export interface PutTemplatesTemplateIdResponse {
     resourceId?: number;
 }
 
+

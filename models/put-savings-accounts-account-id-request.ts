@@ -34,3 +34,4 @@ export interface PutSavingsAccountsAccountIdRequest {
     nominalAnnualInterestRate?: number;
 }
 
+

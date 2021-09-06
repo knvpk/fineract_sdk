@@ -40,3 +40,4 @@ export interface GetLoanProductsParamType {
     description?: string;
 }
 
+

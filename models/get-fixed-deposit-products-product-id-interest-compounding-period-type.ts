@@ -40,3 +40,4 @@ export interface GetFixedDepositProductsProductIdInterestCompoundingPeriodType {
     description?: string;
 }
 
+

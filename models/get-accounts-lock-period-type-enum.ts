@@ -40,3 +40,4 @@ export interface GetAccountsLockPeriodTypeEnum {
     description?: string;
 }
 
+

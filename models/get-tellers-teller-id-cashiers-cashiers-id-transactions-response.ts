@@ -101,3 +101,4 @@ export interface GetTellersTellerIdCashiersCashiersIdTransactionsResponse {
     cashierName?: string;
 }
 
+

@@ -46,3 +46,4 @@ export interface DeleteSavingsAccountsSavingsAccountIdChargesSavingsAccountCharg
     resourceId?: number;
 }
 
+

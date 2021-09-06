@@ -70,3 +70,4 @@ export interface PostFixedDepositAccountsRequest {
     depositPeriodFrequencyId?: number;
 }
 
+

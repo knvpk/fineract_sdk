@@ -46,3 +46,4 @@ export interface PutSavingsAccountsSavingsAccountIdChargesSavingsAccountChargeId
     dueDate?: string;
 }
 
+

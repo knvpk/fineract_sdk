@@ -82,3 +82,4 @@ export interface PostRecurringDepositAccountsRecurringDepositAccountIdTransactio
     bankNumber?: string;
 }
 
+

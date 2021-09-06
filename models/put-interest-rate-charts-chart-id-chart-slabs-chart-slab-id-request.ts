@@ -34,3 +34,4 @@ export interface PutInterestRateChartsChartIdChartSlabsChartSlabIdRequest {
     description?: string;
 }
 
+

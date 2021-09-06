@@ -78,3 +78,4 @@ export interface GetSelfClientsClientIdTransactionsPageItems {
     reversed?: boolean;
 }
 
+

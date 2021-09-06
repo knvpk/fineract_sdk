@@ -40,3 +40,4 @@ export interface DeleteGroupsGroupIdResponse {
     resourceId?: number;
 }
 
+

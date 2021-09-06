@@ -40,3 +40,4 @@ export interface GetRecurringDepositProductsProductIdIncomeFromFeeAccount {
     glCode?: number;
 }
 
+

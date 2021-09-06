@@ -54,3 +54,4 @@ export interface GetInterestRateChartsChartSlabs {
     currency?: GetInterestRateChartsCurrency;
 }
 
+

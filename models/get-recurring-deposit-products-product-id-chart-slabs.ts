@@ -66,3 +66,4 @@ export interface GetRecurringDepositProductsProductIdChartSlabs {
     currency?: GetRecurringDepositProductsProductIdCurrency;
 }
 
+

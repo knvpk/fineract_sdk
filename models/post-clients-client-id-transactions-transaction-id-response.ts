@@ -40,3 +40,4 @@ export interface PostClientsClientIdTransactionsTransactionIdResponse {
     resourceId?: number;
 }
 
+

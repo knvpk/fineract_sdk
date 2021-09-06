@@ -42,3 +42,4 @@ export interface PostProvisioningCriteriaRequest {
     provisioningcriteria?: Array<ProvisioningCriteriaDefinitionData>;
 }
 
+

@@ -40,3 +40,4 @@ export interface GetSavingsProductsSavingsReferenceAccount {
     glCode?: number;
 }
 
+

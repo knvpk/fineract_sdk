@@ -40,3 +40,4 @@ export interface GetSelfSavingsChargeTimeType {
     description?: string;
 }
 
+

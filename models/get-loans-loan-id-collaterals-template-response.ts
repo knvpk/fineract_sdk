@@ -29,3 +29,4 @@ export interface GetLoansLoanIdCollateralsTemplateResponse {
     allowedCollateralTypes?: Set<GetCollateralsTemplateAllowedTypes>;
 }
 
+

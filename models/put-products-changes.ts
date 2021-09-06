@@ -40,3 +40,4 @@ export interface PutProductsChanges {
     locale?: string;
 }
 
+

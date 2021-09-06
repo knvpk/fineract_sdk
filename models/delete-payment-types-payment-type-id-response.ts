@@ -28,3 +28,4 @@ export interface DeletePaymentTypesPaymentTypeIdResponse {
     resourceId?: number;
 }
 
+

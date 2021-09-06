@@ -40,3 +40,4 @@ export interface GetRecurringDepositAccountsDepositPeriodFrequency {
     description?: string;
 }
 
+

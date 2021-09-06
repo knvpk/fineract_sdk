@@ -113,3 +113,4 @@ export interface PostAccountsTypeRequest {
     savingsAccountId?: number;
 }
 
+

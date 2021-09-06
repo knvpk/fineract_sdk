@@ -40,3 +40,4 @@ export interface GetLoanPortfolioAccount {
     glCode?: number;
 }
 
+

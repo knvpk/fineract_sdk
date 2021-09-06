@@ -94,3 +94,4 @@ export interface GetGlClosureResponse {
     comments?: string;
 }
 
+

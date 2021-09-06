@@ -67,3 +67,4 @@ export interface GetGroupsGroupIdAccountsSavingAccounts {
     accountType?: GetGroupsGroupIdAccountsSavingAccountType;
 }
 
+

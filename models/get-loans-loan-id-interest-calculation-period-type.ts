@@ -40,3 +40,4 @@ export interface GetLoansLoanIdInterestCalculationPeriodType {
     description?: string;
 }
 
+

@@ -28,3 +28,4 @@ export interface PutFundsFundIdRequest {
     name?: string;
 }
 
+

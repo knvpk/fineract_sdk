@@ -46,3 +46,4 @@ export interface GetGroupsGroupIdTimeline {
     activatedByLastname?: string;
 }
 
+

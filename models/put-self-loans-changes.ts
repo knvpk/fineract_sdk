@@ -34,3 +34,4 @@ export interface PutSelfLoansChanges {
     locale?: string;
 }
 
+

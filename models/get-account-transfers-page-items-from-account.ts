@@ -34,3 +34,4 @@ export interface GetAccountTransfersPageItemsFromAccount {
     accountNo?: number;
 }
 
+

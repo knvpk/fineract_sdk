@@ -28,3 +28,4 @@ export interface PutGlobalConfigurationsResponsechangesSwagger {
     enabled?: boolean;
 }
 
+

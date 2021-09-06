@@ -157,3 +157,4 @@ export interface InteropKycResponseData {
     creditReport?: object;
 }
 
+

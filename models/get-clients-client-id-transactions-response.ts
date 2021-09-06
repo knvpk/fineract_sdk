@@ -35,3 +35,4 @@ export interface GetClientsClientIdTransactionsResponse {
     pageItems?: Set<GetClientsPageItems>;
 }
 
+

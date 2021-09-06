@@ -40,3 +40,4 @@ export interface GetRecurringDepositAccountsMinDepositTermType {
     description?: string;
 }
 
+

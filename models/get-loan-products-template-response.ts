@@ -246,3 +246,4 @@ export interface GetLoanProductsTemplateResponse {
     interestRecalculationFrequencyTypeOptions?: Set<GetLoanProductsInterestRecalculationCompoundingFrequencyType>;
 }
 
+

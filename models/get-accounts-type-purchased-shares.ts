@@ -46,3 +46,4 @@ export interface GetAccountsTypePurchasedShares {
     purchasedPrice?: number;
 }
 
+

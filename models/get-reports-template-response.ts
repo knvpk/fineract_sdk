@@ -40,3 +40,4 @@ export interface GetReportsTemplateResponse {
     allowedParameters?: Array<object>;
 }
 
+

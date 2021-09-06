@@ -59,3 +59,4 @@ export interface GetTemplatesTemplateResponse {
     mappers?: Array<TemplateMapper>;
 }
 
+

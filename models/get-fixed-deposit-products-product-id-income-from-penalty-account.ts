@@ -40,3 +40,4 @@ export interface GetFixedDepositProductsProductIdIncomeFromPenaltyAccount {
     glCode?: number;
 }
 
+

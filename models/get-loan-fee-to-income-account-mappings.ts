@@ -36,3 +36,4 @@ export interface GetLoanFeeToIncomeAccountMappings {
     incomeAccount?: GetLoanIncomeFromFeeAccount;
 }
 
+

@@ -35,3 +35,4 @@ export interface AccountingRuleData {
     debitTags?: Array<AccountingTagRuleData>;
 }
 
+

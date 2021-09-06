@@ -40,3 +40,4 @@ export interface GetFromAccountTypeOptionsResponseStandingInstructionSwagger {
     description?: string;
 }
 
+

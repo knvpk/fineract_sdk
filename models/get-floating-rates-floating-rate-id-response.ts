@@ -77,3 +77,4 @@ export interface GetFloatingRatesFloatingRateIdResponse {
     ratePeriods?: Set<GetFloatingRatesRatePeriods>;
 }
 
+

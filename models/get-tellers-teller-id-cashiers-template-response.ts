@@ -53,3 +53,4 @@ export interface GetTellersTellerIdCashiersTemplateResponse {
     staffOptions?: Array<StaffData>;
 }
 
+

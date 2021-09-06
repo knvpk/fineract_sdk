@@ -58,3 +58,4 @@ export interface GetCollateralCurrencyResponse {
     displayLabel?: string;
 }
 
+

@@ -88,3 +88,4 @@ export interface GetLoansType {
     recoveryRepayment?: boolean;
 }
 
+

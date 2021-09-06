@@ -50,3 +50,4 @@ export interface GetLoanProductsAccountingMappingOptions {
     incomeAccountOptions?: Set<GetLoanProductsIncomeAccountOptions>;
 }
 
+

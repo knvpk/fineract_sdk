@@ -40,3 +40,4 @@ export interface GetLoansChargePaymentMode {
     description?: string;
 }
 
+

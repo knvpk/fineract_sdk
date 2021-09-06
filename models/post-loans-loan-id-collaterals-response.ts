@@ -34,3 +34,4 @@ export interface PostLoansLoanIdCollateralsResponse {
     resourceId?: number;
 }
 
+

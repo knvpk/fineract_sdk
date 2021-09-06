@@ -40,3 +40,4 @@ export interface GetAccountTransfersStatus {
     description?: string;
 }
 
+

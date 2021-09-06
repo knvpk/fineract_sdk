@@ -28,3 +28,4 @@ export interface PutInterestRateChartsChartIdResponse {
     resourceId?: number;
 }
 
+

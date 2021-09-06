@@ -53,3 +53,4 @@ export interface GetSavingsAccountsSavingsAccountIdChargesTemplateResponse {
     penalty?: boolean;
 }
 
+

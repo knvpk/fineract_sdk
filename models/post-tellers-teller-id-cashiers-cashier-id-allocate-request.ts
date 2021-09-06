@@ -58,3 +58,4 @@ export interface PostTellersTellerIdCashiersCashierIdAllocateRequest {
     txnDate?: string;
 }
 
+

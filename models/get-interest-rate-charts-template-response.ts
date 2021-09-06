@@ -29,3 +29,4 @@ export interface GetInterestRateChartsTemplateResponse {
     periodTypes?: Set<GetInterestRateChartsTemplatePeriodTypes>;
 }
 
+

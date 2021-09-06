@@ -40,3 +40,4 @@ export interface GetGroupsGroupIdAccountsMemberLoanType {
     description?: string;
 }
 
+

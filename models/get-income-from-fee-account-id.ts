@@ -40,3 +40,4 @@ export interface GetIncomeFromFeeAccountId {
     glCode?: string;
 }
 
+

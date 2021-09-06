@@ -28,3 +28,4 @@ export interface DeleteFixedDepositProductsProductIdResponse {
     resourceId?: number;
 }
 
+

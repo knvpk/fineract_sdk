@@ -40,3 +40,4 @@ export interface GetLoanChargeTemplateChargeTimeType {
     description?: string;
 }
 
+

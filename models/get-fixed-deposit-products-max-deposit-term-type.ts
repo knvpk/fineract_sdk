@@ -40,3 +40,4 @@ export interface GetFixedDepositProductsMaxDepositTermType {
     description?: string;
 }
 
+

@@ -28,3 +28,4 @@ export interface PutPaymentTypesPaymentTypeIdResponse {
     resourceId?: number;
 }
 
+

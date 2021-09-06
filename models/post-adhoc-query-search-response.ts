@@ -46,3 +46,4 @@ export interface PostAdhocQuerySearchResponse {
     percentage?: number;
 }
 
+

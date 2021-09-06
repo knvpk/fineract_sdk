@@ -102,3 +102,4 @@ export interface PostSelfAuthenticationResponse {
     clients?: Array<number>;
 }
 
+

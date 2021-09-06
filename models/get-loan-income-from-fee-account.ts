@@ -40,3 +40,4 @@ export interface GetLoanIncomeFromFeeAccount {
     glCode?: number;
 }
 
+

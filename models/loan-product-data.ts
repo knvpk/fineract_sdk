@@ -395,3 +395,4 @@ export interface LoanProductData {
     variableInstallmentsAllowed?: boolean;
 }
 
+

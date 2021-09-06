@@ -40,3 +40,4 @@ export interface GetFixedDepositProductsProductIdPreClosurePenalInterestOnType {
     description?: string;
 }
 
+

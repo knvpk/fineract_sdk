@@ -29,3 +29,4 @@ export interface GetGlobalConfigurationsResponse {
     globalConfiguration?: Array<GlobalConfigurationPropertyData>;
 }
 
+

@@ -34,3 +34,4 @@ export interface PutRecurringDepositProductsChanges {
     minDepositTerm?: number;
 }
 
+

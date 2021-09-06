@@ -35,3 +35,4 @@ export interface GetFixedDepositAccountsSummary {
     accountBalance?: number;
 }
 
+

@@ -41,3 +41,4 @@ export interface GetDataTablesResponse {
     column?: Array<ResultsetColumnHeaderData>;
 }
 
+

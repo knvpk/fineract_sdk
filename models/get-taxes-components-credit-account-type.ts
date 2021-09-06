@@ -40,3 +40,4 @@ export interface GetTaxesComponentsCreditAccountType {
     description?: string;
 }
 
+

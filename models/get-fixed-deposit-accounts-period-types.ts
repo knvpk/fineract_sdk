@@ -40,3 +40,4 @@ export interface GetFixedDepositAccountsPeriodTypes {
     description?: string;
 }
 
+

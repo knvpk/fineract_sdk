@@ -40,3 +40,4 @@ export interface GetSelfUserDetailsOrganisationalRole {
     description?: string;
 }
 
+

@@ -28,3 +28,4 @@ export interface PostJournalEntriesTransactionIdRequest {
     officeId?: number;
 }
 
+

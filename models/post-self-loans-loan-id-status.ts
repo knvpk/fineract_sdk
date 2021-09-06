@@ -88,3 +88,4 @@ export interface PostSelfLoansLoanIdStatus {
     overpaid?: boolean;
 }
 
+

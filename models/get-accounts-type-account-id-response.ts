@@ -155,3 +155,4 @@ export interface GetAccountsTypeAccountIdResponse {
     dividends?: Array<string>;
 }
 
+

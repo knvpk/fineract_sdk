@@ -36,3 +36,4 @@ export interface RunReportsResponse {
     data?: Array<ResultsetRowData>;
 }
 
+

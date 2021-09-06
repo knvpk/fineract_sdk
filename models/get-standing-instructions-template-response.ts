@@ -113,3 +113,4 @@ export interface GetStandingInstructionsTemplateResponse {
     recurrenceFrequencyOptions?: Set<GetRecurrenceFrequencyOptionsResponseStandingInstructionSwagger>;
 }
 
+

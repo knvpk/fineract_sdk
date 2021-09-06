@@ -28,3 +28,4 @@ export interface DeleteSavingsProductsProductIdResponse {
     resourceId?: number;
 }
 
+

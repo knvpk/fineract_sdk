@@ -89,3 +89,4 @@ export interface GetTellersTellerIdCashiersCashiersIdSummaryAndTransactionsRespo
     cashierTransactions?: PageCashierTransactionData;
 }
 
+

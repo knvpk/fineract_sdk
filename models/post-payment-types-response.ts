@@ -28,3 +28,4 @@ export interface PostPaymentTypesResponse {
     resourceId?: number;
 }
 
+

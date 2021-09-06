@@ -50,3 +50,4 @@ export interface GetGroupsGroupIdAccountsResponse {
     memberSavingsAccounts?: Set<GetGroupsGroupIdAccountsMemberSavingsAccounts>;
 }
 
+

@@ -40,3 +40,4 @@ export interface GetShareAccountsClientIdProductIdLockPeriodTypeEnum {
     description?: string;
 }
 
+

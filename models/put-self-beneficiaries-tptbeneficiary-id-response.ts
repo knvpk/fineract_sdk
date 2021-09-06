@@ -35,3 +35,4 @@ export interface PutSelfBeneficiariesTPTBeneficiaryIdResponse {
     changes?: PutSelfBeneficiariesChanges;
 }
 
+

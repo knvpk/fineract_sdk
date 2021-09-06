@@ -47,3 +47,4 @@ export interface GetWorkingDaysResponse {
     extendTermForDailyRepayments?: boolean;
 }
 
+

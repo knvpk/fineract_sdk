@@ -46,3 +46,4 @@ export interface GetFixedDepositProductsProductIdFeeToIncomeAccountMappingsCharg
     penalty?: boolean;
 }
 
+

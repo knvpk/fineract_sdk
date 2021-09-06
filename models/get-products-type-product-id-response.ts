@@ -187,3 +187,4 @@ export interface GetProductsTypeProductIdResponse {
     accountingMappingOptions?: GetProductsAccountingMappingOptions;
 }
 
+

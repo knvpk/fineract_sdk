@@ -65,3 +65,4 @@ export interface Component {
     _new?: boolean;
 }
 
+

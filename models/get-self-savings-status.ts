@@ -76,3 +76,4 @@ export interface GetSelfSavingsStatus {
     closed?: boolean;
 }
 
+

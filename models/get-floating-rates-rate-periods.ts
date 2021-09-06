@@ -76,3 +76,4 @@ export interface GetFloatingRatesRatePeriods {
     modifiedOn?: string;
 }
 
+

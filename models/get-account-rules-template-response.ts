@@ -42,3 +42,4 @@ export interface GetAccountRulesTemplateResponse {
     allowedAccounts?: Array<GLAccountData>;
 }
 
+

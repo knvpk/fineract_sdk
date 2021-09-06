@@ -40,3 +40,4 @@ export interface GetRecurringDepositProductsProductIdTransfersInSuspenseAccount 
     glCode?: number;
 }
 
+

@@ -35,3 +35,4 @@ export interface GetSelfClientsClientIdTransactionsResponse {
     pageItems?: Set<GetSelfClientsClientIdTransactionsPageItems>;
 }
 
+

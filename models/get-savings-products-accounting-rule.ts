@@ -40,3 +40,4 @@ export interface GetSavingsProductsAccountingRule {
     description?: string;
 }
 
+

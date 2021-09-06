@@ -28,3 +28,4 @@ export interface PutDataTablesAppTableIdDatatableIdResponse {
     resourceId?: number;
 }
 
+

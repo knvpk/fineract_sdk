@@ -40,3 +40,4 @@ export interface GetFixedDepositProductsMinDepositTermType {
     description?: string;
 }
 
+

@@ -65,3 +65,4 @@ export interface GetRecurringPaymentDetailData {
     bankNumber?: number;
 }
 
+

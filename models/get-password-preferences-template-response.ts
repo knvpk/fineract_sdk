@@ -46,3 +46,4 @@ export interface GetPasswordPreferencesTemplateResponse {
     key?: string;
 }
 
+

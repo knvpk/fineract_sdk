@@ -36,3 +36,4 @@ export interface GetRecurringDepositProductsProductIdFeeToIncomeAccountMappings 
     incomeAccount?: GetRecurringDepositProductsProductIdFeeToIncomeAccountMappingsIncomeAccount;
 }
 
+

@@ -64,3 +64,4 @@ export interface PutTellersTellerIdCashiersCashierIdRequest {
     startDate?: string;
 }
 
+

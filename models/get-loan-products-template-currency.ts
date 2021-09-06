@@ -64,3 +64,4 @@ export interface GetLoanProductsTemplateCurrency {
     displayLabel?: string;
 }
 
+

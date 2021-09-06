@@ -28,3 +28,4 @@ export interface PutStandingInstructionsStandingInstructionIdRequest {
     recurrenceInterval?: number;
 }
 
+

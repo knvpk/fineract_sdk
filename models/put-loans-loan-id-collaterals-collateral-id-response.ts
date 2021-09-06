@@ -41,3 +41,4 @@ export interface PutLoansLoanIdCollateralsCollateralIdResponse {
     changes?: PutLoansLoandIdCollateralsCollateralIdRequest;
 }
 
+

@@ -46,3 +46,4 @@ export interface PostSelfLoansResponse {
     resourceId?: number;
 }
 
+

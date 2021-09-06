@@ -35,3 +35,4 @@ export interface PageCashierTransactionData {
     pageItems?: Array<CashierTransactionData>;
 }
 
+

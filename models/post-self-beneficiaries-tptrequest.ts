@@ -58,3 +58,4 @@ export interface PostSelfBeneficiariesTPTRequest {
     transferLimit?: number;
 }
 
+

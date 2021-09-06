@@ -34,3 +34,4 @@ export interface GetFromOfficeStandingInstructionSwagger {
     name?: string;
 }
 
+

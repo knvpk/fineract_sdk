@@ -40,3 +40,4 @@ export interface GetFromOfficeOptionsResponseStandingInstructionSwagger {
     nameDecorated?: string;
 }
 
+

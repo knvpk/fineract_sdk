@@ -66,3 +66,4 @@ export interface GetLoanProductsPrincipalVariationsForBorrowerCycle {
     defaultValue?: number;
 }
 
+

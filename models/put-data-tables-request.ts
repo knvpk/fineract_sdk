@@ -49,3 +49,4 @@ export interface PutDataTablesRequest {
     ChangeColumns?: Array<PutDataTablesRequestChangeColumns>;
 }
 
+

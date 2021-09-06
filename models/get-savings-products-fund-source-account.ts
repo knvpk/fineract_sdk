@@ -40,3 +40,4 @@ export interface GetSavingsProductsFundSourceAccount {
     glCode?: number;
 }
 
+

@@ -73,3 +73,4 @@ export interface GetInterestRateChartsChartIdChartSlabsResponse {
     incentives?: Set<GetInterestRateChartsChartIdChartSlabsIncentives>;
 }
 
+

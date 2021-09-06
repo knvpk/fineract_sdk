@@ -64,3 +64,4 @@ export interface GetSelfSavingsTransactionType {
     feeDeduction?: boolean;
 }
 
+

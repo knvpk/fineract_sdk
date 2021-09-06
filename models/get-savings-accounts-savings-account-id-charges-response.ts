@@ -121,3 +121,4 @@ export interface GetSavingsAccountsSavingsAccountIdChargesResponse {
     penalty?: boolean;
 }
 
+

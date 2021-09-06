@@ -43,3 +43,4 @@ export interface GetLoanProductsInterestRecalculationTemplateData {
     preClosureInterestCalculationStrategy?: GetLoanProductsPreClosureInterestCalculationStrategy;
 }
 
+

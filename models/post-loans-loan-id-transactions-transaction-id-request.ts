@@ -52,3 +52,4 @@ export interface PostLoansLoanIdTransactionsTransactionIdRequest {
     note?: string;
 }
 
+

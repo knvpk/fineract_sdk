@@ -28,3 +28,4 @@ export interface PostResourceTypeResourceIdNotesRequest {
     note?: string;
 }
 
+

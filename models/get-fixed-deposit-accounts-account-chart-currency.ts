@@ -58,3 +58,4 @@ export interface GetFixedDepositAccountsAccountChartCurrency {
     displayLabel?: string;
 }
 
+

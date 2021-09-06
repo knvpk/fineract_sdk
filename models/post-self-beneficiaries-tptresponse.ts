@@ -28,3 +28,4 @@ export interface PostSelfBeneficiariesTPTResponse {
     resourceId?: number;
 }
 
+

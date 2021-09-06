@@ -60,3 +60,4 @@ export interface GetRecurringDepositAccountsAccountChart {
     periodTypes?: Set<GetRecurringDepositAccountsPeriodTypes>;
 }
 
+

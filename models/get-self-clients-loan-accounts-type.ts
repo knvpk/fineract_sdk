@@ -40,3 +40,4 @@ export interface GetSelfClientsLoanAccountsType {
     description?: string;
 }
 
+

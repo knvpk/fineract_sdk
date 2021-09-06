@@ -46,3 +46,4 @@ export interface PostClientsClientIdChargesChargeIdResponse {
     transactionId?: number;
 }
 
+

@@ -47,3 +47,4 @@ export interface PostRecurringDepositProductsCharts {
     chartSlabs?: Set<PostRecurringDepositProductsChartSlabs>;
 }
 
+

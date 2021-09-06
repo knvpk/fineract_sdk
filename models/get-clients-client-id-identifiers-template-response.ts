@@ -29,3 +29,4 @@ export interface GetClientsClientIdIdentifiersTemplateResponse {
     allowedDocumentTypes?: Set<GetClientsAllowedDocumentTypes>;
 }
 
+

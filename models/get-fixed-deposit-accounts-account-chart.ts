@@ -60,3 +60,4 @@ export interface GetFixedDepositAccountsAccountChart {
     periodTypes?: Set<GetFixedDepositAccountsPeriodTypes>;
 }
 
+

@@ -28,3 +28,4 @@ export interface PostReportMailingJobsResponse {
     resourceId?: number;
 }
 
+

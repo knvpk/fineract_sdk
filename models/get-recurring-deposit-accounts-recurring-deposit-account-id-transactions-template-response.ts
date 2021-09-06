@@ -78,3 +78,4 @@ export interface GetRecurringDepositAccountsRecurringDepositAccountIdTransaction
     paymentTypeOptions?: Array<number>;
 }
 
+

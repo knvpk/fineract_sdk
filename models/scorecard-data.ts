@@ -65,3 +65,4 @@ export interface ScorecardData {
     scorecardValues?: Array<ScorecardValue>;
 }
 
+

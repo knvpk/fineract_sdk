@@ -66,3 +66,4 @@ export interface GLAccountData {
     typeId?: number;
 }
 
+

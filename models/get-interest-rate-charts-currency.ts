@@ -58,3 +58,4 @@ export interface GetInterestRateChartsCurrency {
     displayLabel?: string;
 }
 
+

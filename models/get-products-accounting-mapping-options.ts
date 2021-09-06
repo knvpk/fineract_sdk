@@ -50,3 +50,4 @@ export interface GetProductsAccountingMappingOptions {
     equityAccountOptions?: Set<GetProductsEquityAccountOptions>;
 }
 
+

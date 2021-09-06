@@ -40,3 +40,4 @@ export interface GetRecurringDepositAccountsInterestCalculationType {
     description?: string;
 }
 
+

@@ -40,3 +40,4 @@ export interface GetRecurringDepositProductsProductIdPreClosurePenalInterestOnTy
     description?: string;
 }
 
+

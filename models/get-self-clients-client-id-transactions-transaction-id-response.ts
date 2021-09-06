@@ -78,3 +78,4 @@ export interface GetSelfClientsClientIdTransactionsTransactionIdResponse {
     reversed?: boolean;
 }
 
+

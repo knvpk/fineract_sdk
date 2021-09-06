@@ -41,3 +41,4 @@ export interface GetFixedDepositAccountsTemplateResponse {
     productOptions?: Set<GetFixedDepositAccountsProductOptions>;
 }
 
+

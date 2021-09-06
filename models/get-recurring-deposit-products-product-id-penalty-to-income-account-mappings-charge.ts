@@ -46,3 +46,4 @@ export interface GetRecurringDepositProductsProductIdPenaltyToIncomeAccountMappi
     penalty?: boolean;
 }
 
+

@@ -70,3 +70,4 @@ export interface GetAccountTransfersTimeline {
     activatedByLastname?: string;
 }
 
+

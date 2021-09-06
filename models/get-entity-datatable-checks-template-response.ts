@@ -72,3 +72,4 @@ export interface GetEntityDatatableChecksTemplateResponse {
     savingsProductDatas?: Array<SavingsProductData>;
 }
 
+

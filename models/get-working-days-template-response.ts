@@ -29,3 +29,4 @@ export interface GetWorkingDaysTemplateResponse {
     repaymentRescheduleOptions?: Array<EnumOptionData>;
 }
 
+

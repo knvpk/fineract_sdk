@@ -46,3 +46,4 @@ export interface PostSavingsAccountsSavingsAccountIdChargesResponse {
     resourceId?: number;
 }
 
+

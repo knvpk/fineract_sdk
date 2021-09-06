@@ -85,3 +85,4 @@ export interface GetRecurringDepositAccountsRecurringDepositAccountIdTransaction
     reversed?: boolean;
 }
 
+

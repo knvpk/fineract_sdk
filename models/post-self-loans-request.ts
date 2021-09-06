@@ -162,3 +162,4 @@ export interface PostSelfLoansRequest {
     datatables?: Set<PostSelfLoansDatatables>;
 }
 
+

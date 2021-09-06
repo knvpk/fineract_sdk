@@ -46,3 +46,4 @@ export interface GetAccountsTypeProductOptions {
     totalShares?: number;
 }
 
+

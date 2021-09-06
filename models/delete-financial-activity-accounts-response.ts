@@ -28,3 +28,4 @@ export interface DeleteFinancialActivityAccountsResponse {
     resourceId?: number;
 }
 
+

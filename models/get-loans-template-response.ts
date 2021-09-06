@@ -54,3 +54,4 @@ export interface GetLoansTemplateResponse {
     productOptions?: Set<GetLoansTemplateProductOptions>;
 }
 
+

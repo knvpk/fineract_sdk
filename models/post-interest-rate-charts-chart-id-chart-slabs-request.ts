@@ -65,3 +65,4 @@ export interface PostInterestRateChartsChartIdChartSlabsRequest {
     incentives?: Set<PostInterestRateChartsChartIdChartSlabsIncentives>;
 }
 
+

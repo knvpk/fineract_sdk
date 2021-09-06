@@ -60,3 +60,4 @@ export interface GetGroupsGroupIdAccountsMemberLoanAccounts {
     loanType?: GetGroupsGroupIdAccountsMemberLoanType;
 }
 
+

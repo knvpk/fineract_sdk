@@ -46,3 +46,4 @@ export interface PostSavingsAccountsSavingsAccountIdChargesSavingsAccountChargeI
     resourceId?: number;
 }
 
+

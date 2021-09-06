@@ -40,3 +40,4 @@ export interface GetLoanProductsInterestType {
     description?: string;
 }
 
+

@@ -46,3 +46,4 @@ export interface GetSavingsProductsFeeToIncomeAccountMappingsCharge {
     penalty?: boolean;
 }
 
+

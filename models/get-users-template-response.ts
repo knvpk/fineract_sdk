@@ -42,3 +42,4 @@ export interface GetUsersTemplateResponse {
     selfServiceRoles?: Array<RoleData>;
 }
 
+

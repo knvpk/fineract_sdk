@@ -53,3 +53,4 @@ export interface GetLoansLoanIdChargesTemplateResponse {
     penalty?: boolean;
 }
 
+

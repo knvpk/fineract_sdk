@@ -100,3 +100,4 @@ export interface GetSavingsProductsResponse {
     accountingRule?: GetSavingsProductsAccountingRule;
 }
 
+

@@ -3,5 +3,10 @@
         "op": "replace",
         "path": "/paths/~1users/get/operationId",
         "value": "retrieveAll"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1users~1{userId}/get/operationId",
+        "value": "retrieveOne"
     }
 ]

@@ -65,3 +65,4 @@ export interface JournalEntryCommand {
     debits?: Array<SingleDebitOrCreditEntryCommand>;
 }
 
+

@@ -40,3 +40,4 @@ export interface GetLoanInterestOnLoanAccount {
     glCode?: number;
 }
 
+

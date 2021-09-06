@@ -150,3 +150,4 @@ export interface PostProductsTypeRequest {
     accountingRule?: number;
 }
 
+

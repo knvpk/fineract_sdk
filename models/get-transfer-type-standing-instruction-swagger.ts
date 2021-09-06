@@ -40,3 +40,4 @@ export interface GetTransferTypeStandingInstructionSwagger {
     description?: string;
 }
 
+

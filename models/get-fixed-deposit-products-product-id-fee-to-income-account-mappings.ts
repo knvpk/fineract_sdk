@@ -36,3 +36,4 @@ export interface GetFixedDepositProductsProductIdFeeToIncomeAccountMappings {
     incomeAccount?: GetFixedDepositProductsProductIdFeeToIncomeAccountMappingsIncomeAccount;
 }
 
+

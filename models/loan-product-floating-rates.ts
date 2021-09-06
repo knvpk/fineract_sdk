@@ -78,3 +78,4 @@ export interface LoanProductFloatingRates {
     _new?: boolean;
 }
 
+

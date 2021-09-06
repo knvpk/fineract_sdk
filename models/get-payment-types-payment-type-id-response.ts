@@ -52,3 +52,4 @@ export interface GetPaymentTypesPaymentTypeIdResponse {
     position?: number;
 }
 
+

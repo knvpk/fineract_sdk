@@ -70,3 +70,4 @@ export interface PostClientClientIdAddressesRequest {
     postalCode?: number;
 }
 
+

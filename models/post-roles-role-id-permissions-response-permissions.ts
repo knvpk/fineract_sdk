@@ -28,3 +28,4 @@ export interface PostRolesRoleIdPermissionsResponsePermissions {
     ALL_FUNCTIONS_READ?: string;
 }
 
+

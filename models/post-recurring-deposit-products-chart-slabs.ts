@@ -52,3 +52,4 @@ export interface PostRecurringDepositProductsChartSlabs {
     annualInterestRate?: number;
 }
 
+

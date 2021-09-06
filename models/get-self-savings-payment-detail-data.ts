@@ -65,3 +65,4 @@ export interface GetSelfSavingsPaymentDetailData {
     bankNumber?: number;
 }
 
+

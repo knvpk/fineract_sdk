@@ -80,3 +80,4 @@ export interface GetLoanChargeTemplateChargeOptions {
     chargeCalculationType?: GetLoanChargeCalculationType;
 }
 
+

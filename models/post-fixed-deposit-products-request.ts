@@ -143,3 +143,4 @@ export interface PostFixedDepositProductsRequest {
     charts?: Set<PostFixedDepositProductsCharts>;
 }
 
+

@@ -40,3 +40,4 @@ export interface GetRecurringDepositProductsProductIdMaxDepositTermType {
     description?: string;
 }
 
+

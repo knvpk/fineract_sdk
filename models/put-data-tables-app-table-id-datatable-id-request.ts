@@ -64,3 +64,4 @@ export interface PutDataTablesAppTableIdDatatableIdRequest {
     locale?: string;
 }
 
+

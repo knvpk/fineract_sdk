@@ -47,3 +47,4 @@ export interface PutResourceTypeResourceIdNotesNoteIdResponse {
     changes?: PutNotesChanges;
 }
 
+

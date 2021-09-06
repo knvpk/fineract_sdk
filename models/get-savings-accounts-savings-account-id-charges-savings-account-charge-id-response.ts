@@ -115,3 +115,4 @@ export interface GetSavingsAccountsSavingsAccountIdChargesSavingsAccountChargeId
     penalty?: boolean;
 }
 
+

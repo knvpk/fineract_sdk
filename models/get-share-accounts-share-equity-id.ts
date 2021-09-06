@@ -40,3 +40,4 @@ export interface GetShareAccountsShareEquityId {
     glCode?: number;
 }
 
+

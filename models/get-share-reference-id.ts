@@ -40,3 +40,4 @@ export interface GetShareReferenceId {
     glCode?: string;
 }
 
+

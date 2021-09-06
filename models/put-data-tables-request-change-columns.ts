@@ -52,3 +52,4 @@ export interface PutDataTablesRequestChangeColumns {
     mandatory?: boolean;
 }
 
+

@@ -54,3 +54,4 @@ export interface GetLoansLoanIdCollateralsResponse {
     currency?: GetCollateralCurrencyResponse;
 }
 
+

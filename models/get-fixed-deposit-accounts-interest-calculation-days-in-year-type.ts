@@ -40,3 +40,4 @@ export interface GetFixedDepositAccountsInterestCalculationDaysInYearType {
     description?: string;
 }
 
+

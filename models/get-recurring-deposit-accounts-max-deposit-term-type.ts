@@ -40,3 +40,4 @@ export interface GetRecurringDepositAccountsMaxDepositTermType {
     description?: string;
 }
 
+

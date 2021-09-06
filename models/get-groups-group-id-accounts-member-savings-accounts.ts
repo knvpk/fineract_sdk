@@ -67,3 +67,4 @@ export interface GetGroupsGroupIdAccountsMemberSavingsAccounts {
     accountType?: GetGroupsGroupIdAccountsMemberLoanType;
 }
 
+

@@ -28,3 +28,4 @@ export interface DeleteReportMailingJobsResponse {
     resourceId?: number;
 }
 
+

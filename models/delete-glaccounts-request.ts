@@ -28,3 +28,4 @@ export interface DeleteGLAccountsRequest {
     resourceId?: number;
 }
 
+

@@ -41,3 +41,4 @@ export interface GetSurveyResponseDatatableData {
     columnHeaderData?: Array<ResultsetColumnHeaderData>;
 }
 
+

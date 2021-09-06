@@ -64,3 +64,4 @@ export interface GetSavingsProductsAccountingMappings {
     transfersInSuspenseAccount?: GetSavingsProductsTransfersInSuspenseAccount;
 }
 
+

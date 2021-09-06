@@ -100,3 +100,4 @@ export interface GetLoansLoanIdOverdueCharges {
     feeFrequency?: GetLoansLoanIdFeeFrequency;
 }
 
+

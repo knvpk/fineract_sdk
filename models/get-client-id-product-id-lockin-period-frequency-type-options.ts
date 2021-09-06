@@ -40,3 +40,4 @@ export interface GetClientIdProductIdLockinPeriodFrequencyTypeOptions {
     description?: number;
 }
 
+

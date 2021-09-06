@@ -52,3 +52,4 @@ export interface GetPocketLoanAccounts {
     id?: number;
 }
 
+

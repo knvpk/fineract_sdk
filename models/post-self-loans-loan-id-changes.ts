@@ -53,3 +53,4 @@ export interface PostSelfLoansLoanIdChanges {
     closedOnDate?: string;
 }
 
+

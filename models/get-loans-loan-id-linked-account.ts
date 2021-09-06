@@ -34,3 +34,4 @@ export interface GetLoansLoanIdLinkedAccount {
     accountNo?: number;
 }
 
+

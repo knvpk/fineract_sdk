@@ -101,3 +101,4 @@ export interface LoanProductInterestRecalculationData {
     compoundingToBePostedAsTransaction?: boolean;
 }
 
+

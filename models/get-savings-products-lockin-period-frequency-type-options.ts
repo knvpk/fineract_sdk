@@ -40,3 +40,4 @@ export interface GetSavingsProductsLockinPeriodFrequencyTypeOptions {
     description?: string;
 }
 
+

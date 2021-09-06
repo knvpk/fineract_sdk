@@ -40,3 +40,4 @@ export interface GetLoanProductsRepaymentTemplateFrequencyType {
     description?: string;
 }
 
+

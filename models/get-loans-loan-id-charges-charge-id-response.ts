@@ -115,3 +115,4 @@ export interface GetLoansLoanIdChargesChargeIdResponse {
     penalty?: boolean;
 }
 
+

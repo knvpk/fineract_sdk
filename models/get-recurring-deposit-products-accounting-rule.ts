@@ -40,3 +40,4 @@ export interface GetRecurringDepositProductsAccountingRule {
     description?: string;
 }
 
+

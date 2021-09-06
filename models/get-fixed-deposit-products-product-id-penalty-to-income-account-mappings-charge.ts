@@ -46,3 +46,4 @@ export interface GetFixedDepositProductsProductIdPenaltyToIncomeAccountMappingsC
     penalty?: boolean;
 }
 
+

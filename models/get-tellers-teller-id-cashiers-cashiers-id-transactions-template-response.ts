@@ -78,3 +78,4 @@ export interface GetTellersTellerIdCashiersCashiersIdTransactionsTemplateRespons
     currencyOptions?: Array<CurrencyData>;
 }
 
+

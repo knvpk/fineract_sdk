@@ -28,3 +28,4 @@ export interface DeleteRolesRoleIdResponse {
     resourceId?: number;
 }
 
+

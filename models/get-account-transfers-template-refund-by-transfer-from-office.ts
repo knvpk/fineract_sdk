@@ -58,3 +58,4 @@ export interface GetAccountTransfersTemplateRefundByTransferFromOffice {
     hierarchy?: string;
 }
 
+

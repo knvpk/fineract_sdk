@@ -28,3 +28,4 @@ export interface DeleteInterestRateChartsChartIdResponse {
     resourceId?: number;
 }
 
+

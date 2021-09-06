@@ -52,3 +52,4 @@ export interface PostAccountingRulesRequest {
     description?: string;
 }
 
+

@@ -90,3 +90,4 @@ export interface GetUserDetailsResponse {
     permissions?: Array<string>;
 }
 
+

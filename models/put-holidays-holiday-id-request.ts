@@ -34,3 +34,4 @@ export interface PutHolidaysHolidayIdRequest {
     description?: string;
 }
 
+

@@ -66,3 +66,4 @@ export interface GetLoansLoanIdTransactionsTransactionIdResponse {
     interestPortion?: number;
 }
 
+

@@ -28,3 +28,4 @@ export interface DeleteEntityDatatableChecksTemplateResponse {
     resourceId?: number;
 }
 
+
