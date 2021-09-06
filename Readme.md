@@ -5,10 +5,13 @@ An wrapper for fineract api to work in nodejs. The base is generated using [open
 ### Notes
 
 1. Install using `npm i fineract_sdk`
-2. Usage 
+2. Usage in javascript
 ```
+  const fin = require('fineract_sdk');
+
   let usersApi = new fin.UsersApi(cbsConfig);
   response = await usersApi.retrieveAll();
+  
   console.log(response.data)
 ```
 
