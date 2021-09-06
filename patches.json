@@ -6,7 +6,27 @@
     },
     {
         "op": "replace",
+        "path": "/paths/~1users/post/operationId",
+        "value": "create"
+    },
+    {
+        "op": "replace",
         "path": "/paths/~1users~1{userId}/get/operationId",
         "value": "retrieveOne"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1users~1{userId}/put/operationId",
+        "value": "update"
+    },    
+    {
+        "op": "replace",
+        "path": "/paths/~1users~1{userId}/delete/operationId",
+        "value": "delete"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1users~1template/get/operationId",
+        "value": "template"
     }
 ]

@@ -21,10 +21,11 @@
   "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc --outDir dist/",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "yarn build",
     "generator": "openapi-generator-cli",
-    "generate": "openapi-generator-cli generate -i openapi.json -g typescript-axios -o ./ -c ./config.json -t ./templates --skip-validate-spec",
-    "templates": "openapi-generator-cli author template -g typescript-axios -o ./templates"
+    "generate": "yarn patch && openapi-generator-cli generate -i openapi.json -g typescript-axios -o ./ -c ./config.json -t ./templates --skip-validate-spec",
+    "templates": "openapi-generator-cli author template -g typescript-axios -o ./templates",
+    "patch": "node ./patch.js"
   },
   "dependencies": {
     "@openapitools/openapi-generator-cli": "^2.4.1",

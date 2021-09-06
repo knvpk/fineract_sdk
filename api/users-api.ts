@@ -45,15 +45,56 @@ import { PutUsersUserIdResponse } from '../models';
 export const UsersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
+         * Removes the user and the associated roles and permissions.
+         * @summary Delete a User
+         * @param {number} userId userId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        _delete: async (userId: number, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('_delete', 'userId', userId)
+            const localVarPath = `/users/{userId}`
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Adds new application user.  Note: Password information is not required (or processed). Password details at present are auto-generated and then sent to the email account given (which is why it can take a few seconds to complete).  Mandatory Fields:  username, firstname, lastname, email, officeId, roles, sendPasswordToEmail  Optional Fields:  staffId,passwordNeverExpires,isSelfServiceUser,clients
          * @summary Create a User
          * @param {PostUsersRequest} postUsersRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create15: async (postUsersRequest: PostUsersRequest, options: any = {}): Promise<RequestArgs> => {
+        create: async (postUsersRequest: PostUsersRequest, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'postUsersRequest' is not null or undefined
-            assertParamExists('create15', 'postUsersRequest', postUsersRequest)
+            assertParamExists('create', 'postUsersRequest', postUsersRequest)
             const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -81,47 +122,6 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(postUsersRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Removes the user and the associated roles and permissions.
-         * @summary Delete a User
-         * @param {number} userId userId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        delete21: async (userId: number, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'userId' is not null or undefined
-            assertParamExists('delete21', 'userId', userId)
-            const localVarPath = `/users/{userId}`
-                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -318,7 +318,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        template22: async (options: any = {}): Promise<RequestArgs> => {
+        template: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/users/template`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -357,11 +357,11 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update24: async (userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options: any = {}): Promise<RequestArgs> => {
+        update: async (userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'userId' is not null or undefined
-            assertParamExists('update24', 'userId', userId)
+            assertParamExists('update', 'userId', userId)
             // verify required parameter 'putUsersUserIdRequest' is not null or undefined
-            assertParamExists('update24', 'putUsersUserIdRequest', putUsersUserIdRequest)
+            assertParamExists('update', 'putUsersUserIdRequest', putUsersUserIdRequest)
             const localVarPath = `/users/{userId}`
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -407,25 +407,25 @@ export const UsersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = UsersApiAxiosParamCreator(configuration)
     return {
         /**
-         * Adds new application user.  Note: Password information is not required (or processed). Password details at present are auto-generated and then sent to the email account given (which is why it can take a few seconds to complete).  Mandatory Fields:  username, firstname, lastname, email, officeId, roles, sendPasswordToEmail  Optional Fields:  staffId,passwordNeverExpires,isSelfServiceUser,clients
-         * @summary Create a User
-         * @param {PostUsersRequest} postUsersRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async create15(postUsersRequest: PostUsersRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostUsersResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create15(postUsersRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * Removes the user and the associated roles and permissions.
          * @summary Delete a User
          * @param {number} userId userId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async delete21(userId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteUsersUserIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.delete21(userId, options);
+        async _delete(userId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteUsersUserIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator._delete(userId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Adds new application user.  Note: Password information is not required (or processed). Password details at present are auto-generated and then sent to the email account given (which is why it can take a few seconds to complete).  Mandatory Fields:  username, firstname, lastname, email, officeId, roles, sendPasswordToEmail  Optional Fields:  staffId,passwordNeverExpires,isSelfServiceUser,clients
+         * @summary Create a User
+         * @param {PostUsersRequest} postUsersRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async create(postUsersRequest: PostUsersRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostUsersResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.create(postUsersRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -479,8 +479,8 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async template22(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUsersTemplateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.template22(options);
+        async template(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUsersTemplateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.template(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -491,8 +491,8 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async update24(userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutUsersUserIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update24(userId, putUsersUserIdRequest, options);
+        async update(userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutUsersUserIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.update(userId, putUsersUserIdRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -506,24 +506,24 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
     const localVarFp = UsersApiFp(configuration)
     return {
         /**
-         * Adds new application user.  Note: Password information is not required (or processed). Password details at present are auto-generated and then sent to the email account given (which is why it can take a few seconds to complete).  Mandatory Fields:  username, firstname, lastname, email, officeId, roles, sendPasswordToEmail  Optional Fields:  staffId,passwordNeverExpires,isSelfServiceUser,clients
-         * @summary Create a User
-         * @param {PostUsersRequest} postUsersRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        create15(postUsersRequest: PostUsersRequest, options?: any): AxiosPromise<PostUsersResponse> {
-            return localVarFp.create15(postUsersRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Removes the user and the associated roles and permissions.
          * @summary Delete a User
          * @param {number} userId userId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete21(userId: number, options?: any): AxiosPromise<DeleteUsersUserIdResponse> {
-            return localVarFp.delete21(userId, options).then((request) => request(axios, basePath));
+        _delete(userId: number, options?: any): AxiosPromise<DeleteUsersUserIdResponse> {
+            return localVarFp._delete(userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Adds new application user.  Note: Password information is not required (or processed). Password details at present are auto-generated and then sent to the email account given (which is why it can take a few seconds to complete).  Mandatory Fields:  username, firstname, lastname, email, officeId, roles, sendPasswordToEmail  Optional Fields:  staffId,passwordNeverExpires,isSelfServiceUser,clients
+         * @summary Create a User
+         * @param {PostUsersRequest} postUsersRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        create(postUsersRequest: PostUsersRequest, options?: any): AxiosPromise<PostUsersResponse> {
+            return localVarFp.create(postUsersRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -572,8 +572,8 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        template22(options?: any): AxiosPromise<GetUsersTemplateResponse> {
-            return localVarFp.template22(options).then((request) => request(axios, basePath));
+        template(options?: any): AxiosPromise<GetUsersTemplateResponse> {
+            return localVarFp.template(options).then((request) => request(axios, basePath));
         },
         /**
          * When updating a password you must provide the repeatPassword parameter also.
@@ -583,8 +583,8 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update24(userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options?: any): AxiosPromise<PutUsersUserIdResponse> {
-            return localVarFp.update24(userId, putUsersUserIdRequest, options).then((request) => request(axios, basePath));
+        update(userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options?: any): AxiosPromise<PutUsersUserIdResponse> {
+            return localVarFp.update(userId, putUsersUserIdRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -597,18 +597,6 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
  */
 export class UsersApi extends BaseAPI {
     /**
-     * Adds new application user.  Note: Password information is not required (or processed). Password details at present are auto-generated and then sent to the email account given (which is why it can take a few seconds to complete).  Mandatory Fields:  username, firstname, lastname, email, officeId, roles, sendPasswordToEmail  Optional Fields:  staffId,passwordNeverExpires,isSelfServiceUser,clients
-     * @summary Create a User
-     * @param {PostUsersRequest} postUsersRequest 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UsersApi
-     */
-    public create15(postUsersRequest: PostUsersRequest, options?: any) {
-        return UsersApiFp(this.configuration).create15(postUsersRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Removes the user and the associated roles and permissions.
      * @summary Delete a User
      * @param {number} userId userId
@@ -616,8 +604,20 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public delete21(userId: number, options?: any) {
-        return UsersApiFp(this.configuration).delete21(userId, options).then((request) => request(this.axios, this.basePath));
+    public _delete(userId: number, options?: any) {
+        return UsersApiFp(this.configuration)._delete(userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Adds new application user.  Note: Password information is not required (or processed). Password details at present are auto-generated and then sent to the email account given (which is why it can take a few seconds to complete).  Mandatory Fields:  username, firstname, lastname, email, officeId, roles, sendPasswordToEmail  Optional Fields:  staffId,passwordNeverExpires,isSelfServiceUser,clients
+     * @summary Create a User
+     * @param {PostUsersRequest} postUsersRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public create(postUsersRequest: PostUsersRequest, options?: any) {
+        return UsersApiFp(this.configuration).create(postUsersRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -676,8 +676,8 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public template22(options?: any) {
-        return UsersApiFp(this.configuration).template22(options).then((request) => request(this.axios, this.basePath));
+    public template(options?: any) {
+        return UsersApiFp(this.configuration).template(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -689,7 +689,7 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public update24(userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options?: any) {
-        return UsersApiFp(this.configuration).update24(userId, putUsersUserIdRequest, options).then((request) => request(this.axios, this.basePath));
+    public update(userId: number, putUsersUserIdRequest: PutUsersUserIdRequest, options?: any) {
+        return UsersApiFp(this.configuration).update(userId, putUsersUserIdRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
