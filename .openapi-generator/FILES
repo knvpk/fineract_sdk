@@ -1,5 +1,3 @@
-.gitignore
-.npmignore
 api.ts
 api/account-number-format-api.ts
 api/account-transfers-api.ts

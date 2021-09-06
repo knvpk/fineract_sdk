@@ -240,7 +240,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAll41: async (options: any = {}): Promise<RequestArgs> => {
+        retrieveAll: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/users`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -458,8 +458,8 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveAll41(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetUsersResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAll41(options);
+        async retrieveAll(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetUsersResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAll(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -553,8 +553,8 @@ export const UsersApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAll41(options?: any): AxiosPromise<Array<GetUsersResponse>> {
-            return localVarFp.retrieveAll41(options).then((request) => request(axios, basePath));
+        retrieveAll(options?: any): AxiosPromise<Array<GetUsersResponse>> {
+            return localVarFp.retrieveAll(options).then((request) => request(axios, basePath));
         },
         /**
          * Example Requests:  users/1   users/1?template=true   users/1?fields=username,officeName
@@ -653,8 +653,8 @@ export class UsersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public retrieveAll41(options?: any) {
-        return UsersApiFp(this.configuration).retrieveAll41(options).then((request) => request(this.axios, this.basePath));
+    public retrieveAll(options?: any) {
+        return UsersApiFp(this.configuration).retrieveAll(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
