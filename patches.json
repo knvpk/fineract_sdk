@@ -90,5 +90,14 @@
         "op": "replace",
         "path": "/paths/~1glaccounts~1template/get/operationId",
         "value": "retriveTemplate"
+    },
+    {
+        "op": "replace",
+        "path": "/components/schemas/PostGLAccountsRequest/properties/usage",
+        "value": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+        }
     }
 ]

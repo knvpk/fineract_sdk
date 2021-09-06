@@ -13,7 +13,6 @@
  */
 
 
-import { EnumOptionData } from './enum-option-data';
 
 /**
  * PostGLAccountsRequest
@@ -59,10 +58,10 @@ export interface PostGLAccountsRequest {
     parentId?: number;
     /**
      * 
-     * @type {EnumOptionData}
+     * @type {number}
      * @memberof PostGLAccountsRequest
      */
-    usage?: EnumOptionData;
+    usage?: number;
     /**
      * 
      * @type {string}
