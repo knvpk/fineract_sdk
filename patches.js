@@ -470,7 +470,7 @@ let clientPatches = [
     },
     {
         "op": "add",
-        "path": "/components/schemas/PostClientsRequest/properties/genederId",
+        "path": "/components/schemas/PostClientsRequest/properties/genderId",
         "value": {
             "type": "integer",
             "format": "int64"

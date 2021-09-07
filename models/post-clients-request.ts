@@ -128,7 +128,7 @@ export interface PostClientsRequest {
      * @type {number}
      * @memberof PostClientsRequest
      */
-    genederId?: number;
+    genderId?: number;
     /**
      * 
      * @type {number}
