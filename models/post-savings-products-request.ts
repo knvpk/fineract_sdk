@@ -213,6 +213,24 @@ export interface PostSavingsProductsRequest {
      * @memberof PostSavingsProductsRequest
      */
     incomeFromPenaltyAccountId?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    incomeFromInterestId?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    overdraftPortfolioControlId?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostSavingsProductsRequest
+     */
+    writeOffAccountId?: number;
 }
 
 

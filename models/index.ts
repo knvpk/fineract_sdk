@@ -797,6 +797,7 @@ export * from './post-clients-client-id-request';
 export * from './post-clients-client-id-response';
 export * from './post-clients-client-id-transactions-transaction-id-response';
 export * from './post-clients-request';
+export * from './post-clients-request-client-non-person-details';
 export * from './post-clients-response';
 export * from './post-code-value-data-response';
 export * from './post-code-values-data-request';

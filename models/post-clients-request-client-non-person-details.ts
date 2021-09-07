@@ -15,35 +15,53 @@
 
 
 /**
- * PutCodeValuesDataRequest
+ * 
  * @export
- * @interface PutCodeValuesDataRequest
+ * @interface PostClientsRequestClientNonPersonDetails
  */
-export interface PutCodeValuesDataRequest {
+export interface PostClientsRequestClientNonPersonDetails {
     /**
      * 
      * @type {string}
-     * @memberof PutCodeValuesDataRequest
+     * @memberof PostClientsRequestClientNonPersonDetails
      */
-    name?: string;
+    incorpNumber?: string;
     /**
      * 
      * @type {string}
-     * @memberof PutCodeValuesDataRequest
+     * @memberof PostClientsRequestClientNonPersonDetails
      */
-    description?: string;
+    remarks?: string;
     /**
      * 
      * @type {number}
-     * @memberof PutCodeValuesDataRequest
+     * @memberof PostClientsRequestClientNonPersonDetails
      */
-    position?: number;
+    constitutionId?: number;
     /**
      * 
-     * @type {boolean}
-     * @memberof PutCodeValuesDataRequest
+     * @type {string}
+     * @memberof PostClientsRequestClientNonPersonDetails
      */
-    isActive?: boolean;
+    incorpValidityTillDate?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostClientsRequestClientNonPersonDetails
+     */
+    mainBusinessLineId?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostClientsRequestClientNonPersonDetails
+     */
+    locale?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostClientsRequestClientNonPersonDetails
+     */
+    dateFormat?: string;
 }
 
 

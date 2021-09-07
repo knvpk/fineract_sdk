@@ -35,6 +35,16 @@ let userPatches = [
         "op": "replace",
         "path": "/paths/~1users~1template/get/operationId",
         "value": "getUserTemplate"
+    },
+    {
+        "op": "replace",
+        "path": "/components/schemas/PostUsersRequest/properties/roles",
+        "value": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
     }
 ];
 
@@ -190,7 +200,7 @@ let glAccountPatches = [
 
 //SavingsProduct create related fields
 
-let savingsProductPatchesAuto = ["savingsReferenceAccountId", "savingsControlAccountId", "interestOnSavingsAccountId", "incomeFromFeeAccountId", "transfersInSuspenseAccountId", "incomeFromPenaltyAccountId"]
+let savingsProductPatchesAuto = ["savingsReferenceAccountId", "savingsControlAccountId", "interestOnSavingsAccountId", "incomeFromFeeAccountId", "transfersInSuspenseAccountId", "incomeFromPenaltyAccountId", "incomeFromInterestId", "overdraftPortfolioControlId", "writeOffAccountId"]
     .map(field => {
         return {
             "op": "add",
@@ -345,6 +355,207 @@ let savingsProductPatches = [
     },
 ];
 
+let clientPatches = [
+    {
+        "op": "replace",
+        "path": "/paths/~1clients/get/operationId",
+        "value": "retrieveClients" //retrieveAll_21
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1clients/post/operationId",
+        "value": "createClient" //create_6
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1clients~1template/get/operationId",
+        "value": "retrieveClientTemplate" //retrieveTemplate_5
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1clients~1{clientId}/get/operationId",
+        "value": "retrieveClient" //retrieveOne_11
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1clients~1{clientId}/put/operationId",
+        "value": "updateClient" //update_10
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1clients~1{clientId}/delete/operationId",
+        "value": "deleteClient" //delete_9
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1clients~1{clientId}/post/operationId",
+        "value": "manageClient" //activate_1
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/address",
+        "value": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/dateOfBirth",
+        "value": {
+            "type": "string",
+            "format": "date"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/firstname",
+        "value": {
+            "type": "string",
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/lastname",
+        "value": {
+            "type": "string",
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/middlename",
+        "value": {
+            "type": "string",
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/legalFormId",
+        "value": {
+            "type": "integer",
+            "format": "int64"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/mobileNo",
+        "value": {
+            "type": "string",
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/submittedOnDate",
+        "value": {
+            "type": "string",
+            "format": "date"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/externalId",
+        "value": {
+            "type": "string",
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/staffId",
+        "value": {
+            "type": "integer",
+            "format": "int64"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/genederId",
+        "value": {
+            "type": "integer",
+            "format": "int64"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/clientClassificationId",
+        "value": {
+            "type": "integer",
+            "format": "int64"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/clientTypeId",
+        "value": {
+            "type": "integer",
+            "format": "int64"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/savingsProductId",
+        "value": {
+            "type": "integer",
+            "format": "int64"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostClientsRequest/properties/clientNonPersonDetails",
+        "value": {
+            "type": "object",
+            "properties": {
+                "incorpNumber": {
+                    "type": "string"
+                },
+                "remarks": {
+                    "type": "string"
+                },
+                "constitutionId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "incorpValidityTillDate": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "mainBusinessLineId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "locale": {
+                    "type": "string"
+                },
+                "dateFormat": {
+                    "type": "string",
+                    "example": "dd MMMM yyyy"
+                }
+            }
+        }
+    },
+];
+
+let codeValuePatches = [
+    {
+        "op":"add",
+        "path": "/components/schemas/PostCodeValuesDataRequest/properties/isActive",
+        "value": {
+            "type": "boolean",
+            "example": true
+        }
+    },
+    {
+        "op":"add",
+        "path": "/components/schemas/PutCodeValuesDataRequest/properties/isActive",
+        "value": {
+            "type": "boolean",
+            "example": true
+        }
+    }
+];
+
+
 patches = [
     ...userPatches,
     ...authPatches,
@@ -356,6 +567,8 @@ patches = [
     ...glAccountPatches,
     ...savingsProductPatches, 
     ...savingsProductPatchesAuto,
+    ...clientPatches,
+    ...codeValuePatches
 ]
 
 module.exports = patches;

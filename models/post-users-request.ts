@@ -58,10 +58,10 @@ export interface PostUsersRequest {
     staffId?: number;
     /**
      * 
-     * @type {string}
+     * @type {Array<string>}
      * @memberof PostUsersRequest
      */
-    roles?: string;
+    roles?: Array<string>;
     /**
      * 
      * @type {boolean}

@@ -38,6 +38,12 @@ export interface PostCodeValuesDataRequest {
      * @memberof PostCodeValuesDataRequest
      */
     position?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PostCodeValuesDataRequest
+     */
+    isActive?: boolean;
 }
 
 

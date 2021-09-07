@@ -51,67 +51,15 @@ import { PutClientsClientIdResponse } from '../models';
 export const ClientApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Activate a Client:  Clients can be created in a Pending state. This API exists to enable client activation (for when a client becomes an approved member of the financial Institution).  If the client happens to be already active this API will result in an error.  Close a Client:  Clients can be closed if they do not have any non-closed loans/savingsAccount. This API exists to close a client .  If the client have any active loans/savingsAccount this API will result in an error.  Reject a Client:  Clients can be rejected when client is in pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: rejectionDate, rejectionReasonId  Withdraw a Client:  Client applications can be withdrawn when client is in a pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: withdrawalDate, withdrawalReasonId  Reactivate a Client: Clients can be reactivated after they have been closed.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reactivationDate  UndoReject a Client:  Clients can be reactivated after they have been rejected.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDateUndoWithdraw a Client:  Clients can be reactivated after they have been withdrawn.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDate  Assign a Staff:  Allows you to assign a Staff for existed Client.  The selected Staff should belong to the same office (or an officer higher up in the hierarchy) as the Client he manages.  Unassign a Staff:  Allows you to unassign the Staff assigned to a Client.  Update Default Savings Account:  Allows you to modify or assign a default savings account for an existing Client.  The selected savings account should be one among the existing savings account for a particular customer.  Propose a Client Transfer:  Allows you to propose the transfer of a Client to a different Office.  Withdraw a Client Transfer:  Allows you to withdraw the proposed transfer of a Client to a different Office.  Withdrawal can happen only if the destination Branch (to which the transfer was proposed) has not already accepted the transfer proposal  Reject a Client Transfer:  Allows the Destination Branch to reject the proposed Client Transfer.  Accept a Client Transfer:  Allows the Destination Branch to accept the proposed Client Transfer.  The destination branch may also choose to link this client to a group (in which case, any existing active JLG loan of the client is rescheduled to match the meeting frequency of the group) and loan Officer at the time of accepting the transfer  Propose and Accept a Client Transfer:  Abstraction over the Propose and Accept Client Transfer API\'s which enable a user with Data Scope over both the Target and Destination Branches to directly transfer a Client to the destination Office.  Showing request/response for \'Reject a Client Transfer\'
-         * @summary Activate a Client | Close a Client | Reject a Client | Withdraw a Client | Reactivate a Client | UndoReject a Client | UndoWithdraw a Client | Assign a Staff | Unassign a Staff | Update Default Savings Account | Propose a Client Transfer | Withdraw a Client Transfer | Reject a Client Transfer | Accept a Client Transfer | Propose and Accept a Client Transfer
-         * @param {number} clientId clientId
-         * @param {PostClientsClientIdRequest} postClientsClientIdRequest 
-         * @param {string} [command] command
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        activate1: async (clientId: number, postClientsClientIdRequest: PostClientsClientIdRequest, command?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'clientId' is not null or undefined
-            assertParamExists('activate1', 'clientId', clientId)
-            // verify required parameter 'postClientsClientIdRequest' is not null or undefined
-            assertParamExists('activate1', 'postClientsClientIdRequest', postClientsClientIdRequest)
-            const localVarPath = `/clients/{clientId}`
-                .replace(`{${"clientId"}}`, encodeURIComponent(String(clientId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-            if (command !== undefined) {
-                localVarQueryParameter['command'] = command;
-            }
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(postClientsClientIdRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Note:  1. You can enter either:firstname/middlename/lastname - for a person (middlename is optional) OR fullname - for a business or organisation (or person known by one name).  2.If address is enable(enable-address=true), then additional field called address has to be passed.  Mandatory Fields: firstname and lastname OR fullname, officeId, active=true and activationDate OR active=false, if(address enabled) address  Optional Fields: groupId, externalId, accountNo, staffId, mobileNo, savingsProductId, genderId, clientTypeId, clientClassificationId
          * @summary Create a Client
          * @param {PostClientsRequest} postClientsRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create6: async (postClientsRequest: PostClientsRequest, options: any = {}): Promise<RequestArgs> => {
+        createClient: async (postClientsRequest: PostClientsRequest, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'postClientsRequest' is not null or undefined
-            assertParamExists('create6', 'postClientsRequest', postClientsRequest)
+            assertParamExists('createClient', 'postClientsRequest', postClientsRequest)
             const localVarPath = `/clients`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -153,11 +101,11 @@ export const ClientApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete9: async (clientId: number, body: object, options: any = {}): Promise<RequestArgs> => {
+        deleteClient: async (clientId: number, body: object, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'clientId' is not null or undefined
-            assertParamExists('delete9', 'clientId', clientId)
+            assertParamExists('deleteClient', 'clientId', clientId)
             // verify required parameter 'body' is not null or undefined
-            assertParamExists('delete9', 'body', body)
+            assertParamExists('deleteClient', 'body', body)
             const localVarPath = `/clients/{clientId}`
                 .replace(`{${"clientId"}}`, encodeURIComponent(String(clientId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -249,6 +197,58 @@ export const ClientApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
+         * Activate a Client:  Clients can be created in a Pending state. This API exists to enable client activation (for when a client becomes an approved member of the financial Institution).  If the client happens to be already active this API will result in an error.  Close a Client:  Clients can be closed if they do not have any non-closed loans/savingsAccount. This API exists to close a client .  If the client have any active loans/savingsAccount this API will result in an error.  Reject a Client:  Clients can be rejected when client is in pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: rejectionDate, rejectionReasonId  Withdraw a Client:  Client applications can be withdrawn when client is in a pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: withdrawalDate, withdrawalReasonId  Reactivate a Client: Clients can be reactivated after they have been closed.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reactivationDate  UndoReject a Client:  Clients can be reactivated after they have been rejected.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDateUndoWithdraw a Client:  Clients can be reactivated after they have been withdrawn.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDate  Assign a Staff:  Allows you to assign a Staff for existed Client.  The selected Staff should belong to the same office (or an officer higher up in the hierarchy) as the Client he manages.  Unassign a Staff:  Allows you to unassign the Staff assigned to a Client.  Update Default Savings Account:  Allows you to modify or assign a default savings account for an existing Client.  The selected savings account should be one among the existing savings account for a particular customer.  Propose a Client Transfer:  Allows you to propose the transfer of a Client to a different Office.  Withdraw a Client Transfer:  Allows you to withdraw the proposed transfer of a Client to a different Office.  Withdrawal can happen only if the destination Branch (to which the transfer was proposed) has not already accepted the transfer proposal  Reject a Client Transfer:  Allows the Destination Branch to reject the proposed Client Transfer.  Accept a Client Transfer:  Allows the Destination Branch to accept the proposed Client Transfer.  The destination branch may also choose to link this client to a group (in which case, any existing active JLG loan of the client is rescheduled to match the meeting frequency of the group) and loan Officer at the time of accepting the transfer  Propose and Accept a Client Transfer:  Abstraction over the Propose and Accept Client Transfer API\'s which enable a user with Data Scope over both the Target and Destination Branches to directly transfer a Client to the destination Office.  Showing request/response for \'Reject a Client Transfer\'
+         * @summary Activate a Client | Close a Client | Reject a Client | Withdraw a Client | Reactivate a Client | UndoReject a Client | UndoWithdraw a Client | Assign a Staff | Unassign a Staff | Update Default Savings Account | Propose a Client Transfer | Withdraw a Client Transfer | Reject a Client Transfer | Accept a Client Transfer | Propose and Accept a Client Transfer
+         * @param {number} clientId clientId
+         * @param {PostClientsClientIdRequest} postClientsClientIdRequest 
+         * @param {string} [command] command
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        manageClient: async (clientId: number, postClientsClientIdRequest: PostClientsClientIdRequest, command?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'clientId' is not null or undefined
+            assertParamExists('manageClient', 'clientId', clientId)
+            // verify required parameter 'postClientsClientIdRequest' is not null or undefined
+            assertParamExists('manageClient', 'postClientsClientIdRequest', postClientsClientIdRequest)
+            const localVarPath = `/clients/{clientId}`
+                .replace(`{${"clientId"}}`, encodeURIComponent(String(clientId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+            if (command !== undefined) {
+                localVarQueryParameter['command'] = command;
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(postClientsClientIdRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * 
          * @param {string} [legalFormType] 
          * @param {FormDataContentDisposition} [file] 
@@ -309,6 +309,145 @@ export const ClientApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
+         * An example of how a loan portfolio summary can be provided. This is requested in a specific use case of the community application. It is quite reasonable to add resources like this to simplify User Interface development.  Example Requests:   clients/1/accounts  clients/1/accounts?fields=loanAccounts,savingsAccounts
+         * @summary Retrieve client accounts overview
+         * @param {number} clientId clientId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveAssociatedAccounts: async (clientId: number, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'clientId' is not null or undefined
+            assertParamExists('retrieveAssociatedAccounts', 'clientId', clientId)
+            const localVarPath = `/clients/{clientId}/accounts`
+                .replace(`{${"clientId"}}`, encodeURIComponent(String(clientId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Example Requests:  clients/1   clients/1?template=true   clients/1?fields=id,displayName,officeName
+         * @summary Retrieve a Client
+         * @param {number} clientId clientId
+         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveClient: async (clientId: number, staffInSelectedOfficeOnly?: boolean, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'clientId' is not null or undefined
+            assertParamExists('retrieveClient', 'clientId', clientId)
+            const localVarPath = `/clients/{clientId}`
+                .replace(`{${"clientId"}}`, encodeURIComponent(String(clientId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+            if (staffInSelectedOfficeOnly !== undefined) {
+                localVarQueryParameter['staffInSelectedOfficeOnly'] = staffInSelectedOfficeOnly;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Request:  clients/template
+         * @summary Retrieve Client Details Template
+         * @param {number} [officeId] officeId
+         * @param {string} [commandParam] commandParam
+         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveClientTemplate: async (officeId?: number, commandParam?: string, staffInSelectedOfficeOnly?: boolean, options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/clients/template`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+            if (officeId !== undefined) {
+                localVarQueryParameter['officeId'] = officeId;
+            }
+
+            if (commandParam !== undefined) {
+                localVarQueryParameter['commandParam'] = commandParam;
+            }
+
+            if (staffInSelectedOfficeOnly !== undefined) {
+                localVarQueryParameter['staffInSelectedOfficeOnly'] = staffInSelectedOfficeOnly;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * The list capability of clients can support pagination and sorting.  Example Requests:  clients  clients?fields=displayName,officeName,timeline  clients?offset=10&limit=50  clients?orderBy=displayName&sortOrder=DESC
          * @summary List Clients
          * @param {string} [sqlSearch] sqlSearch
@@ -327,7 +466,7 @@ export const ClientApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAll21: async (sqlSearch?: string, officeId?: number, externalId?: string, displayName?: string, firstName?: string, lastName?: string, status?: string, underHierarchy?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, orphansOnly?: boolean, options: any = {}): Promise<RequestArgs> => {
+        retrieveClients: async (sqlSearch?: string, officeId?: number, externalId?: string, displayName?: string, firstName?: string, lastName?: string, status?: string, underHierarchy?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, orphansOnly?: boolean, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/clients`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -411,47 +550,6 @@ export const ClientApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * An example of how a loan portfolio summary can be provided. This is requested in a specific use case of the community application. It is quite reasonable to add resources like this to simplify User Interface development.  Example Requests:   clients/1/accounts  clients/1/accounts?fields=loanAccounts,savingsAccounts
-         * @summary Retrieve client accounts overview
-         * @param {number} clientId clientId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveAssociatedAccounts: async (clientId: number, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'clientId' is not null or undefined
-            assertParamExists('retrieveAssociatedAccounts', 'clientId', clientId)
-            const localVarPath = `/clients/{clientId}/accounts`
-                .replace(`{${"clientId"}}`, encodeURIComponent(String(clientId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * 
          * @param {number} clientId 
          * @param {*} [options] Override http request option.
@@ -479,104 +577,6 @@ export const ClientApiAxiosParamCreator = function (configuration?: Configuratio
 
             // authentication tenantid required
             await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Example Requests:  clients/1   clients/1?template=true   clients/1?fields=id,displayName,officeName
-         * @summary Retrieve a Client
-         * @param {number} clientId clientId
-         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveOne11: async (clientId: number, staffInSelectedOfficeOnly?: boolean, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'clientId' is not null or undefined
-            assertParamExists('retrieveOne11', 'clientId', clientId)
-            const localVarPath = `/clients/{clientId}`
-                .replace(`{${"clientId"}}`, encodeURIComponent(String(clientId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-            if (staffInSelectedOfficeOnly !== undefined) {
-                localVarQueryParameter['staffInSelectedOfficeOnly'] = staffInSelectedOfficeOnly;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Request:  clients/template
-         * @summary Retrieve Client Details Template
-         * @param {number} [officeId] officeId
-         * @param {string} [commandParam] commandParam
-         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTemplate5: async (officeId?: number, commandParam?: string, staffInSelectedOfficeOnly?: boolean, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/clients/template`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-            if (officeId !== undefined) {
-                localVarQueryParameter['officeId'] = officeId;
-            }
-
-            if (commandParam !== undefined) {
-                localVarQueryParameter['commandParam'] = commandParam;
-            }
-
-            if (staffInSelectedOfficeOnly !== undefined) {
-                localVarQueryParameter['staffInSelectedOfficeOnly'] = staffInSelectedOfficeOnly;
-            }
 
 
     
@@ -637,11 +637,11 @@ export const ClientApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update10: async (clientId: number, putClientsClientIdRequest: PutClientsClientIdRequest, options: any = {}): Promise<RequestArgs> => {
+        updateClient: async (clientId: number, putClientsClientIdRequest: PutClientsClientIdRequest, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'clientId' is not null or undefined
-            assertParamExists('update10', 'clientId', clientId)
+            assertParamExists('updateClient', 'clientId', clientId)
             // verify required parameter 'putClientsClientIdRequest' is not null or undefined
-            assertParamExists('update10', 'putClientsClientIdRequest', putClientsClientIdRequest)
+            assertParamExists('updateClient', 'putClientsClientIdRequest', putClientsClientIdRequest)
             const localVarPath = `/clients/{clientId}`
                 .replace(`{${"clientId"}}`, encodeURIComponent(String(clientId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -687,27 +687,14 @@ export const ClientApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ClientApiAxiosParamCreator(configuration)
     return {
         /**
-         * Activate a Client:  Clients can be created in a Pending state. This API exists to enable client activation (for when a client becomes an approved member of the financial Institution).  If the client happens to be already active this API will result in an error.  Close a Client:  Clients can be closed if they do not have any non-closed loans/savingsAccount. This API exists to close a client .  If the client have any active loans/savingsAccount this API will result in an error.  Reject a Client:  Clients can be rejected when client is in pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: rejectionDate, rejectionReasonId  Withdraw a Client:  Client applications can be withdrawn when client is in a pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: withdrawalDate, withdrawalReasonId  Reactivate a Client: Clients can be reactivated after they have been closed.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reactivationDate  UndoReject a Client:  Clients can be reactivated after they have been rejected.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDateUndoWithdraw a Client:  Clients can be reactivated after they have been withdrawn.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDate  Assign a Staff:  Allows you to assign a Staff for existed Client.  The selected Staff should belong to the same office (or an officer higher up in the hierarchy) as the Client he manages.  Unassign a Staff:  Allows you to unassign the Staff assigned to a Client.  Update Default Savings Account:  Allows you to modify or assign a default savings account for an existing Client.  The selected savings account should be one among the existing savings account for a particular customer.  Propose a Client Transfer:  Allows you to propose the transfer of a Client to a different Office.  Withdraw a Client Transfer:  Allows you to withdraw the proposed transfer of a Client to a different Office.  Withdrawal can happen only if the destination Branch (to which the transfer was proposed) has not already accepted the transfer proposal  Reject a Client Transfer:  Allows the Destination Branch to reject the proposed Client Transfer.  Accept a Client Transfer:  Allows the Destination Branch to accept the proposed Client Transfer.  The destination branch may also choose to link this client to a group (in which case, any existing active JLG loan of the client is rescheduled to match the meeting frequency of the group) and loan Officer at the time of accepting the transfer  Propose and Accept a Client Transfer:  Abstraction over the Propose and Accept Client Transfer API\'s which enable a user with Data Scope over both the Target and Destination Branches to directly transfer a Client to the destination Office.  Showing request/response for \'Reject a Client Transfer\'
-         * @summary Activate a Client | Close a Client | Reject a Client | Withdraw a Client | Reactivate a Client | UndoReject a Client | UndoWithdraw a Client | Assign a Staff | Unassign a Staff | Update Default Savings Account | Propose a Client Transfer | Withdraw a Client Transfer | Reject a Client Transfer | Accept a Client Transfer | Propose and Accept a Client Transfer
-         * @param {number} clientId clientId
-         * @param {PostClientsClientIdRequest} postClientsClientIdRequest 
-         * @param {string} [command] command
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async activate1(clientId: number, postClientsClientIdRequest: PostClientsClientIdRequest, command?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostClientsClientIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.activate1(clientId, postClientsClientIdRequest, command, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * Note:  1. You can enter either:firstname/middlename/lastname - for a person (middlename is optional) OR fullname - for a business or organisation (or person known by one name).  2.If address is enable(enable-address=true), then additional field called address has to be passed.  Mandatory Fields: firstname and lastname OR fullname, officeId, active=true and activationDate OR active=false, if(address enabled) address  Optional Fields: groupId, externalId, accountNo, staffId, mobileNo, savingsProductId, genderId, clientTypeId, clientClassificationId
          * @summary Create a Client
          * @param {PostClientsRequest} postClientsRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async create6(postClientsRequest: PostClientsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostClientsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create6(postClientsRequest, options);
+        async createClient(postClientsRequest: PostClientsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostClientsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createClient(postClientsRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -718,8 +705,8 @@ export const ClientApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async delete9(clientId: number, body: object, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteClientsClientIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.delete9(clientId, body, options);
+        async deleteClient(clientId: number, body: object, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteClientsClientIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteClient(clientId, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -736,6 +723,19 @@ export const ClientApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Activate a Client:  Clients can be created in a Pending state. This API exists to enable client activation (for when a client becomes an approved member of the financial Institution).  If the client happens to be already active this API will result in an error.  Close a Client:  Clients can be closed if they do not have any non-closed loans/savingsAccount. This API exists to close a client .  If the client have any active loans/savingsAccount this API will result in an error.  Reject a Client:  Clients can be rejected when client is in pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: rejectionDate, rejectionReasonId  Withdraw a Client:  Client applications can be withdrawn when client is in a pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: withdrawalDate, withdrawalReasonId  Reactivate a Client: Clients can be reactivated after they have been closed.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reactivationDate  UndoReject a Client:  Clients can be reactivated after they have been rejected.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDateUndoWithdraw a Client:  Clients can be reactivated after they have been withdrawn.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDate  Assign a Staff:  Allows you to assign a Staff for existed Client.  The selected Staff should belong to the same office (or an officer higher up in the hierarchy) as the Client he manages.  Unassign a Staff:  Allows you to unassign the Staff assigned to a Client.  Update Default Savings Account:  Allows you to modify or assign a default savings account for an existing Client.  The selected savings account should be one among the existing savings account for a particular customer.  Propose a Client Transfer:  Allows you to propose the transfer of a Client to a different Office.  Withdraw a Client Transfer:  Allows you to withdraw the proposed transfer of a Client to a different Office.  Withdrawal can happen only if the destination Branch (to which the transfer was proposed) has not already accepted the transfer proposal  Reject a Client Transfer:  Allows the Destination Branch to reject the proposed Client Transfer.  Accept a Client Transfer:  Allows the Destination Branch to accept the proposed Client Transfer.  The destination branch may also choose to link this client to a group (in which case, any existing active JLG loan of the client is rescheduled to match the meeting frequency of the group) and loan Officer at the time of accepting the transfer  Propose and Accept a Client Transfer:  Abstraction over the Propose and Accept Client Transfer API\'s which enable a user with Data Scope over both the Target and Destination Branches to directly transfer a Client to the destination Office.  Showing request/response for \'Reject a Client Transfer\'
+         * @summary Activate a Client | Close a Client | Reject a Client | Withdraw a Client | Reactivate a Client | UndoReject a Client | UndoWithdraw a Client | Assign a Staff | Unassign a Staff | Update Default Savings Account | Propose a Client Transfer | Withdraw a Client Transfer | Reject a Client Transfer | Accept a Client Transfer | Propose and Accept a Client Transfer
+         * @param {number} clientId clientId
+         * @param {PostClientsClientIdRequest} postClientsClientIdRequest 
+         * @param {string} [command] command
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async manageClient(clientId: number, postClientsClientIdRequest: PostClientsClientIdRequest, command?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostClientsClientIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.manageClient(clientId, postClientsClientIdRequest, command, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * 
          * @param {string} [legalFormType] 
          * @param {FormDataContentDisposition} [file] 
@@ -746,6 +746,42 @@ export const ClientApiFp = function(configuration?: Configuration) {
          */
         async postClientTemplate(legalFormType?: string, file?: FormDataContentDisposition, locale?: string, dateFormat?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.postClientTemplate(legalFormType, file, locale, dateFormat, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * An example of how a loan portfolio summary can be provided. This is requested in a specific use case of the community application. It is quite reasonable to add resources like this to simplify User Interface development.  Example Requests:   clients/1/accounts  clients/1/accounts?fields=loanAccounts,savingsAccounts
+         * @summary Retrieve client accounts overview
+         * @param {number} clientId clientId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveAssociatedAccounts(clientId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetClientsClientIdAccountsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAssociatedAccounts(clientId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Example Requests:  clients/1   clients/1?template=true   clients/1?fields=id,displayName,officeName
+         * @summary Retrieve a Client
+         * @param {number} clientId clientId
+         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveClient(clientId: number, staffInSelectedOfficeOnly?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetClientsClientIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveClient(clientId, staffInSelectedOfficeOnly, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Request:  clients/template
+         * @summary Retrieve Client Details Template
+         * @param {number} [officeId] officeId
+         * @param {string} [commandParam] commandParam
+         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveClientTemplate(officeId?: number, commandParam?: string, staffInSelectedOfficeOnly?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetClientsTemplateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveClientTemplate(officeId, commandParam, staffInSelectedOfficeOnly, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -767,19 +803,8 @@ export const ClientApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveAll21(sqlSearch?: string, officeId?: number, externalId?: string, displayName?: string, firstName?: string, lastName?: string, status?: string, underHierarchy?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, orphansOnly?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetClientsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAll21(sqlSearch, officeId, externalId, displayName, firstName, lastName, status, underHierarchy, offset, limit, orderBy, sortOrder, orphansOnly, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * An example of how a loan portfolio summary can be provided. This is requested in a specific use case of the community application. It is quite reasonable to add resources like this to simplify User Interface development.  Example Requests:   clients/1/accounts  clients/1/accounts?fields=loanAccounts,savingsAccounts
-         * @summary Retrieve client accounts overview
-         * @param {number} clientId clientId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveAssociatedAccounts(clientId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetClientsClientIdAccountsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAssociatedAccounts(clientId, options);
+        async retrieveClients(sqlSearch?: string, officeId?: number, externalId?: string, displayName?: string, firstName?: string, lastName?: string, status?: string, underHierarchy?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, orphansOnly?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetClientsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveClients(sqlSearch, officeId, externalId, displayName, firstName, lastName, status, underHierarchy, offset, limit, orderBy, sortOrder, orphansOnly, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -790,31 +815,6 @@ export const ClientApiFp = function(configuration?: Configuration) {
          */
         async retrieveObligeeDetails(clientId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveObligeeDetails(clientId, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Example Requests:  clients/1   clients/1?template=true   clients/1?fields=id,displayName,officeName
-         * @summary Retrieve a Client
-         * @param {number} clientId clientId
-         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveOne11(clientId: number, staffInSelectedOfficeOnly?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetClientsClientIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveOne11(clientId, staffInSelectedOfficeOnly, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Request:  clients/template
-         * @summary Retrieve Client Details Template
-         * @param {number} [officeId] officeId
-         * @param {string} [commandParam] commandParam
-         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveTemplate5(officeId?: number, commandParam?: string, staffInSelectedOfficeOnly?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetClientsTemplateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveTemplate5(officeId, commandParam, staffInSelectedOfficeOnly, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -835,8 +835,8 @@ export const ClientApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async update10(clientId: number, putClientsClientIdRequest: PutClientsClientIdRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutClientsClientIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update10(clientId, putClientsClientIdRequest, options);
+        async updateClient(clientId: number, putClientsClientIdRequest: PutClientsClientIdRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutClientsClientIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateClient(clientId, putClientsClientIdRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -850,26 +850,14 @@ export const ClientApiFactory = function (configuration?: Configuration, basePat
     const localVarFp = ClientApiFp(configuration)
     return {
         /**
-         * Activate a Client:  Clients can be created in a Pending state. This API exists to enable client activation (for when a client becomes an approved member of the financial Institution).  If the client happens to be already active this API will result in an error.  Close a Client:  Clients can be closed if they do not have any non-closed loans/savingsAccount. This API exists to close a client .  If the client have any active loans/savingsAccount this API will result in an error.  Reject a Client:  Clients can be rejected when client is in pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: rejectionDate, rejectionReasonId  Withdraw a Client:  Client applications can be withdrawn when client is in a pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: withdrawalDate, withdrawalReasonId  Reactivate a Client: Clients can be reactivated after they have been closed.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reactivationDate  UndoReject a Client:  Clients can be reactivated after they have been rejected.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDateUndoWithdraw a Client:  Clients can be reactivated after they have been withdrawn.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDate  Assign a Staff:  Allows you to assign a Staff for existed Client.  The selected Staff should belong to the same office (or an officer higher up in the hierarchy) as the Client he manages.  Unassign a Staff:  Allows you to unassign the Staff assigned to a Client.  Update Default Savings Account:  Allows you to modify or assign a default savings account for an existing Client.  The selected savings account should be one among the existing savings account for a particular customer.  Propose a Client Transfer:  Allows you to propose the transfer of a Client to a different Office.  Withdraw a Client Transfer:  Allows you to withdraw the proposed transfer of a Client to a different Office.  Withdrawal can happen only if the destination Branch (to which the transfer was proposed) has not already accepted the transfer proposal  Reject a Client Transfer:  Allows the Destination Branch to reject the proposed Client Transfer.  Accept a Client Transfer:  Allows the Destination Branch to accept the proposed Client Transfer.  The destination branch may also choose to link this client to a group (in which case, any existing active JLG loan of the client is rescheduled to match the meeting frequency of the group) and loan Officer at the time of accepting the transfer  Propose and Accept a Client Transfer:  Abstraction over the Propose and Accept Client Transfer API\'s which enable a user with Data Scope over both the Target and Destination Branches to directly transfer a Client to the destination Office.  Showing request/response for \'Reject a Client Transfer\'
-         * @summary Activate a Client | Close a Client | Reject a Client | Withdraw a Client | Reactivate a Client | UndoReject a Client | UndoWithdraw a Client | Assign a Staff | Unassign a Staff | Update Default Savings Account | Propose a Client Transfer | Withdraw a Client Transfer | Reject a Client Transfer | Accept a Client Transfer | Propose and Accept a Client Transfer
-         * @param {number} clientId clientId
-         * @param {PostClientsClientIdRequest} postClientsClientIdRequest 
-         * @param {string} [command] command
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        activate1(clientId: number, postClientsClientIdRequest: PostClientsClientIdRequest, command?: string, options?: any): AxiosPromise<PostClientsClientIdResponse> {
-            return localVarFp.activate1(clientId, postClientsClientIdRequest, command, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Note:  1. You can enter either:firstname/middlename/lastname - for a person (middlename is optional) OR fullname - for a business or organisation (or person known by one name).  2.If address is enable(enable-address=true), then additional field called address has to be passed.  Mandatory Fields: firstname and lastname OR fullname, officeId, active=true and activationDate OR active=false, if(address enabled) address  Optional Fields: groupId, externalId, accountNo, staffId, mobileNo, savingsProductId, genderId, clientTypeId, clientClassificationId
          * @summary Create a Client
          * @param {PostClientsRequest} postClientsRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create6(postClientsRequest: PostClientsRequest, options?: any): AxiosPromise<PostClientsResponse> {
-            return localVarFp.create6(postClientsRequest, options).then((request) => request(axios, basePath));
+        createClient(postClientsRequest: PostClientsRequest, options?: any): AxiosPromise<PostClientsResponse> {
+            return localVarFp.createClient(postClientsRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * If a client is in Pending state, you are allowed to Delete it. The delete is a \'hard delete\' and cannot be recovered from. Once clients become active or have loans or savings associated with them, you cannot delete the client but you may Close the client if they have left the program.
@@ -879,8 +867,8 @@ export const ClientApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete9(clientId: number, body: object, options?: any): AxiosPromise<DeleteClientsClientIdResponse> {
-            return localVarFp.delete9(clientId, body, options).then((request) => request(axios, basePath));
+        deleteClient(clientId: number, body: object, options?: any): AxiosPromise<DeleteClientsClientIdResponse> {
+            return localVarFp.deleteClient(clientId, body, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -895,6 +883,18 @@ export const ClientApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.getClientTemplate(legalFormType, officeId, staffId, dateFormat, options).then((request) => request(axios, basePath));
         },
         /**
+         * Activate a Client:  Clients can be created in a Pending state. This API exists to enable client activation (for when a client becomes an approved member of the financial Institution).  If the client happens to be already active this API will result in an error.  Close a Client:  Clients can be closed if they do not have any non-closed loans/savingsAccount. This API exists to close a client .  If the client have any active loans/savingsAccount this API will result in an error.  Reject a Client:  Clients can be rejected when client is in pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: rejectionDate, rejectionReasonId  Withdraw a Client:  Client applications can be withdrawn when client is in a pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: withdrawalDate, withdrawalReasonId  Reactivate a Client: Clients can be reactivated after they have been closed.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reactivationDate  UndoReject a Client:  Clients can be reactivated after they have been rejected.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDateUndoWithdraw a Client:  Clients can be reactivated after they have been withdrawn.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDate  Assign a Staff:  Allows you to assign a Staff for existed Client.  The selected Staff should belong to the same office (or an officer higher up in the hierarchy) as the Client he manages.  Unassign a Staff:  Allows you to unassign the Staff assigned to a Client.  Update Default Savings Account:  Allows you to modify or assign a default savings account for an existing Client.  The selected savings account should be one among the existing savings account for a particular customer.  Propose a Client Transfer:  Allows you to propose the transfer of a Client to a different Office.  Withdraw a Client Transfer:  Allows you to withdraw the proposed transfer of a Client to a different Office.  Withdrawal can happen only if the destination Branch (to which the transfer was proposed) has not already accepted the transfer proposal  Reject a Client Transfer:  Allows the Destination Branch to reject the proposed Client Transfer.  Accept a Client Transfer:  Allows the Destination Branch to accept the proposed Client Transfer.  The destination branch may also choose to link this client to a group (in which case, any existing active JLG loan of the client is rescheduled to match the meeting frequency of the group) and loan Officer at the time of accepting the transfer  Propose and Accept a Client Transfer:  Abstraction over the Propose and Accept Client Transfer API\'s which enable a user with Data Scope over both the Target and Destination Branches to directly transfer a Client to the destination Office.  Showing request/response for \'Reject a Client Transfer\'
+         * @summary Activate a Client | Close a Client | Reject a Client | Withdraw a Client | Reactivate a Client | UndoReject a Client | UndoWithdraw a Client | Assign a Staff | Unassign a Staff | Update Default Savings Account | Propose a Client Transfer | Withdraw a Client Transfer | Reject a Client Transfer | Accept a Client Transfer | Propose and Accept a Client Transfer
+         * @param {number} clientId clientId
+         * @param {PostClientsClientIdRequest} postClientsClientIdRequest 
+         * @param {string} [command] command
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        manageClient(clientId: number, postClientsClientIdRequest: PostClientsClientIdRequest, command?: string, options?: any): AxiosPromise<PostClientsClientIdResponse> {
+            return localVarFp.manageClient(clientId, postClientsClientIdRequest, command, options).then((request) => request(axios, basePath));
+        },
+        /**
          * 
          * @param {string} [legalFormType] 
          * @param {FormDataContentDisposition} [file] 
@@ -905,6 +905,39 @@ export const ClientApiFactory = function (configuration?: Configuration, basePat
          */
         postClientTemplate(legalFormType?: string, file?: FormDataContentDisposition, locale?: string, dateFormat?: string, options?: any): AxiosPromise<string> {
             return localVarFp.postClientTemplate(legalFormType, file, locale, dateFormat, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * An example of how a loan portfolio summary can be provided. This is requested in a specific use case of the community application. It is quite reasonable to add resources like this to simplify User Interface development.  Example Requests:   clients/1/accounts  clients/1/accounts?fields=loanAccounts,savingsAccounts
+         * @summary Retrieve client accounts overview
+         * @param {number} clientId clientId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveAssociatedAccounts(clientId: number, options?: any): AxiosPromise<GetClientsClientIdAccountsResponse> {
+            return localVarFp.retrieveAssociatedAccounts(clientId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Example Requests:  clients/1   clients/1?template=true   clients/1?fields=id,displayName,officeName
+         * @summary Retrieve a Client
+         * @param {number} clientId clientId
+         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveClient(clientId: number, staffInSelectedOfficeOnly?: boolean, options?: any): AxiosPromise<GetClientsClientIdResponse> {
+            return localVarFp.retrieveClient(clientId, staffInSelectedOfficeOnly, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Request:  clients/template
+         * @summary Retrieve Client Details Template
+         * @param {number} [officeId] officeId
+         * @param {string} [commandParam] commandParam
+         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveClientTemplate(officeId?: number, commandParam?: string, staffInSelectedOfficeOnly?: boolean, options?: any): AxiosPromise<GetClientsTemplateResponse> {
+            return localVarFp.retrieveClientTemplate(officeId, commandParam, staffInSelectedOfficeOnly, options).then((request) => request(axios, basePath));
         },
         /**
          * The list capability of clients can support pagination and sorting.  Example Requests:  clients  clients?fields=displayName,officeName,timeline  clients?offset=10&limit=50  clients?orderBy=displayName&sortOrder=DESC
@@ -925,18 +958,8 @@ export const ClientApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAll21(sqlSearch?: string, officeId?: number, externalId?: string, displayName?: string, firstName?: string, lastName?: string, status?: string, underHierarchy?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, orphansOnly?: boolean, options?: any): AxiosPromise<GetClientsResponse> {
-            return localVarFp.retrieveAll21(sqlSearch, officeId, externalId, displayName, firstName, lastName, status, underHierarchy, offset, limit, orderBy, sortOrder, orphansOnly, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * An example of how a loan portfolio summary can be provided. This is requested in a specific use case of the community application. It is quite reasonable to add resources like this to simplify User Interface development.  Example Requests:   clients/1/accounts  clients/1/accounts?fields=loanAccounts,savingsAccounts
-         * @summary Retrieve client accounts overview
-         * @param {number} clientId clientId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveAssociatedAccounts(clientId: number, options?: any): AxiosPromise<GetClientsClientIdAccountsResponse> {
-            return localVarFp.retrieveAssociatedAccounts(clientId, options).then((request) => request(axios, basePath));
+        retrieveClients(sqlSearch?: string, officeId?: number, externalId?: string, displayName?: string, firstName?: string, lastName?: string, status?: string, underHierarchy?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, orphansOnly?: boolean, options?: any): AxiosPromise<GetClientsResponse> {
+            return localVarFp.retrieveClients(sqlSearch, officeId, externalId, displayName, firstName, lastName, status, underHierarchy, offset, limit, orderBy, sortOrder, orphansOnly, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -946,29 +969,6 @@ export const ClientApiFactory = function (configuration?: Configuration, basePat
          */
         retrieveObligeeDetails(clientId: number, options?: any): AxiosPromise<string> {
             return localVarFp.retrieveObligeeDetails(clientId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Example Requests:  clients/1   clients/1?template=true   clients/1?fields=id,displayName,officeName
-         * @summary Retrieve a Client
-         * @param {number} clientId clientId
-         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveOne11(clientId: number, staffInSelectedOfficeOnly?: boolean, options?: any): AxiosPromise<GetClientsClientIdResponse> {
-            return localVarFp.retrieveOne11(clientId, staffInSelectedOfficeOnly, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Request:  clients/template
-         * @summary Retrieve Client Details Template
-         * @param {number} [officeId] officeId
-         * @param {string} [commandParam] commandParam
-         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTemplate5(officeId?: number, commandParam?: string, staffInSelectedOfficeOnly?: boolean, options?: any): AxiosPromise<GetClientsTemplateResponse> {
-            return localVarFp.retrieveTemplate5(officeId, commandParam, staffInSelectedOfficeOnly, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -987,8 +987,8 @@ export const ClientApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update10(clientId: number, putClientsClientIdRequest: PutClientsClientIdRequest, options?: any): AxiosPromise<PutClientsClientIdResponse> {
-            return localVarFp.update10(clientId, putClientsClientIdRequest, options).then((request) => request(axios, basePath));
+        updateClient(clientId: number, putClientsClientIdRequest: PutClientsClientIdRequest, options?: any): AxiosPromise<PutClientsClientIdResponse> {
+            return localVarFp.updateClient(clientId, putClientsClientIdRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1001,20 +1001,6 @@ export const ClientApiFactory = function (configuration?: Configuration, basePat
  */
 export class ClientApi extends BaseAPI {
     /**
-     * Activate a Client:  Clients can be created in a Pending state. This API exists to enable client activation (for when a client becomes an approved member of the financial Institution).  If the client happens to be already active this API will result in an error.  Close a Client:  Clients can be closed if they do not have any non-closed loans/savingsAccount. This API exists to close a client .  If the client have any active loans/savingsAccount this API will result in an error.  Reject a Client:  Clients can be rejected when client is in pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: rejectionDate, rejectionReasonId  Withdraw a Client:  Client applications can be withdrawn when client is in a pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: withdrawalDate, withdrawalReasonId  Reactivate a Client: Clients can be reactivated after they have been closed.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reactivationDate  UndoReject a Client:  Clients can be reactivated after they have been rejected.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDateUndoWithdraw a Client:  Clients can be reactivated after they have been withdrawn.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDate  Assign a Staff:  Allows you to assign a Staff for existed Client.  The selected Staff should belong to the same office (or an officer higher up in the hierarchy) as the Client he manages.  Unassign a Staff:  Allows you to unassign the Staff assigned to a Client.  Update Default Savings Account:  Allows you to modify or assign a default savings account for an existing Client.  The selected savings account should be one among the existing savings account for a particular customer.  Propose a Client Transfer:  Allows you to propose the transfer of a Client to a different Office.  Withdraw a Client Transfer:  Allows you to withdraw the proposed transfer of a Client to a different Office.  Withdrawal can happen only if the destination Branch (to which the transfer was proposed) has not already accepted the transfer proposal  Reject a Client Transfer:  Allows the Destination Branch to reject the proposed Client Transfer.  Accept a Client Transfer:  Allows the Destination Branch to accept the proposed Client Transfer.  The destination branch may also choose to link this client to a group (in which case, any existing active JLG loan of the client is rescheduled to match the meeting frequency of the group) and loan Officer at the time of accepting the transfer  Propose and Accept a Client Transfer:  Abstraction over the Propose and Accept Client Transfer API\'s which enable a user with Data Scope over both the Target and Destination Branches to directly transfer a Client to the destination Office.  Showing request/response for \'Reject a Client Transfer\'
-     * @summary Activate a Client | Close a Client | Reject a Client | Withdraw a Client | Reactivate a Client | UndoReject a Client | UndoWithdraw a Client | Assign a Staff | Unassign a Staff | Update Default Savings Account | Propose a Client Transfer | Withdraw a Client Transfer | Reject a Client Transfer | Accept a Client Transfer | Propose and Accept a Client Transfer
-     * @param {number} clientId clientId
-     * @param {PostClientsClientIdRequest} postClientsClientIdRequest 
-     * @param {string} [command] command
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ClientApi
-     */
-    public activate1(clientId: number, postClientsClientIdRequest: PostClientsClientIdRequest, command?: string, options?: any) {
-        return ClientApiFp(this.configuration).activate1(clientId, postClientsClientIdRequest, command, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Note:  1. You can enter either:firstname/middlename/lastname - for a person (middlename is optional) OR fullname - for a business or organisation (or person known by one name).  2.If address is enable(enable-address=true), then additional field called address has to be passed.  Mandatory Fields: firstname and lastname OR fullname, officeId, active=true and activationDate OR active=false, if(address enabled) address  Optional Fields: groupId, externalId, accountNo, staffId, mobileNo, savingsProductId, genderId, clientTypeId, clientClassificationId
      * @summary Create a Client
      * @param {PostClientsRequest} postClientsRequest 
@@ -1022,8 +1008,8 @@ export class ClientApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClientApi
      */
-    public create6(postClientsRequest: PostClientsRequest, options?: any) {
-        return ClientApiFp(this.configuration).create6(postClientsRequest, options).then((request) => request(this.axios, this.basePath));
+    public createClient(postClientsRequest: PostClientsRequest, options?: any) {
+        return ClientApiFp(this.configuration).createClient(postClientsRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1035,8 +1021,8 @@ export class ClientApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClientApi
      */
-    public delete9(clientId: number, body: object, options?: any) {
-        return ClientApiFp(this.configuration).delete9(clientId, body, options).then((request) => request(this.axios, this.basePath));
+    public deleteClient(clientId: number, body: object, options?: any) {
+        return ClientApiFp(this.configuration).deleteClient(clientId, body, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1054,6 +1040,20 @@ export class ClientApi extends BaseAPI {
     }
 
     /**
+     * Activate a Client:  Clients can be created in a Pending state. This API exists to enable client activation (for when a client becomes an approved member of the financial Institution).  If the client happens to be already active this API will result in an error.  Close a Client:  Clients can be closed if they do not have any non-closed loans/savingsAccount. This API exists to close a client .  If the client have any active loans/savingsAccount this API will result in an error.  Reject a Client:  Clients can be rejected when client is in pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: rejectionDate, rejectionReasonId  Withdraw a Client:  Client applications can be withdrawn when client is in a pending for activation status.  If the client is any other status, this API throws an error.  Mandatory Fields: withdrawalDate, withdrawalReasonId  Reactivate a Client: Clients can be reactivated after they have been closed.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reactivationDate  UndoReject a Client:  Clients can be reactivated after they have been rejected.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDateUndoWithdraw a Client:  Clients can be reactivated after they have been withdrawn.  Trying to reactivate a client in any other state throws an error.  Mandatory Fields: reopenedDate  Assign a Staff:  Allows you to assign a Staff for existed Client.  The selected Staff should belong to the same office (or an officer higher up in the hierarchy) as the Client he manages.  Unassign a Staff:  Allows you to unassign the Staff assigned to a Client.  Update Default Savings Account:  Allows you to modify or assign a default savings account for an existing Client.  The selected savings account should be one among the existing savings account for a particular customer.  Propose a Client Transfer:  Allows you to propose the transfer of a Client to a different Office.  Withdraw a Client Transfer:  Allows you to withdraw the proposed transfer of a Client to a different Office.  Withdrawal can happen only if the destination Branch (to which the transfer was proposed) has not already accepted the transfer proposal  Reject a Client Transfer:  Allows the Destination Branch to reject the proposed Client Transfer.  Accept a Client Transfer:  Allows the Destination Branch to accept the proposed Client Transfer.  The destination branch may also choose to link this client to a group (in which case, any existing active JLG loan of the client is rescheduled to match the meeting frequency of the group) and loan Officer at the time of accepting the transfer  Propose and Accept a Client Transfer:  Abstraction over the Propose and Accept Client Transfer API\'s which enable a user with Data Scope over both the Target and Destination Branches to directly transfer a Client to the destination Office.  Showing request/response for \'Reject a Client Transfer\'
+     * @summary Activate a Client | Close a Client | Reject a Client | Withdraw a Client | Reactivate a Client | UndoReject a Client | UndoWithdraw a Client | Assign a Staff | Unassign a Staff | Update Default Savings Account | Propose a Client Transfer | Withdraw a Client Transfer | Reject a Client Transfer | Accept a Client Transfer | Propose and Accept a Client Transfer
+     * @param {number} clientId clientId
+     * @param {PostClientsClientIdRequest} postClientsClientIdRequest 
+     * @param {string} [command] command
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClientApi
+     */
+    public manageClient(clientId: number, postClientsClientIdRequest: PostClientsClientIdRequest, command?: string, options?: any) {
+        return ClientApiFp(this.configuration).manageClient(clientId, postClientsClientIdRequest, command, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * 
      * @param {string} [legalFormType] 
      * @param {FormDataContentDisposition} [file] 
@@ -1065,6 +1065,45 @@ export class ClientApi extends BaseAPI {
      */
     public postClientTemplate(legalFormType?: string, file?: FormDataContentDisposition, locale?: string, dateFormat?: string, options?: any) {
         return ClientApiFp(this.configuration).postClientTemplate(legalFormType, file, locale, dateFormat, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * An example of how a loan portfolio summary can be provided. This is requested in a specific use case of the community application. It is quite reasonable to add resources like this to simplify User Interface development.  Example Requests:   clients/1/accounts  clients/1/accounts?fields=loanAccounts,savingsAccounts
+     * @summary Retrieve client accounts overview
+     * @param {number} clientId clientId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClientApi
+     */
+    public retrieveAssociatedAccounts(clientId: number, options?: any) {
+        return ClientApiFp(this.configuration).retrieveAssociatedAccounts(clientId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Example Requests:  clients/1   clients/1?template=true   clients/1?fields=id,displayName,officeName
+     * @summary Retrieve a Client
+     * @param {number} clientId clientId
+     * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClientApi
+     */
+    public retrieveClient(clientId: number, staffInSelectedOfficeOnly?: boolean, options?: any) {
+        return ClientApiFp(this.configuration).retrieveClient(clientId, staffInSelectedOfficeOnly, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Request:  clients/template
+     * @summary Retrieve Client Details Template
+     * @param {number} [officeId] officeId
+     * @param {string} [commandParam] commandParam
+     * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ClientApi
+     */
+    public retrieveClientTemplate(officeId?: number, commandParam?: string, staffInSelectedOfficeOnly?: boolean, options?: any) {
+        return ClientApiFp(this.configuration).retrieveClientTemplate(officeId, commandParam, staffInSelectedOfficeOnly, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1087,20 +1126,8 @@ export class ClientApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClientApi
      */
-    public retrieveAll21(sqlSearch?: string, officeId?: number, externalId?: string, displayName?: string, firstName?: string, lastName?: string, status?: string, underHierarchy?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, orphansOnly?: boolean, options?: any) {
-        return ClientApiFp(this.configuration).retrieveAll21(sqlSearch, officeId, externalId, displayName, firstName, lastName, status, underHierarchy, offset, limit, orderBy, sortOrder, orphansOnly, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * An example of how a loan portfolio summary can be provided. This is requested in a specific use case of the community application. It is quite reasonable to add resources like this to simplify User Interface development.  Example Requests:   clients/1/accounts  clients/1/accounts?fields=loanAccounts,savingsAccounts
-     * @summary Retrieve client accounts overview
-     * @param {number} clientId clientId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ClientApi
-     */
-    public retrieveAssociatedAccounts(clientId: number, options?: any) {
-        return ClientApiFp(this.configuration).retrieveAssociatedAccounts(clientId, options).then((request) => request(this.axios, this.basePath));
+    public retrieveClients(sqlSearch?: string, officeId?: number, externalId?: string, displayName?: string, firstName?: string, lastName?: string, status?: string, underHierarchy?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, orphansOnly?: boolean, options?: any) {
+        return ClientApiFp(this.configuration).retrieveClients(sqlSearch, officeId, externalId, displayName, firstName, lastName, status, underHierarchy, offset, limit, orderBy, sortOrder, orphansOnly, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1112,33 +1139,6 @@ export class ClientApi extends BaseAPI {
      */
     public retrieveObligeeDetails(clientId: number, options?: any) {
         return ClientApiFp(this.configuration).retrieveObligeeDetails(clientId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Example Requests:  clients/1   clients/1?template=true   clients/1?fields=id,displayName,officeName
-     * @summary Retrieve a Client
-     * @param {number} clientId clientId
-     * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ClientApi
-     */
-    public retrieveOne11(clientId: number, staffInSelectedOfficeOnly?: boolean, options?: any) {
-        return ClientApiFp(this.configuration).retrieveOne11(clientId, staffInSelectedOfficeOnly, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Request:  clients/template
-     * @summary Retrieve Client Details Template
-     * @param {number} [officeId] officeId
-     * @param {string} [commandParam] commandParam
-     * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ClientApi
-     */
-    public retrieveTemplate5(officeId?: number, commandParam?: string, staffInSelectedOfficeOnly?: boolean, options?: any) {
-        return ClientApiFp(this.configuration).retrieveTemplate5(officeId, commandParam, staffInSelectedOfficeOnly, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1161,7 +1161,7 @@ export class ClientApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ClientApi
      */
-    public update10(clientId: number, putClientsClientIdRequest: PutClientsClientIdRequest, options?: any) {
-        return ClientApiFp(this.configuration).update10(clientId, putClientsClientIdRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateClient(clientId: number, putClientsClientIdRequest: PutClientsClientIdRequest, options?: any) {
+        return ClientApiFp(this.configuration).updateClient(clientId, putClientsClientIdRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }

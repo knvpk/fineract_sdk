@@ -13,6 +13,7 @@
  */
 
 
+import { PostClientsRequestClientNonPersonDetails } from './post-clients-request-client-non-person-details';
 
 /**
  * PostClientsRequest
@@ -62,6 +63,96 @@ export interface PostClientsRequest {
      * @memberof PostClientsRequest
      */
     activationDate?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof PostClientsRequest
+     */
+    address?: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostClientsRequest
+     */
+    dateOfBirth?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostClientsRequest
+     */
+    firstname?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostClientsRequest
+     */
+    lastname?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostClientsRequest
+     */
+    middlename?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostClientsRequest
+     */
+    legalFormId?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostClientsRequest
+     */
+    mobileNo?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostClientsRequest
+     */
+    submittedOnDate?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostClientsRequest
+     */
+    externalId?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostClientsRequest
+     */
+    staffId?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostClientsRequest
+     */
+    genederId?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostClientsRequest
+     */
+    clientClassificationId?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostClientsRequest
+     */
+    clientTypeId?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PostClientsRequest
+     */
+    savingsProductId?: number;
+    /**
+     * 
+     * @type {PostClientsRequestClientNonPersonDetails}
+     * @memberof PostClientsRequest
+     */
+    clientNonPersonDetails?: PostClientsRequestClientNonPersonDetails;
 }
 
 

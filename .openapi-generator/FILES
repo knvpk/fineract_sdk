@@ -933,6 +933,7 @@ models/post-clients-client-id-identifiers-response.ts
 models/post-clients-client-id-request.ts
 models/post-clients-client-id-response.ts
 models/post-clients-client-id-transactions-transaction-id-response.ts
+models/post-clients-request-client-non-person-details.ts
 models/post-clients-request.ts
 models/post-clients-response.ts
 models/post-code-value-data-response.ts
