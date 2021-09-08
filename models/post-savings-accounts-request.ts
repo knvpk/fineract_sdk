@@ -50,6 +50,12 @@ export interface PostSavingsAccountsRequest {
      * @memberof PostSavingsAccountsRequest
      */
     submittedOnDate?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostSavingsAccountsRequest
+     */
+    externalId?: string;
 }
 
 

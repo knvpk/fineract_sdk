@@ -37,9 +37,9 @@ export const DepositAccountOnHoldFundTransactionsApiAxiosParamCreator = function
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAll28: async (savingsId: number, guarantorFundingId?: number, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options: any = {}): Promise<RequestArgs> => {
+        retrieveSavingsAccountOnHoldTrans: async (savingsId: number, guarantorFundingId?: number, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'savingsId' is not null or undefined
-            assertParamExists('retrieveAll28', 'savingsId', savingsId)
+            assertParamExists('retrieveSavingsAccountOnHoldTrans', 'savingsId', savingsId)
             const localVarPath = `/savingsaccounts/{savingsId}/onholdtransactions`
                 .replace(`{${"savingsId"}}`, encodeURIComponent(String(savingsId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -112,8 +112,8 @@ export const DepositAccountOnHoldFundTransactionsApiFp = function(configuration?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveAll28(savingsId: number, guarantorFundingId?: number, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAll28(savingsId, guarantorFundingId, offset, limit, orderBy, sortOrder, options);
+        async retrieveSavingsAccountOnHoldTrans(savingsId: number, guarantorFundingId?: number, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveSavingsAccountOnHoldTrans(savingsId, guarantorFundingId, offset, limit, orderBy, sortOrder, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -137,8 +137,8 @@ export const DepositAccountOnHoldFundTransactionsApiFactory = function (configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAll28(savingsId: number, guarantorFundingId?: number, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options?: any): AxiosPromise<string> {
-            return localVarFp.retrieveAll28(savingsId, guarantorFundingId, offset, limit, orderBy, sortOrder, options).then((request) => request(axios, basePath));
+        retrieveSavingsAccountOnHoldTrans(savingsId: number, guarantorFundingId?: number, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options?: any): AxiosPromise<string> {
+            return localVarFp.retrieveSavingsAccountOnHoldTrans(savingsId, guarantorFundingId, offset, limit, orderBy, sortOrder, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -162,7 +162,7 @@ export class DepositAccountOnHoldFundTransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DepositAccountOnHoldFundTransactionsApi
      */
-    public retrieveAll28(savingsId: number, guarantorFundingId?: number, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options?: any) {
-        return DepositAccountOnHoldFundTransactionsApiFp(this.configuration).retrieveAll28(savingsId, guarantorFundingId, offset, limit, orderBy, sortOrder, options).then((request) => request(this.axios, this.basePath));
+    public retrieveSavingsAccountOnHoldTrans(savingsId: number, guarantorFundingId?: number, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options?: any) {
+        return DepositAccountOnHoldFundTransactionsApiFp(this.configuration).retrieveSavingsAccountOnHoldTrans(savingsId, guarantorFundingId, offset, limit, orderBy, sortOrder, options).then((request) => request(this.axios, this.basePath));
     }
 }

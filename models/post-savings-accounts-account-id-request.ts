@@ -38,6 +38,24 @@ export interface PostSavingsAccountsAccountIdRequest {
      * @memberof PostSavingsAccountsAccountIdRequest
      */
     unassignedDate?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostSavingsAccountsAccountIdRequest
+     */
+    note?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostSavingsAccountsAccountIdRequest
+     */
+    approvedOnDate?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostSavingsAccountsAccountIdRequest
+     */
+    activatedOnDate?: string;
 }
 
 

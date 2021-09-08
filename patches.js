@@ -555,6 +555,78 @@ let codeValuePatches = [
     }
 ];
 
+let savingsAccountPatches = [
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts~1{savingsId}~1onholdtransactions/get/operationId",
+        "value": "retrieveSavingsAccountOnHoldTrans" //retrieveAll_28
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts/get/operationId",
+        "value": "retrieveSavingsAccounts" //retrieveAll_33
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts/post/operationId",
+        "value": "submitSavingsAccountsApplication" //submitApplication_2
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts~1template/get/operationId",
+        "value": "getSavingsAccountTemplate" //template_14
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts~1{accountId}/get/operationId",
+        "value": "retrieveSavingsAccount" //retrieveOne_24
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts~1{accountId}/put/operationId",
+        "value": "updateSavingsAccount" //update_19
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts~1{accountId}/post/operationId",
+        "value": "manageSavingsAccount" //handleCommands_6
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts~1{accountId}/delete/operationId",
+        "value": "deleteSavingsAccount" //delete_18
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostSavingsAccountsRequest/properties/externalId",
+        "value": {
+            "type": "string"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostSavingsAccountsAccountIdRequest/properties/note",
+        "value": {
+            "type": "string"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostSavingsAccountsAccountIdRequest/properties/approvedOnDate",
+        "value": {
+            "type": "string",
+            "format": "date"
+        }
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/PostSavingsAccountsAccountIdRequest/properties/activatedOnDate",
+        "value": {
+            "type": "string",
+            "format": "date"
+        }
+    },
+];
 
 patches = [
     ...userPatches,
@@ -568,7 +640,8 @@ patches = [
     ...savingsProductPatches, 
     ...savingsProductPatchesAuto,
     ...clientPatches,
-    ...codeValuePatches
+    ...codeValuePatches,
+    ...savingsAccountPatches
 ]
 
 module.exports = patches;

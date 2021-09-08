@@ -55,9 +55,9 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete18: async (accountId: number, options: any = {}): Promise<RequestArgs> => {
+        deleteSavingsAccount: async (accountId: number, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'accountId' is not null or undefined
-            assertParamExists('delete18', 'accountId', accountId)
+            assertParamExists('deleteSavingsAccount', 'accountId', accountId)
             const localVarPath = `/savingsaccounts/{accountId}`
                 .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -77,6 +77,63 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
 
             // authentication tenantid required
             await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Requests:  savingsaccounts/template?clientId=1   savingsaccounts/template?clientId=1&productId=1
+         * @summary Retrieve Savings Account Template
+         * @param {number} [clientId] clientId
+         * @param {number} [groupId] groupId
+         * @param {number} [productId] productId
+         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSavingsAccountTemplate: async (clientId?: number, groupId?: number, productId?: number, staffInSelectedOfficeOnly?: boolean, options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/savingsaccounts/template`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+            if (clientId !== undefined) {
+                localVarQueryParameter['clientId'] = clientId;
+            }
+
+            if (groupId !== undefined) {
+                localVarQueryParameter['groupId'] = groupId;
+            }
+
+            if (productId !== undefined) {
+                localVarQueryParameter['productId'] = productId;
+            }
+
+            if (staffInSelectedOfficeOnly !== undefined) {
+                localVarQueryParameter['staffInSelectedOfficeOnly'] = staffInSelectedOfficeOnly;
+            }
 
 
     
@@ -187,58 +244,6 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * Approve savings application:  Approves savings application so long as its in \'Submitted and pending approval\' state.  Undo approval savings application:  Will move \'approved\' savings application back to \'Submitted and pending approval\' state.  Assign Savings Officer:  Allows you to assign Savings Officer for existing Savings Account.  Unassign Savings Officer:  Allows you to unassign the Savings Officer.  Reject savings application:  Rejects savings application so long as its in \'Submitted and pending approval\' state.  Withdraw savings application:  Used when an applicant withdraws from the savings application. It must be in \'Submitted and pending approval\' state.  Activate a savings account:  Results in an approved savings application being converted into an \'active\' savings account.  Close a savings account:  Results in an Activated savings application being converted into an \'closed\' savings account.  closedOnDate is closure date of savings account  withdrawBalance is a boolean description, true value of this field performs a withdrawal transaction with account\'s running balance.  Mandatory Fields: dateFormat,locale,closedOnDate  Optional Fields: note, withdrawBalance, paymentTypeId, accountNumber, checkNumber, routingCode, receiptNumber, bankNumber  Calculate Interest on Savings Account:  Calculates interest earned on a savings account based on todays date. It does not attempt to post or credit the interest on the account. That is responsibility of the Post Interest API that will likely be called by overnight process.  Post Interest on Savings Account:  Calculates and Posts interest earned on a savings account based on today\'s date and whether an interest posting or crediting event is due.  Block Savings Account:  Blocks Savings account from all types of credit and debit transactions  Unblock Savings Account:  Unblock a blocked account. On unblocking account, user can perform debit and credit transactions  Block Savings Account Credit transactions:  Savings account will be blocked from all types of credit transactions.  Unblock Savings Account Credit transactions:  It unblocks the Saving account\'s credit operations. Now all types of credits can be transacted to Savings account  Block Savings Account Debit transactions:  All types of debit operations from Savings account wil be blocked  Unblock Savings Account debit transactions:  It unblocks the Saving account\'s debit operations. Now all types of debits can be transacted from Savings account  Showing request/response for \'Unassign Savings Officer\'
-         * @summary Approve savings application | Undo approval savings application | Assign Savings Officer | Unassign Savings Officer | Reject savings application | Withdraw savings application | Activate a savings account | Close a savings account | Calculate Interest on Savings Account | Post Interest on Savings Account | Block Savings Account | Unblock Savings Account | Block Savings Account Credit transactions | Unblock Savings Account Credit transactions | Block Savings Account Debit transactions | Unblock Savings Account debit transactions
-         * @param {number} accountId accountId
-         * @param {PostSavingsAccountsAccountIdRequest} postSavingsAccountsAccountIdRequest 
-         * @param {string} [command] command
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        handleCommands6: async (accountId: number, postSavingsAccountsAccountIdRequest: PostSavingsAccountsAccountIdRequest, command?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'accountId' is not null or undefined
-            assertParamExists('handleCommands6', 'accountId', accountId)
-            // verify required parameter 'postSavingsAccountsAccountIdRequest' is not null or undefined
-            assertParamExists('handleCommands6', 'postSavingsAccountsAccountIdRequest', postSavingsAccountsAccountIdRequest)
-            const localVarPath = `/savingsaccounts/{accountId}`
-                .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-            if (command !== undefined) {
-                localVarQueryParameter['command'] = command;
-            }
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(postSavingsAccountsAccountIdRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * 
          * @param {number} parentAccountId 
          * @param {string} [command] 
@@ -281,6 +286,58 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Approve savings application:  Approves savings application so long as its in \'Submitted and pending approval\' state.  Undo approval savings application:  Will move \'approved\' savings application back to \'Submitted and pending approval\' state.  Assign Savings Officer:  Allows you to assign Savings Officer for existing Savings Account.  Unassign Savings Officer:  Allows you to unassign the Savings Officer.  Reject savings application:  Rejects savings application so long as its in \'Submitted and pending approval\' state.  Withdraw savings application:  Used when an applicant withdraws from the savings application. It must be in \'Submitted and pending approval\' state.  Activate a savings account:  Results in an approved savings application being converted into an \'active\' savings account.  Close a savings account:  Results in an Activated savings application being converted into an \'closed\' savings account.  closedOnDate is closure date of savings account  withdrawBalance is a boolean description, true value of this field performs a withdrawal transaction with account\'s running balance.  Mandatory Fields: dateFormat,locale,closedOnDate  Optional Fields: note, withdrawBalance, paymentTypeId, accountNumber, checkNumber, routingCode, receiptNumber, bankNumber  Calculate Interest on Savings Account:  Calculates interest earned on a savings account based on todays date. It does not attempt to post or credit the interest on the account. That is responsibility of the Post Interest API that will likely be called by overnight process.  Post Interest on Savings Account:  Calculates and Posts interest earned on a savings account based on today\'s date and whether an interest posting or crediting event is due.  Block Savings Account:  Blocks Savings account from all types of credit and debit transactions  Unblock Savings Account:  Unblock a blocked account. On unblocking account, user can perform debit and credit transactions  Block Savings Account Credit transactions:  Savings account will be blocked from all types of credit transactions.  Unblock Savings Account Credit transactions:  It unblocks the Saving account\'s credit operations. Now all types of credits can be transacted to Savings account  Block Savings Account Debit transactions:  All types of debit operations from Savings account wil be blocked  Unblock Savings Account debit transactions:  It unblocks the Saving account\'s debit operations. Now all types of debits can be transacted from Savings account  Showing request/response for \'Unassign Savings Officer\'
+         * @summary Approve savings application | Undo approval savings application | Assign Savings Officer | Unassign Savings Officer | Reject savings application | Withdraw savings application | Activate a savings account | Close a savings account | Calculate Interest on Savings Account | Post Interest on Savings Account | Block Savings Account | Unblock Savings Account | Block Savings Account Credit transactions | Unblock Savings Account Credit transactions | Block Savings Account Debit transactions | Unblock Savings Account debit transactions
+         * @param {number} accountId accountId
+         * @param {PostSavingsAccountsAccountIdRequest} postSavingsAccountsAccountIdRequest 
+         * @param {string} [command] command
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        manageSavingsAccount: async (accountId: number, postSavingsAccountsAccountIdRequest: PostSavingsAccountsAccountIdRequest, command?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'accountId' is not null or undefined
+            assertParamExists('manageSavingsAccount', 'accountId', accountId)
+            // verify required parameter 'postSavingsAccountsAccountIdRequest' is not null or undefined
+            assertParamExists('manageSavingsAccount', 'postSavingsAccountsAccountIdRequest', postSavingsAccountsAccountIdRequest)
+            const localVarPath = `/savingsaccounts/{accountId}`
+                .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+            if (command !== undefined) {
+                localVarQueryParameter['command'] = command;
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(postSavingsAccountsAccountIdRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -398,6 +455,57 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
+         * Retrieves a savings application/account  Example Requests :  savingsaccounts/1   savingsaccounts/1?associations=all
+         * @summary Retrieve a savings application/account
+         * @param {number} accountId accountId
+         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * @param {string} [chargeStatus] chargeStatus
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveSavingsAccount: async (accountId: number, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'accountId' is not null or undefined
+            assertParamExists('retrieveSavingsAccount', 'accountId', accountId)
+            const localVarPath = `/savingsaccounts/{accountId}`
+                .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+            if (staffInSelectedOfficeOnly !== undefined) {
+                localVarQueryParameter['staffInSelectedOfficeOnly'] = staffInSelectedOfficeOnly;
+            }
+
+            if (chargeStatus !== undefined) {
+                localVarQueryParameter['chargeStatus'] = chargeStatus;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Lists savings applications/accounts  Example Requests:  savingsaccounts   savingsaccounts?fields=name
          * @summary List savings applications/accounts
          * @param {string} [sqlSearch] sqlSearch
@@ -409,7 +517,7 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAll33: async (sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options: any = {}): Promise<RequestArgs> => {
+        retrieveSavingsAccounts: async (sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/savingsaccounts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -465,100 +573,6 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * Retrieves a savings application/account  Example Requests :  savingsaccounts/1   savingsaccounts/1?associations=all
-         * @summary Retrieve a savings application/account
-         * @param {number} accountId accountId
-         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
-         * @param {string} [chargeStatus] chargeStatus
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveOne24: async (accountId: number, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'accountId' is not null or undefined
-            assertParamExists('retrieveOne24', 'accountId', accountId)
-            const localVarPath = `/savingsaccounts/{accountId}`
-                .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-            if (staffInSelectedOfficeOnly !== undefined) {
-                localVarQueryParameter['staffInSelectedOfficeOnly'] = staffInSelectedOfficeOnly;
-            }
-
-            if (chargeStatus !== undefined) {
-                localVarQueryParameter['chargeStatus'] = chargeStatus;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Submits new savings application  Mandatory Fields: clientId or groupId, productId, submittedOnDate  Optional Fields: accountNo, externalId, fieldOfficerId  Inherited from Product (if not provided): nominalAnnualInterestRate, interestCompoundingPeriodType, interestCalculationType, interestCalculationDaysInYearType, minRequiredOpeningBalance, lockinPeriodFrequency, lockinPeriodFrequencyType, withdrawalFeeForTransfers, allowOverdraft, overdraftLimit, withHoldTax  Additional Mandatory Field if Entity-Datatable Check is enabled for the entity of type Savings: datatables
-         * @summary Submit new savings application
-         * @param {PostSavingsAccountsRequest} postSavingsAccountsRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        submitApplication2: async (postSavingsAccountsRequest: PostSavingsAccountsRequest, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'postSavingsAccountsRequest' is not null or undefined
-            assertParamExists('submitApplication2', 'postSavingsAccountsRequest', postSavingsAccountsRequest)
-            const localVarPath = `/savingsaccounts`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(postSavingsAccountsRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * 
          * @param {string} [body] 
          * @param {*} [options] Override http request option.
@@ -599,17 +613,16 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Requests:  savingsaccounts/template?clientId=1   savingsaccounts/template?clientId=1&productId=1
-         * @summary Retrieve Savings Account Template
-         * @param {number} [clientId] clientId
-         * @param {number} [groupId] groupId
-         * @param {number} [productId] productId
-         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * Submits new savings application  Mandatory Fields: clientId or groupId, productId, submittedOnDate  Optional Fields: accountNo, externalId, fieldOfficerId  Inherited from Product (if not provided): nominalAnnualInterestRate, interestCompoundingPeriodType, interestCalculationType, interestCalculationDaysInYearType, minRequiredOpeningBalance, lockinPeriodFrequency, lockinPeriodFrequencyType, withdrawalFeeForTransfers, allowOverdraft, overdraftLimit, withHoldTax  Additional Mandatory Field if Entity-Datatable Check is enabled for the entity of type Savings: datatables
+         * @summary Submit new savings application
+         * @param {PostSavingsAccountsRequest} postSavingsAccountsRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        template14: async (clientId?: number, groupId?: number, productId?: number, staffInSelectedOfficeOnly?: boolean, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/savingsaccounts/template`;
+        submitSavingsAccountsApplication: async (postSavingsAccountsRequest: PostSavingsAccountsRequest, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'postSavingsAccountsRequest' is not null or undefined
+            assertParamExists('submitSavingsAccountsApplication', 'postSavingsAccountsRequest', postSavingsAccountsRequest)
+            const localVarPath = `/savingsaccounts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -617,7 +630,7 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -627,71 +640,6 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
 
             // authentication tenantid required
             await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-            if (clientId !== undefined) {
-                localVarQueryParameter['clientId'] = clientId;
-            }
-
-            if (groupId !== undefined) {
-                localVarQueryParameter['groupId'] = groupId;
-            }
-
-            if (productId !== undefined) {
-                localVarQueryParameter['productId'] = productId;
-            }
-
-            if (staffInSelectedOfficeOnly !== undefined) {
-                localVarQueryParameter['staffInSelectedOfficeOnly'] = staffInSelectedOfficeOnly;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Modify a savings application:  Savings application can only be modified when in \'Submitted and pending approval\' state. Once the application is approved, the details cannot be changed using this method. Specific api endpoints will be created to allow change of interest detail such as rate, compounding period, posting period etc  Modify savings account withhold tax applicability:  Savings application\'s withhold tax can be modified when in \'Active\' state. Once the application is activated, can modify the account withhold tax to post tax or vice-versaShowing request/response for \'Modify a savings application\'
-         * @summary Modify a savings application | Modify savings account withhold tax applicability
-         * @param {number} accountId accountId
-         * @param {PutSavingsAccountsAccountIdRequest} putSavingsAccountsAccountIdRequest 
-         * @param {string} [command] command
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        update19: async (accountId: number, putSavingsAccountsAccountIdRequest: PutSavingsAccountsAccountIdRequest, command?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'accountId' is not null or undefined
-            assertParamExists('update19', 'accountId', accountId)
-            // verify required parameter 'putSavingsAccountsAccountIdRequest' is not null or undefined
-            assertParamExists('update19', 'putSavingsAccountsAccountIdRequest', putSavingsAccountsAccountIdRequest)
-            const localVarPath = `/savingsaccounts/{accountId}`
-                .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-            if (command !== undefined) {
-                localVarQueryParameter['command'] = command;
-            }
 
 
     
@@ -700,7 +648,7 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
             setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(putSavingsAccountsAccountIdRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(postSavingsAccountsRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -751,6 +699,58 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * Modify a savings application:  Savings application can only be modified when in \'Submitted and pending approval\' state. Once the application is approved, the details cannot be changed using this method. Specific api endpoints will be created to allow change of interest detail such as rate, compounding period, posting period etc  Modify savings account withhold tax applicability:  Savings application\'s withhold tax can be modified when in \'Active\' state. Once the application is activated, can modify the account withhold tax to post tax or vice-versaShowing request/response for \'Modify a savings application\'
+         * @summary Modify a savings application | Modify savings account withhold tax applicability
+         * @param {number} accountId accountId
+         * @param {PutSavingsAccountsAccountIdRequest} putSavingsAccountsAccountIdRequest 
+         * @param {string} [command] command
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateSavingsAccount: async (accountId: number, putSavingsAccountsAccountIdRequest: PutSavingsAccountsAccountIdRequest, command?: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'accountId' is not null or undefined
+            assertParamExists('updateSavingsAccount', 'accountId', accountId)
+            // verify required parameter 'putSavingsAccountsAccountIdRequest' is not null or undefined
+            assertParamExists('updateSavingsAccount', 'putSavingsAccountsAccountIdRequest', putSavingsAccountsAccountIdRequest)
+            const localVarPath = `/savingsaccounts/{accountId}`
+                .replace(`{${"accountId"}}`, encodeURIComponent(String(accountId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+            if (command !== undefined) {
+                localVarQueryParameter['command'] = command;
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(putSavingsAccountsAccountIdRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -768,8 +768,22 @@ export const SavingsAccountApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async delete18(accountId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteSavingsAccountsAccountIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.delete18(accountId, options);
+        async deleteSavingsAccount(accountId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DeleteSavingsAccountsAccountIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteSavingsAccount(accountId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Requests:  savingsaccounts/template?clientId=1   savingsaccounts/template?clientId=1&productId=1
+         * @summary Retrieve Savings Account Template
+         * @param {number} [clientId] clientId
+         * @param {number} [groupId] groupId
+         * @param {number} [productId] productId
+         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSavingsAccountTemplate(clientId?: number, groupId?: number, productId?: number, staffInSelectedOfficeOnly?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSavingsAccountsTemplateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSavingsAccountTemplate(clientId, groupId, productId, staffInSelectedOfficeOnly, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -796,19 +810,6 @@ export const SavingsAccountApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Approve savings application:  Approves savings application so long as its in \'Submitted and pending approval\' state.  Undo approval savings application:  Will move \'approved\' savings application back to \'Submitted and pending approval\' state.  Assign Savings Officer:  Allows you to assign Savings Officer for existing Savings Account.  Unassign Savings Officer:  Allows you to unassign the Savings Officer.  Reject savings application:  Rejects savings application so long as its in \'Submitted and pending approval\' state.  Withdraw savings application:  Used when an applicant withdraws from the savings application. It must be in \'Submitted and pending approval\' state.  Activate a savings account:  Results in an approved savings application being converted into an \'active\' savings account.  Close a savings account:  Results in an Activated savings application being converted into an \'closed\' savings account.  closedOnDate is closure date of savings account  withdrawBalance is a boolean description, true value of this field performs a withdrawal transaction with account\'s running balance.  Mandatory Fields: dateFormat,locale,closedOnDate  Optional Fields: note, withdrawBalance, paymentTypeId, accountNumber, checkNumber, routingCode, receiptNumber, bankNumber  Calculate Interest on Savings Account:  Calculates interest earned on a savings account based on todays date. It does not attempt to post or credit the interest on the account. That is responsibility of the Post Interest API that will likely be called by overnight process.  Post Interest on Savings Account:  Calculates and Posts interest earned on a savings account based on today\'s date and whether an interest posting or crediting event is due.  Block Savings Account:  Blocks Savings account from all types of credit and debit transactions  Unblock Savings Account:  Unblock a blocked account. On unblocking account, user can perform debit and credit transactions  Block Savings Account Credit transactions:  Savings account will be blocked from all types of credit transactions.  Unblock Savings Account Credit transactions:  It unblocks the Saving account\'s credit operations. Now all types of credits can be transacted to Savings account  Block Savings Account Debit transactions:  All types of debit operations from Savings account wil be blocked  Unblock Savings Account debit transactions:  It unblocks the Saving account\'s debit operations. Now all types of debits can be transacted from Savings account  Showing request/response for \'Unassign Savings Officer\'
-         * @summary Approve savings application | Undo approval savings application | Assign Savings Officer | Unassign Savings Officer | Reject savings application | Withdraw savings application | Activate a savings account | Close a savings account | Calculate Interest on Savings Account | Post Interest on Savings Account | Block Savings Account | Unblock Savings Account | Block Savings Account Credit transactions | Unblock Savings Account Credit transactions | Block Savings Account Debit transactions | Unblock Savings Account debit transactions
-         * @param {number} accountId accountId
-         * @param {PostSavingsAccountsAccountIdRequest} postSavingsAccountsAccountIdRequest 
-         * @param {string} [command] command
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async handleCommands6(accountId: number, postSavingsAccountsAccountIdRequest: PostSavingsAccountsAccountIdRequest, command?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostSavingsAccountsAccountIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.handleCommands6(accountId, postSavingsAccountsAccountIdRequest, command, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * 
          * @param {number} parentAccountId 
          * @param {string} [command] 
@@ -818,6 +819,19 @@ export const SavingsAccountApiFp = function(configuration?: Configuration) {
          */
         async handleGSIMCommands(parentAccountId: number, command?: string, body?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.handleGSIMCommands(parentAccountId, command, body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Approve savings application:  Approves savings application so long as its in \'Submitted and pending approval\' state.  Undo approval savings application:  Will move \'approved\' savings application back to \'Submitted and pending approval\' state.  Assign Savings Officer:  Allows you to assign Savings Officer for existing Savings Account.  Unassign Savings Officer:  Allows you to unassign the Savings Officer.  Reject savings application:  Rejects savings application so long as its in \'Submitted and pending approval\' state.  Withdraw savings application:  Used when an applicant withdraws from the savings application. It must be in \'Submitted and pending approval\' state.  Activate a savings account:  Results in an approved savings application being converted into an \'active\' savings account.  Close a savings account:  Results in an Activated savings application being converted into an \'closed\' savings account.  closedOnDate is closure date of savings account  withdrawBalance is a boolean description, true value of this field performs a withdrawal transaction with account\'s running balance.  Mandatory Fields: dateFormat,locale,closedOnDate  Optional Fields: note, withdrawBalance, paymentTypeId, accountNumber, checkNumber, routingCode, receiptNumber, bankNumber  Calculate Interest on Savings Account:  Calculates interest earned on a savings account based on todays date. It does not attempt to post or credit the interest on the account. That is responsibility of the Post Interest API that will likely be called by overnight process.  Post Interest on Savings Account:  Calculates and Posts interest earned on a savings account based on today\'s date and whether an interest posting or crediting event is due.  Block Savings Account:  Blocks Savings account from all types of credit and debit transactions  Unblock Savings Account:  Unblock a blocked account. On unblocking account, user can perform debit and credit transactions  Block Savings Account Credit transactions:  Savings account will be blocked from all types of credit transactions.  Unblock Savings Account Credit transactions:  It unblocks the Saving account\'s credit operations. Now all types of credits can be transacted to Savings account  Block Savings Account Debit transactions:  All types of debit operations from Savings account wil be blocked  Unblock Savings Account debit transactions:  It unblocks the Saving account\'s debit operations. Now all types of debits can be transacted from Savings account  Showing request/response for \'Unassign Savings Officer\'
+         * @summary Approve savings application | Undo approval savings application | Assign Savings Officer | Unassign Savings Officer | Reject savings application | Withdraw savings application | Activate a savings account | Close a savings account | Calculate Interest on Savings Account | Post Interest on Savings Account | Block Savings Account | Unblock Savings Account | Block Savings Account Credit transactions | Unblock Savings Account Credit transactions | Block Savings Account Debit transactions | Unblock Savings Account debit transactions
+         * @param {number} accountId accountId
+         * @param {PostSavingsAccountsAccountIdRequest} postSavingsAccountsAccountIdRequest 
+         * @param {string} [command] command
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async manageSavingsAccount(accountId: number, postSavingsAccountsAccountIdRequest: PostSavingsAccountsAccountIdRequest, command?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostSavingsAccountsAccountIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.manageSavingsAccount(accountId, postSavingsAccountsAccountIdRequest, command, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -845,6 +859,19 @@ export const SavingsAccountApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Retrieves a savings application/account  Example Requests :  savingsaccounts/1   savingsaccounts/1?associations=all
+         * @summary Retrieve a savings application/account
+         * @param {number} accountId accountId
+         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * @param {string} [chargeStatus] chargeStatus
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveSavingsAccount(accountId: number, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSavingsAccountsAccountIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveSavingsAccount(accountId, staffInSelectedOfficeOnly, chargeStatus, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Lists savings applications/accounts  Example Requests:  savingsaccounts   savingsaccounts?fields=name
          * @summary List savings applications/accounts
          * @param {string} [sqlSearch] sqlSearch
@@ -856,32 +883,8 @@ export const SavingsAccountApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveAll33(sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSavingsAccountsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAll33(sqlSearch, externalId, offset, limit, orderBy, sortOrder, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Retrieves a savings application/account  Example Requests :  savingsaccounts/1   savingsaccounts/1?associations=all
-         * @summary Retrieve a savings application/account
-         * @param {number} accountId accountId
-         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
-         * @param {string} [chargeStatus] chargeStatus
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveOne24(accountId: number, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSavingsAccountsAccountIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveOne24(accountId, staffInSelectedOfficeOnly, chargeStatus, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Submits new savings application  Mandatory Fields: clientId or groupId, productId, submittedOnDate  Optional Fields: accountNo, externalId, fieldOfficerId  Inherited from Product (if not provided): nominalAnnualInterestRate, interestCompoundingPeriodType, interestCalculationType, interestCalculationDaysInYearType, minRequiredOpeningBalance, lockinPeriodFrequency, lockinPeriodFrequencyType, withdrawalFeeForTransfers, allowOverdraft, overdraftLimit, withHoldTax  Additional Mandatory Field if Entity-Datatable Check is enabled for the entity of type Savings: datatables
-         * @summary Submit new savings application
-         * @param {PostSavingsAccountsRequest} postSavingsAccountsRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async submitApplication2(postSavingsAccountsRequest: PostSavingsAccountsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostSavingsAccountsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.submitApplication2(postSavingsAccountsRequest, options);
+        async retrieveSavingsAccounts(sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSavingsAccountsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveSavingsAccounts(sqlSearch, externalId, offset, limit, orderBy, sortOrder, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -895,30 +898,14 @@ export const SavingsAccountApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Requests:  savingsaccounts/template?clientId=1   savingsaccounts/template?clientId=1&productId=1
-         * @summary Retrieve Savings Account Template
-         * @param {number} [clientId] clientId
-         * @param {number} [groupId] groupId
-         * @param {number} [productId] productId
-         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * Submits new savings application  Mandatory Fields: clientId or groupId, productId, submittedOnDate  Optional Fields: accountNo, externalId, fieldOfficerId  Inherited from Product (if not provided): nominalAnnualInterestRate, interestCompoundingPeriodType, interestCalculationType, interestCalculationDaysInYearType, minRequiredOpeningBalance, lockinPeriodFrequency, lockinPeriodFrequencyType, withdrawalFeeForTransfers, allowOverdraft, overdraftLimit, withHoldTax  Additional Mandatory Field if Entity-Datatable Check is enabled for the entity of type Savings: datatables
+         * @summary Submit new savings application
+         * @param {PostSavingsAccountsRequest} postSavingsAccountsRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async template14(clientId?: number, groupId?: number, productId?: number, staffInSelectedOfficeOnly?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSavingsAccountsTemplateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.template14(clientId, groupId, productId, staffInSelectedOfficeOnly, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Modify a savings application:  Savings application can only be modified when in \'Submitted and pending approval\' state. Once the application is approved, the details cannot be changed using this method. Specific api endpoints will be created to allow change of interest detail such as rate, compounding period, posting period etc  Modify savings account withhold tax applicability:  Savings application\'s withhold tax can be modified when in \'Active\' state. Once the application is activated, can modify the account withhold tax to post tax or vice-versaShowing request/response for \'Modify a savings application\'
-         * @summary Modify a savings application | Modify savings account withhold tax applicability
-         * @param {number} accountId accountId
-         * @param {PutSavingsAccountsAccountIdRequest} putSavingsAccountsAccountIdRequest 
-         * @param {string} [command] command
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async update19(accountId: number, putSavingsAccountsAccountIdRequest: PutSavingsAccountsAccountIdRequest, command?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutSavingsAccountsAccountIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update19(accountId, putSavingsAccountsAccountIdRequest, command, options);
+        async submitSavingsAccountsApplication(postSavingsAccountsRequest: PostSavingsAccountsRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostSavingsAccountsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.submitSavingsAccountsApplication(postSavingsAccountsRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -930,6 +917,19 @@ export const SavingsAccountApiFp = function(configuration?: Configuration) {
          */
         async updateGsim(parentAccountId: number, body?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateGsim(parentAccountId, body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Modify a savings application:  Savings application can only be modified when in \'Submitted and pending approval\' state. Once the application is approved, the details cannot be changed using this method. Specific api endpoints will be created to allow change of interest detail such as rate, compounding period, posting period etc  Modify savings account withhold tax applicability:  Savings application\'s withhold tax can be modified when in \'Active\' state. Once the application is activated, can modify the account withhold tax to post tax or vice-versaShowing request/response for \'Modify a savings application\'
+         * @summary Modify a savings application | Modify savings account withhold tax applicability
+         * @param {number} accountId accountId
+         * @param {PutSavingsAccountsAccountIdRequest} putSavingsAccountsAccountIdRequest 
+         * @param {string} [command] command
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateSavingsAccount(accountId: number, putSavingsAccountsAccountIdRequest: PutSavingsAccountsAccountIdRequest, command?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PutSavingsAccountsAccountIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateSavingsAccount(accountId, putSavingsAccountsAccountIdRequest, command, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -949,8 +949,21 @@ export const SavingsAccountApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete18(accountId: number, options?: any): AxiosPromise<DeleteSavingsAccountsAccountIdResponse> {
-            return localVarFp.delete18(accountId, options).then((request) => request(axios, basePath));
+        deleteSavingsAccount(accountId: number, options?: any): AxiosPromise<DeleteSavingsAccountsAccountIdResponse> {
+            return localVarFp.deleteSavingsAccount(accountId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Requests:  savingsaccounts/template?clientId=1   savingsaccounts/template?clientId=1&productId=1
+         * @summary Retrieve Savings Account Template
+         * @param {number} [clientId] clientId
+         * @param {number} [groupId] groupId
+         * @param {number} [productId] productId
+         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSavingsAccountTemplate(clientId?: number, groupId?: number, productId?: number, staffInSelectedOfficeOnly?: boolean, options?: any): AxiosPromise<GetSavingsAccountsTemplateResponse> {
+            return localVarFp.getSavingsAccountTemplate(clientId, groupId, productId, staffInSelectedOfficeOnly, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -974,18 +987,6 @@ export const SavingsAccountApiFactory = function (configuration?: Configuration,
             return localVarFp.getSavingsTransactionTemplate(officeId, dateFormat, options).then((request) => request(axios, basePath));
         },
         /**
-         * Approve savings application:  Approves savings application so long as its in \'Submitted and pending approval\' state.  Undo approval savings application:  Will move \'approved\' savings application back to \'Submitted and pending approval\' state.  Assign Savings Officer:  Allows you to assign Savings Officer for existing Savings Account.  Unassign Savings Officer:  Allows you to unassign the Savings Officer.  Reject savings application:  Rejects savings application so long as its in \'Submitted and pending approval\' state.  Withdraw savings application:  Used when an applicant withdraws from the savings application. It must be in \'Submitted and pending approval\' state.  Activate a savings account:  Results in an approved savings application being converted into an \'active\' savings account.  Close a savings account:  Results in an Activated savings application being converted into an \'closed\' savings account.  closedOnDate is closure date of savings account  withdrawBalance is a boolean description, true value of this field performs a withdrawal transaction with account\'s running balance.  Mandatory Fields: dateFormat,locale,closedOnDate  Optional Fields: note, withdrawBalance, paymentTypeId, accountNumber, checkNumber, routingCode, receiptNumber, bankNumber  Calculate Interest on Savings Account:  Calculates interest earned on a savings account based on todays date. It does not attempt to post or credit the interest on the account. That is responsibility of the Post Interest API that will likely be called by overnight process.  Post Interest on Savings Account:  Calculates and Posts interest earned on a savings account based on today\'s date and whether an interest posting or crediting event is due.  Block Savings Account:  Blocks Savings account from all types of credit and debit transactions  Unblock Savings Account:  Unblock a blocked account. On unblocking account, user can perform debit and credit transactions  Block Savings Account Credit transactions:  Savings account will be blocked from all types of credit transactions.  Unblock Savings Account Credit transactions:  It unblocks the Saving account\'s credit operations. Now all types of credits can be transacted to Savings account  Block Savings Account Debit transactions:  All types of debit operations from Savings account wil be blocked  Unblock Savings Account debit transactions:  It unblocks the Saving account\'s debit operations. Now all types of debits can be transacted from Savings account  Showing request/response for \'Unassign Savings Officer\'
-         * @summary Approve savings application | Undo approval savings application | Assign Savings Officer | Unassign Savings Officer | Reject savings application | Withdraw savings application | Activate a savings account | Close a savings account | Calculate Interest on Savings Account | Post Interest on Savings Account | Block Savings Account | Unblock Savings Account | Block Savings Account Credit transactions | Unblock Savings Account Credit transactions | Block Savings Account Debit transactions | Unblock Savings Account debit transactions
-         * @param {number} accountId accountId
-         * @param {PostSavingsAccountsAccountIdRequest} postSavingsAccountsAccountIdRequest 
-         * @param {string} [command] command
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        handleCommands6(accountId: number, postSavingsAccountsAccountIdRequest: PostSavingsAccountsAccountIdRequest, command?: string, options?: any): AxiosPromise<PostSavingsAccountsAccountIdResponse> {
-            return localVarFp.handleCommands6(accountId, postSavingsAccountsAccountIdRequest, command, options).then((request) => request(axios, basePath));
-        },
-        /**
          * 
          * @param {number} parentAccountId 
          * @param {string} [command] 
@@ -995,6 +996,18 @@ export const SavingsAccountApiFactory = function (configuration?: Configuration,
          */
         handleGSIMCommands(parentAccountId: number, command?: string, body?: string, options?: any): AxiosPromise<string> {
             return localVarFp.handleGSIMCommands(parentAccountId, command, body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Approve savings application:  Approves savings application so long as its in \'Submitted and pending approval\' state.  Undo approval savings application:  Will move \'approved\' savings application back to \'Submitted and pending approval\' state.  Assign Savings Officer:  Allows you to assign Savings Officer for existing Savings Account.  Unassign Savings Officer:  Allows you to unassign the Savings Officer.  Reject savings application:  Rejects savings application so long as its in \'Submitted and pending approval\' state.  Withdraw savings application:  Used when an applicant withdraws from the savings application. It must be in \'Submitted and pending approval\' state.  Activate a savings account:  Results in an approved savings application being converted into an \'active\' savings account.  Close a savings account:  Results in an Activated savings application being converted into an \'closed\' savings account.  closedOnDate is closure date of savings account  withdrawBalance is a boolean description, true value of this field performs a withdrawal transaction with account\'s running balance.  Mandatory Fields: dateFormat,locale,closedOnDate  Optional Fields: note, withdrawBalance, paymentTypeId, accountNumber, checkNumber, routingCode, receiptNumber, bankNumber  Calculate Interest on Savings Account:  Calculates interest earned on a savings account based on todays date. It does not attempt to post or credit the interest on the account. That is responsibility of the Post Interest API that will likely be called by overnight process.  Post Interest on Savings Account:  Calculates and Posts interest earned on a savings account based on today\'s date and whether an interest posting or crediting event is due.  Block Savings Account:  Blocks Savings account from all types of credit and debit transactions  Unblock Savings Account:  Unblock a blocked account. On unblocking account, user can perform debit and credit transactions  Block Savings Account Credit transactions:  Savings account will be blocked from all types of credit transactions.  Unblock Savings Account Credit transactions:  It unblocks the Saving account\'s credit operations. Now all types of credits can be transacted to Savings account  Block Savings Account Debit transactions:  All types of debit operations from Savings account wil be blocked  Unblock Savings Account debit transactions:  It unblocks the Saving account\'s debit operations. Now all types of debits can be transacted from Savings account  Showing request/response for \'Unassign Savings Officer\'
+         * @summary Approve savings application | Undo approval savings application | Assign Savings Officer | Unassign Savings Officer | Reject savings application | Withdraw savings application | Activate a savings account | Close a savings account | Calculate Interest on Savings Account | Post Interest on Savings Account | Block Savings Account | Unblock Savings Account | Block Savings Account Credit transactions | Unblock Savings Account Credit transactions | Block Savings Account Debit transactions | Unblock Savings Account debit transactions
+         * @param {number} accountId accountId
+         * @param {PostSavingsAccountsAccountIdRequest} postSavingsAccountsAccountIdRequest 
+         * @param {string} [command] command
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        manageSavingsAccount(accountId: number, postSavingsAccountsAccountIdRequest: PostSavingsAccountsAccountIdRequest, command?: string, options?: any): AxiosPromise<PostSavingsAccountsAccountIdResponse> {
+            return localVarFp.manageSavingsAccount(accountId, postSavingsAccountsAccountIdRequest, command, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1019,6 +1032,18 @@ export const SavingsAccountApiFactory = function (configuration?: Configuration,
             return localVarFp.postSavingsTransactionTemplate(file, locale, dateFormat, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves a savings application/account  Example Requests :  savingsaccounts/1   savingsaccounts/1?associations=all
+         * @summary Retrieve a savings application/account
+         * @param {number} accountId accountId
+         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * @param {string} [chargeStatus] chargeStatus
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveSavingsAccount(accountId: number, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options?: any): AxiosPromise<GetSavingsAccountsAccountIdResponse> {
+            return localVarFp.retrieveSavingsAccount(accountId, staffInSelectedOfficeOnly, chargeStatus, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Lists savings applications/accounts  Example Requests:  savingsaccounts   savingsaccounts?fields=name
          * @summary List savings applications/accounts
          * @param {string} [sqlSearch] sqlSearch
@@ -1030,30 +1055,8 @@ export const SavingsAccountApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAll33(sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options?: any): AxiosPromise<GetSavingsAccountsResponse> {
-            return localVarFp.retrieveAll33(sqlSearch, externalId, offset, limit, orderBy, sortOrder, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Retrieves a savings application/account  Example Requests :  savingsaccounts/1   savingsaccounts/1?associations=all
-         * @summary Retrieve a savings application/account
-         * @param {number} accountId accountId
-         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
-         * @param {string} [chargeStatus] chargeStatus
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveOne24(accountId: number, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options?: any): AxiosPromise<GetSavingsAccountsAccountIdResponse> {
-            return localVarFp.retrieveOne24(accountId, staffInSelectedOfficeOnly, chargeStatus, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Submits new savings application  Mandatory Fields: clientId or groupId, productId, submittedOnDate  Optional Fields: accountNo, externalId, fieldOfficerId  Inherited from Product (if not provided): nominalAnnualInterestRate, interestCompoundingPeriodType, interestCalculationType, interestCalculationDaysInYearType, minRequiredOpeningBalance, lockinPeriodFrequency, lockinPeriodFrequencyType, withdrawalFeeForTransfers, allowOverdraft, overdraftLimit, withHoldTax  Additional Mandatory Field if Entity-Datatable Check is enabled for the entity of type Savings: datatables
-         * @summary Submit new savings application
-         * @param {PostSavingsAccountsRequest} postSavingsAccountsRequest 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        submitApplication2(postSavingsAccountsRequest: PostSavingsAccountsRequest, options?: any): AxiosPromise<PostSavingsAccountsResponse> {
-            return localVarFp.submitApplication2(postSavingsAccountsRequest, options).then((request) => request(axios, basePath));
+        retrieveSavingsAccounts(sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options?: any): AxiosPromise<GetSavingsAccountsResponse> {
+            return localVarFp.retrieveSavingsAccounts(sqlSearch, externalId, offset, limit, orderBy, sortOrder, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1065,29 +1068,14 @@ export const SavingsAccountApiFactory = function (configuration?: Configuration,
             return localVarFp.submitGSIMApplication(body, options).then((request) => request(axios, basePath));
         },
         /**
-         * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Requests:  savingsaccounts/template?clientId=1   savingsaccounts/template?clientId=1&productId=1
-         * @summary Retrieve Savings Account Template
-         * @param {number} [clientId] clientId
-         * @param {number} [groupId] groupId
-         * @param {number} [productId] productId
-         * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+         * Submits new savings application  Mandatory Fields: clientId or groupId, productId, submittedOnDate  Optional Fields: accountNo, externalId, fieldOfficerId  Inherited from Product (if not provided): nominalAnnualInterestRate, interestCompoundingPeriodType, interestCalculationType, interestCalculationDaysInYearType, minRequiredOpeningBalance, lockinPeriodFrequency, lockinPeriodFrequencyType, withdrawalFeeForTransfers, allowOverdraft, overdraftLimit, withHoldTax  Additional Mandatory Field if Entity-Datatable Check is enabled for the entity of type Savings: datatables
+         * @summary Submit new savings application
+         * @param {PostSavingsAccountsRequest} postSavingsAccountsRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        template14(clientId?: number, groupId?: number, productId?: number, staffInSelectedOfficeOnly?: boolean, options?: any): AxiosPromise<GetSavingsAccountsTemplateResponse> {
-            return localVarFp.template14(clientId, groupId, productId, staffInSelectedOfficeOnly, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Modify a savings application:  Savings application can only be modified when in \'Submitted and pending approval\' state. Once the application is approved, the details cannot be changed using this method. Specific api endpoints will be created to allow change of interest detail such as rate, compounding period, posting period etc  Modify savings account withhold tax applicability:  Savings application\'s withhold tax can be modified when in \'Active\' state. Once the application is activated, can modify the account withhold tax to post tax or vice-versaShowing request/response for \'Modify a savings application\'
-         * @summary Modify a savings application | Modify savings account withhold tax applicability
-         * @param {number} accountId accountId
-         * @param {PutSavingsAccountsAccountIdRequest} putSavingsAccountsAccountIdRequest 
-         * @param {string} [command] command
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        update19(accountId: number, putSavingsAccountsAccountIdRequest: PutSavingsAccountsAccountIdRequest, command?: string, options?: any): AxiosPromise<PutSavingsAccountsAccountIdResponse> {
-            return localVarFp.update19(accountId, putSavingsAccountsAccountIdRequest, command, options).then((request) => request(axios, basePath));
+        submitSavingsAccountsApplication(postSavingsAccountsRequest: PostSavingsAccountsRequest, options?: any): AxiosPromise<PostSavingsAccountsResponse> {
+            return localVarFp.submitSavingsAccountsApplication(postSavingsAccountsRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -1098,6 +1086,18 @@ export const SavingsAccountApiFactory = function (configuration?: Configuration,
          */
         updateGsim(parentAccountId: number, body?: string, options?: any): AxiosPromise<string> {
             return localVarFp.updateGsim(parentAccountId, body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Modify a savings application:  Savings application can only be modified when in \'Submitted and pending approval\' state. Once the application is approved, the details cannot be changed using this method. Specific api endpoints will be created to allow change of interest detail such as rate, compounding period, posting period etc  Modify savings account withhold tax applicability:  Savings application\'s withhold tax can be modified when in \'Active\' state. Once the application is activated, can modify the account withhold tax to post tax or vice-versaShowing request/response for \'Modify a savings application\'
+         * @summary Modify a savings application | Modify savings account withhold tax applicability
+         * @param {number} accountId accountId
+         * @param {PutSavingsAccountsAccountIdRequest} putSavingsAccountsAccountIdRequest 
+         * @param {string} [command] command
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateSavingsAccount(accountId: number, putSavingsAccountsAccountIdRequest: PutSavingsAccountsAccountIdRequest, command?: string, options?: any): AxiosPromise<PutSavingsAccountsAccountIdResponse> {
+            return localVarFp.updateSavingsAccount(accountId, putSavingsAccountsAccountIdRequest, command, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1117,8 +1117,23 @@ export class SavingsAccountApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SavingsAccountApi
      */
-    public delete18(accountId: number, options?: any) {
-        return SavingsAccountApiFp(this.configuration).delete18(accountId, options).then((request) => request(this.axios, this.basePath));
+    public deleteSavingsAccount(accountId: number, options?: any) {
+        return SavingsAccountApiFp(this.configuration).deleteSavingsAccount(accountId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Requests:  savingsaccounts/template?clientId=1   savingsaccounts/template?clientId=1&productId=1
+     * @summary Retrieve Savings Account Template
+     * @param {number} [clientId] clientId
+     * @param {number} [groupId] groupId
+     * @param {number} [productId] productId
+     * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SavingsAccountApi
+     */
+    public getSavingsAccountTemplate(clientId?: number, groupId?: number, productId?: number, staffInSelectedOfficeOnly?: boolean, options?: any) {
+        return SavingsAccountApiFp(this.configuration).getSavingsAccountTemplate(clientId, groupId, productId, staffInSelectedOfficeOnly, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1147,20 +1162,6 @@ export class SavingsAccountApi extends BaseAPI {
     }
 
     /**
-     * Approve savings application:  Approves savings application so long as its in \'Submitted and pending approval\' state.  Undo approval savings application:  Will move \'approved\' savings application back to \'Submitted and pending approval\' state.  Assign Savings Officer:  Allows you to assign Savings Officer for existing Savings Account.  Unassign Savings Officer:  Allows you to unassign the Savings Officer.  Reject savings application:  Rejects savings application so long as its in \'Submitted and pending approval\' state.  Withdraw savings application:  Used when an applicant withdraws from the savings application. It must be in \'Submitted and pending approval\' state.  Activate a savings account:  Results in an approved savings application being converted into an \'active\' savings account.  Close a savings account:  Results in an Activated savings application being converted into an \'closed\' savings account.  closedOnDate is closure date of savings account  withdrawBalance is a boolean description, true value of this field performs a withdrawal transaction with account\'s running balance.  Mandatory Fields: dateFormat,locale,closedOnDate  Optional Fields: note, withdrawBalance, paymentTypeId, accountNumber, checkNumber, routingCode, receiptNumber, bankNumber  Calculate Interest on Savings Account:  Calculates interest earned on a savings account based on todays date. It does not attempt to post or credit the interest on the account. That is responsibility of the Post Interest API that will likely be called by overnight process.  Post Interest on Savings Account:  Calculates and Posts interest earned on a savings account based on today\'s date and whether an interest posting or crediting event is due.  Block Savings Account:  Blocks Savings account from all types of credit and debit transactions  Unblock Savings Account:  Unblock a blocked account. On unblocking account, user can perform debit and credit transactions  Block Savings Account Credit transactions:  Savings account will be blocked from all types of credit transactions.  Unblock Savings Account Credit transactions:  It unblocks the Saving account\'s credit operations. Now all types of credits can be transacted to Savings account  Block Savings Account Debit transactions:  All types of debit operations from Savings account wil be blocked  Unblock Savings Account debit transactions:  It unblocks the Saving account\'s debit operations. Now all types of debits can be transacted from Savings account  Showing request/response for \'Unassign Savings Officer\'
-     * @summary Approve savings application | Undo approval savings application | Assign Savings Officer | Unassign Savings Officer | Reject savings application | Withdraw savings application | Activate a savings account | Close a savings account | Calculate Interest on Savings Account | Post Interest on Savings Account | Block Savings Account | Unblock Savings Account | Block Savings Account Credit transactions | Unblock Savings Account Credit transactions | Block Savings Account Debit transactions | Unblock Savings Account debit transactions
-     * @param {number} accountId accountId
-     * @param {PostSavingsAccountsAccountIdRequest} postSavingsAccountsAccountIdRequest 
-     * @param {string} [command] command
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SavingsAccountApi
-     */
-    public handleCommands6(accountId: number, postSavingsAccountsAccountIdRequest: PostSavingsAccountsAccountIdRequest, command?: string, options?: any) {
-        return SavingsAccountApiFp(this.configuration).handleCommands6(accountId, postSavingsAccountsAccountIdRequest, command, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * 
      * @param {number} parentAccountId 
      * @param {string} [command] 
@@ -1171,6 +1172,20 @@ export class SavingsAccountApi extends BaseAPI {
      */
     public handleGSIMCommands(parentAccountId: number, command?: string, body?: string, options?: any) {
         return SavingsAccountApiFp(this.configuration).handleGSIMCommands(parentAccountId, command, body, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Approve savings application:  Approves savings application so long as its in \'Submitted and pending approval\' state.  Undo approval savings application:  Will move \'approved\' savings application back to \'Submitted and pending approval\' state.  Assign Savings Officer:  Allows you to assign Savings Officer for existing Savings Account.  Unassign Savings Officer:  Allows you to unassign the Savings Officer.  Reject savings application:  Rejects savings application so long as its in \'Submitted and pending approval\' state.  Withdraw savings application:  Used when an applicant withdraws from the savings application. It must be in \'Submitted and pending approval\' state.  Activate a savings account:  Results in an approved savings application being converted into an \'active\' savings account.  Close a savings account:  Results in an Activated savings application being converted into an \'closed\' savings account.  closedOnDate is closure date of savings account  withdrawBalance is a boolean description, true value of this field performs a withdrawal transaction with account\'s running balance.  Mandatory Fields: dateFormat,locale,closedOnDate  Optional Fields: note, withdrawBalance, paymentTypeId, accountNumber, checkNumber, routingCode, receiptNumber, bankNumber  Calculate Interest on Savings Account:  Calculates interest earned on a savings account based on todays date. It does not attempt to post or credit the interest on the account. That is responsibility of the Post Interest API that will likely be called by overnight process.  Post Interest on Savings Account:  Calculates and Posts interest earned on a savings account based on today\'s date and whether an interest posting or crediting event is due.  Block Savings Account:  Blocks Savings account from all types of credit and debit transactions  Unblock Savings Account:  Unblock a blocked account. On unblocking account, user can perform debit and credit transactions  Block Savings Account Credit transactions:  Savings account will be blocked from all types of credit transactions.  Unblock Savings Account Credit transactions:  It unblocks the Saving account\'s credit operations. Now all types of credits can be transacted to Savings account  Block Savings Account Debit transactions:  All types of debit operations from Savings account wil be blocked  Unblock Savings Account debit transactions:  It unblocks the Saving account\'s debit operations. Now all types of debits can be transacted from Savings account  Showing request/response for \'Unassign Savings Officer\'
+     * @summary Approve savings application | Undo approval savings application | Assign Savings Officer | Unassign Savings Officer | Reject savings application | Withdraw savings application | Activate a savings account | Close a savings account | Calculate Interest on Savings Account | Post Interest on Savings Account | Block Savings Account | Unblock Savings Account | Block Savings Account Credit transactions | Unblock Savings Account Credit transactions | Block Savings Account Debit transactions | Unblock Savings Account debit transactions
+     * @param {number} accountId accountId
+     * @param {PostSavingsAccountsAccountIdRequest} postSavingsAccountsAccountIdRequest 
+     * @param {string} [command] command
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SavingsAccountApi
+     */
+    public manageSavingsAccount(accountId: number, postSavingsAccountsAccountIdRequest: PostSavingsAccountsAccountIdRequest, command?: string, options?: any) {
+        return SavingsAccountApiFp(this.configuration).manageSavingsAccount(accountId, postSavingsAccountsAccountIdRequest, command, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1200,6 +1215,20 @@ export class SavingsAccountApi extends BaseAPI {
     }
 
     /**
+     * Retrieves a savings application/account  Example Requests :  savingsaccounts/1   savingsaccounts/1?associations=all
+     * @summary Retrieve a savings application/account
+     * @param {number} accountId accountId
+     * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+     * @param {string} [chargeStatus] chargeStatus
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SavingsAccountApi
+     */
+    public retrieveSavingsAccount(accountId: number, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options?: any) {
+        return SavingsAccountApiFp(this.configuration).retrieveSavingsAccount(accountId, staffInSelectedOfficeOnly, chargeStatus, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Lists savings applications/accounts  Example Requests:  savingsaccounts   savingsaccounts?fields=name
      * @summary List savings applications/accounts
      * @param {string} [sqlSearch] sqlSearch
@@ -1212,34 +1241,8 @@ export class SavingsAccountApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SavingsAccountApi
      */
-    public retrieveAll33(sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options?: any) {
-        return SavingsAccountApiFp(this.configuration).retrieveAll33(sqlSearch, externalId, offset, limit, orderBy, sortOrder, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Retrieves a savings application/account  Example Requests :  savingsaccounts/1   savingsaccounts/1?associations=all
-     * @summary Retrieve a savings application/account
-     * @param {number} accountId accountId
-     * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
-     * @param {string} [chargeStatus] chargeStatus
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SavingsAccountApi
-     */
-    public retrieveOne24(accountId: number, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options?: any) {
-        return SavingsAccountApiFp(this.configuration).retrieveOne24(accountId, staffInSelectedOfficeOnly, chargeStatus, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Submits new savings application  Mandatory Fields: clientId or groupId, productId, submittedOnDate  Optional Fields: accountNo, externalId, fieldOfficerId  Inherited from Product (if not provided): nominalAnnualInterestRate, interestCompoundingPeriodType, interestCalculationType, interestCalculationDaysInYearType, minRequiredOpeningBalance, lockinPeriodFrequency, lockinPeriodFrequencyType, withdrawalFeeForTransfers, allowOverdraft, overdraftLimit, withHoldTax  Additional Mandatory Field if Entity-Datatable Check is enabled for the entity of type Savings: datatables
-     * @summary Submit new savings application
-     * @param {PostSavingsAccountsRequest} postSavingsAccountsRequest 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SavingsAccountApi
-     */
-    public submitApplication2(postSavingsAccountsRequest: PostSavingsAccountsRequest, options?: any) {
-        return SavingsAccountApiFp(this.configuration).submitApplication2(postSavingsAccountsRequest, options).then((request) => request(this.axios, this.basePath));
+    public retrieveSavingsAccounts(sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, options?: any) {
+        return SavingsAccountApiFp(this.configuration).retrieveSavingsAccounts(sqlSearch, externalId, offset, limit, orderBy, sortOrder, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1254,32 +1257,15 @@ export class SavingsAccountApi extends BaseAPI {
     }
 
     /**
-     * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:  Field Defaults Allowed Value Lists  Example Requests:  savingsaccounts/template?clientId=1   savingsaccounts/template?clientId=1&productId=1
-     * @summary Retrieve Savings Account Template
-     * @param {number} [clientId] clientId
-     * @param {number} [groupId] groupId
-     * @param {number} [productId] productId
-     * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
+     * Submits new savings application  Mandatory Fields: clientId or groupId, productId, submittedOnDate  Optional Fields: accountNo, externalId, fieldOfficerId  Inherited from Product (if not provided): nominalAnnualInterestRate, interestCompoundingPeriodType, interestCalculationType, interestCalculationDaysInYearType, minRequiredOpeningBalance, lockinPeriodFrequency, lockinPeriodFrequencyType, withdrawalFeeForTransfers, allowOverdraft, overdraftLimit, withHoldTax  Additional Mandatory Field if Entity-Datatable Check is enabled for the entity of type Savings: datatables
+     * @summary Submit new savings application
+     * @param {PostSavingsAccountsRequest} postSavingsAccountsRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SavingsAccountApi
      */
-    public template14(clientId?: number, groupId?: number, productId?: number, staffInSelectedOfficeOnly?: boolean, options?: any) {
-        return SavingsAccountApiFp(this.configuration).template14(clientId, groupId, productId, staffInSelectedOfficeOnly, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Modify a savings application:  Savings application can only be modified when in \'Submitted and pending approval\' state. Once the application is approved, the details cannot be changed using this method. Specific api endpoints will be created to allow change of interest detail such as rate, compounding period, posting period etc  Modify savings account withhold tax applicability:  Savings application\'s withhold tax can be modified when in \'Active\' state. Once the application is activated, can modify the account withhold tax to post tax or vice-versaShowing request/response for \'Modify a savings application\'
-     * @summary Modify a savings application | Modify savings account withhold tax applicability
-     * @param {number} accountId accountId
-     * @param {PutSavingsAccountsAccountIdRequest} putSavingsAccountsAccountIdRequest 
-     * @param {string} [command] command
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SavingsAccountApi
-     */
-    public update19(accountId: number, putSavingsAccountsAccountIdRequest: PutSavingsAccountsAccountIdRequest, command?: string, options?: any) {
-        return SavingsAccountApiFp(this.configuration).update19(accountId, putSavingsAccountsAccountIdRequest, command, options).then((request) => request(this.axios, this.basePath));
+    public submitSavingsAccountsApplication(postSavingsAccountsRequest: PostSavingsAccountsRequest, options?: any) {
+        return SavingsAccountApiFp(this.configuration).submitSavingsAccountsApplication(postSavingsAccountsRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -1292,5 +1278,19 @@ export class SavingsAccountApi extends BaseAPI {
      */
     public updateGsim(parentAccountId: number, body?: string, options?: any) {
         return SavingsAccountApiFp(this.configuration).updateGsim(parentAccountId, body, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Modify a savings application:  Savings application can only be modified when in \'Submitted and pending approval\' state. Once the application is approved, the details cannot be changed using this method. Specific api endpoints will be created to allow change of interest detail such as rate, compounding period, posting period etc  Modify savings account withhold tax applicability:  Savings application\'s withhold tax can be modified when in \'Active\' state. Once the application is activated, can modify the account withhold tax to post tax or vice-versaShowing request/response for \'Modify a savings application\'
+     * @summary Modify a savings application | Modify savings account withhold tax applicability
+     * @param {number} accountId accountId
+     * @param {PutSavingsAccountsAccountIdRequest} putSavingsAccountsAccountIdRequest 
+     * @param {string} [command] command
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SavingsAccountApi
+     */
+    public updateSavingsAccount(accountId: number, putSavingsAccountsAccountIdRequest: PutSavingsAccountsAccountIdRequest, command?: string, options?: any) {
+        return SavingsAccountApiFp(this.configuration).updateSavingsAccount(accountId, putSavingsAccountsAccountIdRequest, command, options).then((request) => request(this.axios, this.basePath));
     }
 }
