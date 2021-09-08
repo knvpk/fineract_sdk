@@ -86,8 +86,18 @@ let currencyPatches = [
 let paymentTypePatches = [
     {
         "op": "replace",
+        "path": "/paths/~1paymenttypes/get/operationId",
+        "value": "retrievePaymentTypes" //getAllPaymentTypes
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1paymenttypes~1{paymentTypeId}/get/operationId",
+        "value": "retrievePaymentType" //retrieveOnePaymentType
+    },
+    {
+        "op": "replace",
         "path": "/paths/~1paymenttypes~1{paymentTypeId}/delete/operationId",
-        "value": "deletePaymentType"
+        "value": "deletePaymentType" //deleteCode_1
     }
 ];
 

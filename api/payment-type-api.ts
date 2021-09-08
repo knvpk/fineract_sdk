@@ -125,13 +125,17 @@ export const PaymentTypeApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * Retrieve list of payment types
-         * @summary Retrieve all Payment Types
+         * Retrieves a payment type
+         * @summary Retrieve a Payment Type
+         * @param {number} paymentTypeId paymentTypeId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllPaymentTypes: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/paymenttypes`;
+        retrievePaymentType: async (paymentTypeId: number, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'paymentTypeId' is not null or undefined
+            assertParamExists('retrievePaymentType', 'paymentTypeId', paymentTypeId)
+            const localVarPath = `/paymenttypes/{paymentTypeId}`
+                .replace(`{${"paymentTypeId"}}`, encodeURIComponent(String(paymentTypeId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -162,17 +166,13 @@ export const PaymentTypeApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * Retrieves a payment type
-         * @summary Retrieve a Payment Type
-         * @param {number} paymentTypeId paymentTypeId
+         * Retrieve list of payment types
+         * @summary Retrieve all Payment Types
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOnePaymentType: async (paymentTypeId: number, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'paymentTypeId' is not null or undefined
-            assertParamExists('retrieveOnePaymentType', 'paymentTypeId', paymentTypeId)
-            const localVarPath = `/paymenttypes/{paymentTypeId}`
-                .replace(`{${"paymentTypeId"}}`, encodeURIComponent(String(paymentTypeId)));
+        retrievePaymentTypes: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/paymenttypes`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -282,24 +282,24 @@ export const PaymentTypeApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Retrieve list of payment types
-         * @summary Retrieve all Payment Types
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getAllPaymentTypes(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetPaymentTypesResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllPaymentTypes(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * Retrieves a payment type
          * @summary Retrieve a Payment Type
          * @param {number} paymentTypeId paymentTypeId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveOnePaymentType(paymentTypeId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPaymentTypesPaymentTypeIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveOnePaymentType(paymentTypeId, options);
+        async retrievePaymentType(paymentTypeId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPaymentTypesPaymentTypeIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrievePaymentType(paymentTypeId, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Retrieve list of payment types
+         * @summary Retrieve all Payment Types
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrievePaymentTypes(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetPaymentTypesResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrievePaymentTypes(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -345,23 +345,23 @@ export const PaymentTypeApiFactory = function (configuration?: Configuration, ba
             return localVarFp.deletePaymentType(paymentTypeId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieve list of payment types
-         * @summary Retrieve all Payment Types
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getAllPaymentTypes(options?: any): AxiosPromise<Array<GetPaymentTypesResponse>> {
-            return localVarFp.getAllPaymentTypes(options).then((request) => request(axios, basePath));
-        },
-        /**
          * Retrieves a payment type
          * @summary Retrieve a Payment Type
          * @param {number} paymentTypeId paymentTypeId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOnePaymentType(paymentTypeId: number, options?: any): AxiosPromise<GetPaymentTypesPaymentTypeIdResponse> {
-            return localVarFp.retrieveOnePaymentType(paymentTypeId, options).then((request) => request(axios, basePath));
+        retrievePaymentType(paymentTypeId: number, options?: any): AxiosPromise<GetPaymentTypesPaymentTypeIdResponse> {
+            return localVarFp.retrievePaymentType(paymentTypeId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieve list of payment types
+         * @summary Retrieve all Payment Types
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrievePaymentTypes(options?: any): AxiosPromise<Array<GetPaymentTypesResponse>> {
+            return localVarFp.retrievePaymentTypes(options).then((request) => request(axios, basePath));
         },
         /**
          * Updates a Payment Type
@@ -409,17 +409,6 @@ export class PaymentTypeApi extends BaseAPI {
     }
 
     /**
-     * Retrieve list of payment types
-     * @summary Retrieve all Payment Types
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PaymentTypeApi
-     */
-    public getAllPaymentTypes(options?: any) {
-        return PaymentTypeApiFp(this.configuration).getAllPaymentTypes(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Retrieves a payment type
      * @summary Retrieve a Payment Type
      * @param {number} paymentTypeId paymentTypeId
@@ -427,8 +416,19 @@ export class PaymentTypeApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PaymentTypeApi
      */
-    public retrieveOnePaymentType(paymentTypeId: number, options?: any) {
-        return PaymentTypeApiFp(this.configuration).retrieveOnePaymentType(paymentTypeId, options).then((request) => request(this.axios, this.basePath));
+    public retrievePaymentType(paymentTypeId: number, options?: any) {
+        return PaymentTypeApiFp(this.configuration).retrievePaymentType(paymentTypeId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieve list of payment types
+     * @summary Retrieve all Payment Types
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PaymentTypeApi
+     */
+    public retrievePaymentTypes(options?: any) {
+        return PaymentTypeApiFp(this.configuration).retrievePaymentTypes(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
