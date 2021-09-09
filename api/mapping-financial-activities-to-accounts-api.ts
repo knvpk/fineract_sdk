@@ -119,17 +119,13 @@ export const MappingFinancialActivitiesToAccountsApiAxiosParamCreator = function
             };
         },
         /**
-         * Example Requests:  financialactivityaccounts/1
-         * @summary Retrieve a Financial Activity to Account Mapping 
-         * @param {number} mappingId mappingId
+         * Example Requests:  financialactivityaccounts
+         * @summary List Financial Activities to Accounts Mappings
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retreive: async (mappingId: number, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'mappingId' is not null or undefined
-            assertParamExists('retreive', 'mappingId', mappingId)
-            const localVarPath = `/financialactivityaccounts/{mappingId}`
-                .replace(`{${"mappingId"}}`, encodeURIComponent(String(mappingId)));
+        retrieveFinancialActivities: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/financialactivityaccounts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -160,13 +156,17 @@ export const MappingFinancialActivitiesToAccountsApiAxiosParamCreator = function
             };
         },
         /**
-         * Example Requests:  financialactivityaccounts
-         * @summary List Financial Activities to Accounts Mappings
+         * Example Requests:  financialactivityaccounts/1
+         * @summary Retrieve a Financial Activity to Account Mapping 
+         * @param {number} mappingId mappingId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveAll: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/financialactivityaccounts`;
+        retrieveFinancialActivity: async (mappingId: number, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'mappingId' is not null or undefined
+            assertParamExists('retrieveFinancialActivity', 'mappingId', mappingId)
+            const localVarPath = `/financialactivityaccounts/{mappingId}`
+                .replace(`{${"mappingId"}}`, encodeURIComponent(String(mappingId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -201,7 +201,7 @@ export const MappingFinancialActivitiesToAccountsApiAxiosParamCreator = function
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveTemplate: async (options: any = {}): Promise<RequestArgs> => {
+        retriveFinancialActivityTemplate: async (options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/financialactivityaccounts/template`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -310,24 +310,24 @@ export const MappingFinancialActivitiesToAccountsApiFp = function(configuration?
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Example Requests:  financialactivityaccounts
+         * @summary List Financial Activities to Accounts Mappings
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveFinancialActivities(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetFinancialActivityAccountsResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveFinancialActivities(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Example Requests:  financialactivityaccounts/1
          * @summary Retrieve a Financial Activity to Account Mapping 
          * @param {number} mappingId mappingId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retreive(mappingId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetFinancialActivityAccountsResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retreive(mappingId, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Example Requests:  financialactivityaccounts
-         * @summary List Financial Activities to Accounts Mappings
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveAll(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GetFinancialActivityAccountsResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAll(options);
+        async retrieveFinancialActivity(mappingId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetFinancialActivityAccountsResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveFinancialActivity(mappingId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -335,8 +335,8 @@ export const MappingFinancialActivitiesToAccountsApiFp = function(configuration?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveTemplate(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveTemplate(options);
+        async retriveFinancialActivityTemplate(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retriveFinancialActivityTemplate(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -382,31 +382,31 @@ export const MappingFinancialActivitiesToAccountsApiFactory = function (configur
             return localVarFp.deleteFinancialActivity(mappingId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Example Requests:  financialactivityaccounts
+         * @summary List Financial Activities to Accounts Mappings
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveFinancialActivities(options?: any): AxiosPromise<Array<GetFinancialActivityAccountsResponse>> {
+            return localVarFp.retrieveFinancialActivities(options).then((request) => request(axios, basePath));
+        },
+        /**
          * Example Requests:  financialactivityaccounts/1
          * @summary Retrieve a Financial Activity to Account Mapping 
          * @param {number} mappingId mappingId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retreive(mappingId: number, options?: any): AxiosPromise<GetFinancialActivityAccountsResponse> {
-            return localVarFp.retreive(mappingId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Example Requests:  financialactivityaccounts
-         * @summary List Financial Activities to Accounts Mappings
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveAll(options?: any): AxiosPromise<Array<GetFinancialActivityAccountsResponse>> {
-            return localVarFp.retrieveAll(options).then((request) => request(axios, basePath));
+        retrieveFinancialActivity(mappingId: number, options?: any): AxiosPromise<GetFinancialActivityAccountsResponse> {
+            return localVarFp.retrieveFinancialActivity(mappingId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveTemplate(options?: any): AxiosPromise<string> {
-            return localVarFp.retrieveTemplate(options).then((request) => request(axios, basePath));
+        retriveFinancialActivityTemplate(options?: any): AxiosPromise<string> {
+            return localVarFp.retriveFinancialActivityTemplate(options).then((request) => request(axios, basePath));
         },
         /**
          * the API updates the Ledger account linked to a Financial Activity  
@@ -454,6 +454,17 @@ export class MappingFinancialActivitiesToAccountsApi extends BaseAPI {
     }
 
     /**
+     * Example Requests:  financialactivityaccounts
+     * @summary List Financial Activities to Accounts Mappings
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MappingFinancialActivitiesToAccountsApi
+     */
+    public retrieveFinancialActivities(options?: any) {
+        return MappingFinancialActivitiesToAccountsApiFp(this.configuration).retrieveFinancialActivities(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Example Requests:  financialactivityaccounts/1
      * @summary Retrieve a Financial Activity to Account Mapping 
      * @param {number} mappingId mappingId
@@ -461,19 +472,8 @@ export class MappingFinancialActivitiesToAccountsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MappingFinancialActivitiesToAccountsApi
      */
-    public retreive(mappingId: number, options?: any) {
-        return MappingFinancialActivitiesToAccountsApiFp(this.configuration).retreive(mappingId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Example Requests:  financialactivityaccounts
-     * @summary List Financial Activities to Accounts Mappings
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof MappingFinancialActivitiesToAccountsApi
-     */
-    public retrieveAll(options?: any) {
-        return MappingFinancialActivitiesToAccountsApiFp(this.configuration).retrieveAll(options).then((request) => request(this.axios, this.basePath));
+    public retrieveFinancialActivity(mappingId: number, options?: any) {
+        return MappingFinancialActivitiesToAccountsApiFp(this.configuration).retrieveFinancialActivity(mappingId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -482,8 +482,8 @@ export class MappingFinancialActivitiesToAccountsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MappingFinancialActivitiesToAccountsApi
      */
-    public retrieveTemplate(options?: any) {
-        return MappingFinancialActivitiesToAccountsApiFp(this.configuration).retrieveTemplate(options).then((request) => request(this.axios, this.basePath));
+    public retriveFinancialActivityTemplate(options?: any) {
+        return MappingFinancialActivitiesToAccountsApiFp(this.configuration).retriveFinancialActivityTemplate(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

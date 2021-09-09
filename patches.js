@@ -120,8 +120,18 @@ let officePatches = [
 let financialActivityPatches = [
     {
         "op": "replace",
+        "path": "/paths/~1financialactivityaccounts/get/operationId",
+        "value": "retrieveFinancialActivities" //retrieveAll
+    },
+    {
+        "op": "replace",
         "path": "/paths/~1financialactivityaccounts/post/operationId",
         "value": "createFinancialActivity"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1financialactivityaccounts~1{mappingId}/get/operationId",
+        "value": "retrieveFinancialActivity" //retreive
     },
     {
         "op": "replace",
@@ -132,6 +142,11 @@ let financialActivityPatches = [
         "op": "replace",
         "path": "/paths/~1financialactivityaccounts~1{mappingId}/delete/operationId",
         "value": "deleteFinancialActivity"
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1financialactivityaccounts~1template/get/operationId",
+        "value": "retriveFinancialActivityTemplate"//retrieveTemplate
     },
 ];
 
