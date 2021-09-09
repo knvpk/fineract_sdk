@@ -753,6 +753,7 @@ export * from './loan-product-related-detail';
 export * from './loan-transaction-processing-strategy';
 export * from './lookup-table-data';
 export * from './lookup-table-entry';
+export * from './manage-savings-accounts-transaction';
 export * from './monetary-currency';
 export * from './money';
 export * from './money-data';

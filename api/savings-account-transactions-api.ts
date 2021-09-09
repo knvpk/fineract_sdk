@@ -20,6 +20,8 @@ import { Configuration } from '../configuration';
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+// @ts-ignore
+import { ManageSavingsAccountsTransaction } from '../models';
 /**
  * SavingsAccountTransactionsApi - axios parameter creator
  * @export
@@ -73,6 +75,55 @@ export const SavingsAccountTransactionsApiAxiosParamCreator = function (configur
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {number} savingsId 
+         * @param {string} [command] 
+         * @param {ManageSavingsAccountsTransaction} [manageSavingsAccountsTransaction] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        manageSavingsAccountTran: async (savingsId: number, command?: string, manageSavingsAccountsTransaction?: ManageSavingsAccountsTransaction, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'savingsId' is not null or undefined
+            assertParamExists('manageSavingsAccountTran', 'savingsId', savingsId)
+            const localVarPath = `/savingsaccounts/{savingsId}/transactions`
+                .replace(`{${"savingsId"}}`, encodeURIComponent(String(savingsId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+            if (command !== undefined) {
+                localVarQueryParameter['command'] = command;
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(manageSavingsAccountsTransaction, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -163,55 +214,6 @@ export const SavingsAccountTransactionsApiAxiosParamCreator = function (configur
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * 
-         * @param {number} savingsId 
-         * @param {string} [command] 
-         * @param {string} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        transaction2: async (savingsId: number, command?: string, body?: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'savingsId' is not null or undefined
-            assertParamExists('transaction2', 'savingsId', savingsId)
-            const localVarPath = `/savingsaccounts/{savingsId}/transactions`
-                .replace(`{${"savingsId"}}`, encodeURIComponent(String(savingsId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-            if (command !== undefined) {
-                localVarQueryParameter['command'] = command;
-            }
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -238,6 +240,18 @@ export const SavingsAccountTransactionsApiFp = function(configuration?: Configur
         /**
          * 
          * @param {number} savingsId 
+         * @param {string} [command] 
+         * @param {ManageSavingsAccountsTransaction} [manageSavingsAccountsTransaction] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async manageSavingsAccountTran(savingsId: number, command?: string, manageSavingsAccountsTransaction?: ManageSavingsAccountsTransaction, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.manageSavingsAccountTran(savingsId, command, manageSavingsAccountsTransaction, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {number} savingsId 
          * @param {number} transactionId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -254,18 +268,6 @@ export const SavingsAccountTransactionsApiFp = function(configuration?: Configur
          */
         async retrieveTemplate18(savingsId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveTemplate18(savingsId, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {number} savingsId 
-         * @param {string} [command] 
-         * @param {string} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async transaction2(savingsId: number, command?: string, body?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.transaction2(savingsId, command, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -293,6 +295,17 @@ export const SavingsAccountTransactionsApiFactory = function (configuration?: Co
         /**
          * 
          * @param {number} savingsId 
+         * @param {string} [command] 
+         * @param {ManageSavingsAccountsTransaction} [manageSavingsAccountsTransaction] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        manageSavingsAccountTran(savingsId: number, command?: string, manageSavingsAccountsTransaction?: ManageSavingsAccountsTransaction, options?: any): AxiosPromise<string> {
+            return localVarFp.manageSavingsAccountTran(savingsId, command, manageSavingsAccountsTransaction, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {number} savingsId 
          * @param {number} transactionId 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -308,17 +321,6 @@ export const SavingsAccountTransactionsApiFactory = function (configuration?: Co
          */
         retrieveTemplate18(savingsId: number, options?: any): AxiosPromise<string> {
             return localVarFp.retrieveTemplate18(savingsId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {number} savingsId 
-         * @param {string} [command] 
-         * @param {string} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        transaction2(savingsId: number, command?: string, body?: string, options?: any): AxiosPromise<string> {
-            return localVarFp.transaction2(savingsId, command, body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -347,6 +349,19 @@ export class SavingsAccountTransactionsApi extends BaseAPI {
     /**
      * 
      * @param {number} savingsId 
+     * @param {string} [command] 
+     * @param {ManageSavingsAccountsTransaction} [manageSavingsAccountsTransaction] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SavingsAccountTransactionsApi
+     */
+    public manageSavingsAccountTran(savingsId: number, command?: string, manageSavingsAccountsTransaction?: ManageSavingsAccountsTransaction, options?: any) {
+        return SavingsAccountTransactionsApiFp(this.configuration).manageSavingsAccountTran(savingsId, command, manageSavingsAccountsTransaction, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {number} savingsId 
      * @param {number} transactionId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -365,18 +380,5 @@ export class SavingsAccountTransactionsApi extends BaseAPI {
      */
     public retrieveTemplate18(savingsId: number, options?: any) {
         return SavingsAccountTransactionsApiFp(this.configuration).retrieveTemplate18(savingsId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {number} savingsId 
-     * @param {string} [command] 
-     * @param {string} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SavingsAccountTransactionsApi
-     */
-    public transaction2(savingsId: number, command?: string, body?: string, options?: any) {
-        return SavingsAccountTransactionsApiFp(this.configuration).transaction2(savingsId, command, body, options).then((request) => request(this.axios, this.basePath));
     }
 }

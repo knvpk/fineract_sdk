@@ -638,6 +638,69 @@ let savingsAccountPatches = [
     },
 ];
 
+let savingsAccountTransactionPatches = [
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts~1{savingsId}~1transactions/post/operationId",
+        "value": "manageSavingsAccountTran" // transaction_2
+    },
+    {
+        "op": "add",
+        "path": "/components/schemas/ManageSavingsAccountsTransaction",
+        "value": {
+            "type": "object",
+            "properties": {
+              "dateFormat": {
+                "type": "string",
+                "example": "dd MMMM yyyy"
+              },
+              "locale": {
+                "type": "string",
+                "example": "en"
+              },
+              "transactionDate": {
+                "type": "string",
+                "format": "date",
+                "example": "05 September 2014"
+              },
+              "transactionAmount": {
+                "type": "string",
+              },
+              "routingCode": {
+                "type": "string",
+              },
+              "receiptNumber": {
+                "type": "string",
+              },
+              "paymentTypeId": {
+                "type": "int",
+                "format": "int64"
+              },
+              "note": {
+                "type": "string",
+              },
+              "checkNumber": {
+                "type": "string",
+              },
+              "bankNumber": {
+                "type": "string",
+              },
+              "accountNumber": {
+                "type": "string",
+              },
+            },
+            "description": "ManageSavingsAccountsTransaction"
+        }
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts~1{savingsId}~1transactions/post/requestBody/content/application~1json/schema",
+        "value": {
+            "$ref": "#/components/schemas/ManageSavingsAccountsTransaction"
+        }
+    },
+];
+
 patches = [
     ...userPatches,
     ...authPatches,
@@ -651,7 +714,8 @@ patches = [
     ...savingsProductPatchesAuto,
     ...clientPatches,
     ...codeValuePatches,
-    ...savingsAccountPatches
+    ...savingsAccountPatches,
+    ...savingsAccountTransactionPatches
 ]
 
 module.exports = patches;
