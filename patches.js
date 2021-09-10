@@ -714,6 +714,51 @@ let savingsAccountTransactionPatches = [
             "$ref": "#/components/schemas/ManageSavingsAccountsTransaction"
         }
     },
+    {
+        "op": "add",
+        "path": "/components/schemas/ManageSavingsAccountsTransactionResponse",
+        "value": {
+            "type": "object",
+            "properties": {
+              
+              "officeId": {
+                "type": "int",
+                "format": "int64"
+              },
+              "clientId": {
+                "type": "int",
+                "format": "int64"
+              },
+              "savingsId": {
+                "type": "int",
+                "format": "int64"
+              },
+              "resourceId": {
+                "type": "int",
+                "format": "int64"
+              },
+            
+            },
+            "description": "ManageSavingsAccountsTransactionResponse"
+        }
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts~1{savingsId}~1transactions/post/responses/default/content/application~1json/schema",
+        "value": {
+            "$ref": "#/components/schemas/ManageSavingsAccountsTransactionResponse"
+        }
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts~1{savingsId}~1transactions~1{transactionId}/get/operationId",
+        "value": "retrieveSavingsAccountTransaction" //retrieveOne_23
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts~1{savingsId}~1transactions~1{transactionId}/post/operationId",
+        "value": "adjustSavingsAccountTransaction" //adjustTransaction_1
+    },
 ];
 
 patches = [

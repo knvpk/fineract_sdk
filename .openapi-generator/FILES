@@ -890,6 +890,7 @@ models/loan-product.ts
 models/loan-transaction-processing-strategy.ts
 models/lookup-table-data.ts
 models/lookup-table-entry.ts
+models/manage-savings-accounts-transaction-response.ts
 models/manage-savings-accounts-transaction.ts
 models/monetary-currency.ts
 models/money-data.ts

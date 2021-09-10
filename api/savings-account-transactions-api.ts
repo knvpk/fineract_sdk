@@ -22,6 +22,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
 import { ManageSavingsAccountsTransaction } from '../models';
+// @ts-ignore
+import { ManageSavingsAccountsTransactionResponse } from '../models';
 /**
  * SavingsAccountTransactionsApi - axios parameter creator
  * @export
@@ -37,11 +39,11 @@ export const SavingsAccountTransactionsApiAxiosParamCreator = function (configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adjustTransaction1: async (savingsId: number, transactionId: number, command?: string, body?: string, options: any = {}): Promise<RequestArgs> => {
+        adjustSavingsAccountTransaction: async (savingsId: number, transactionId: number, command?: string, body?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'savingsId' is not null or undefined
-            assertParamExists('adjustTransaction1', 'savingsId', savingsId)
+            assertParamExists('adjustSavingsAccountTransaction', 'savingsId', savingsId)
             // verify required parameter 'transactionId' is not null or undefined
-            assertParamExists('adjustTransaction1', 'transactionId', transactionId)
+            assertParamExists('adjustSavingsAccountTransaction', 'transactionId', transactionId)
             const localVarPath = `/savingsaccounts/{savingsId}/transactions/{transactionId}`
                 .replace(`{${"savingsId"}}`, encodeURIComponent(String(savingsId)))
                 .replace(`{${"transactionId"}}`, encodeURIComponent(String(transactionId)));
@@ -137,11 +139,11 @@ export const SavingsAccountTransactionsApiAxiosParamCreator = function (configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOne23: async (savingsId: number, transactionId: number, options: any = {}): Promise<RequestArgs> => {
+        retrieveSavingsAccountTransaction: async (savingsId: number, transactionId: number, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'savingsId' is not null or undefined
-            assertParamExists('retrieveOne23', 'savingsId', savingsId)
+            assertParamExists('retrieveSavingsAccountTransaction', 'savingsId', savingsId)
             // verify required parameter 'transactionId' is not null or undefined
-            assertParamExists('retrieveOne23', 'transactionId', transactionId)
+            assertParamExists('retrieveSavingsAccountTransaction', 'transactionId', transactionId)
             const localVarPath = `/savingsaccounts/{savingsId}/transactions/{transactionId}`
                 .replace(`{${"savingsId"}}`, encodeURIComponent(String(savingsId)))
                 .replace(`{${"transactionId"}}`, encodeURIComponent(String(transactionId)));
@@ -233,8 +235,8 @@ export const SavingsAccountTransactionsApiFp = function(configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async adjustTransaction1(savingsId: number, transactionId: number, command?: string, body?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.adjustTransaction1(savingsId, transactionId, command, body, options);
+        async adjustSavingsAccountTransaction(savingsId: number, transactionId: number, command?: string, body?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.adjustSavingsAccountTransaction(savingsId, transactionId, command, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -245,7 +247,7 @@ export const SavingsAccountTransactionsApiFp = function(configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async manageSavingsAccountTran(savingsId: number, command?: string, manageSavingsAccountsTransaction?: ManageSavingsAccountsTransaction, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async manageSavingsAccountTran(savingsId: number, command?: string, manageSavingsAccountsTransaction?: ManageSavingsAccountsTransaction, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ManageSavingsAccountsTransactionResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.manageSavingsAccountTran(savingsId, command, manageSavingsAccountsTransaction, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -256,8 +258,8 @@ export const SavingsAccountTransactionsApiFp = function(configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveOne23(savingsId: number, transactionId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveOne23(savingsId, transactionId, options);
+        async retrieveSavingsAccountTransaction(savingsId: number, transactionId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveSavingsAccountTransaction(savingsId, transactionId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -289,8 +291,8 @@ export const SavingsAccountTransactionsApiFactory = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adjustTransaction1(savingsId: number, transactionId: number, command?: string, body?: string, options?: any): AxiosPromise<string> {
-            return localVarFp.adjustTransaction1(savingsId, transactionId, command, body, options).then((request) => request(axios, basePath));
+        adjustSavingsAccountTransaction(savingsId: number, transactionId: number, command?: string, body?: string, options?: any): AxiosPromise<string> {
+            return localVarFp.adjustSavingsAccountTransaction(savingsId, transactionId, command, body, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -300,7 +302,7 @@ export const SavingsAccountTransactionsApiFactory = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        manageSavingsAccountTran(savingsId: number, command?: string, manageSavingsAccountsTransaction?: ManageSavingsAccountsTransaction, options?: any): AxiosPromise<string> {
+        manageSavingsAccountTran(savingsId: number, command?: string, manageSavingsAccountsTransaction?: ManageSavingsAccountsTransaction, options?: any): AxiosPromise<ManageSavingsAccountsTransactionResponse> {
             return localVarFp.manageSavingsAccountTran(savingsId, command, manageSavingsAccountsTransaction, options).then((request) => request(axios, basePath));
         },
         /**
@@ -310,8 +312,8 @@ export const SavingsAccountTransactionsApiFactory = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOne23(savingsId: number, transactionId: number, options?: any): AxiosPromise<string> {
-            return localVarFp.retrieveOne23(savingsId, transactionId, options).then((request) => request(axios, basePath));
+        retrieveSavingsAccountTransaction(savingsId: number, transactionId: number, options?: any): AxiosPromise<string> {
+            return localVarFp.retrieveSavingsAccountTransaction(savingsId, transactionId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -342,8 +344,8 @@ export class SavingsAccountTransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SavingsAccountTransactionsApi
      */
-    public adjustTransaction1(savingsId: number, transactionId: number, command?: string, body?: string, options?: any) {
-        return SavingsAccountTransactionsApiFp(this.configuration).adjustTransaction1(savingsId, transactionId, command, body, options).then((request) => request(this.axios, this.basePath));
+    public adjustSavingsAccountTransaction(savingsId: number, transactionId: number, command?: string, body?: string, options?: any) {
+        return SavingsAccountTransactionsApiFp(this.configuration).adjustSavingsAccountTransaction(savingsId, transactionId, command, body, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -367,8 +369,8 @@ export class SavingsAccountTransactionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SavingsAccountTransactionsApi
      */
-    public retrieveOne23(savingsId: number, transactionId: number, options?: any) {
-        return SavingsAccountTransactionsApiFp(this.configuration).retrieveOne23(savingsId, transactionId, options).then((request) => request(this.axios, this.basePath));
+    public retrieveSavingsAccountTransaction(savingsId: number, transactionId: number, options?: any) {
+        return SavingsAccountTransactionsApiFp(this.configuration).retrieveSavingsAccountTransaction(savingsId, transactionId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
