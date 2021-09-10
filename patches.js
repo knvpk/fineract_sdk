@@ -761,6 +761,34 @@ let savingsAccountTransactionPatches = [
     },
 ];
 
+let accountTransferPatches = [
+    {
+        "op": "replace",
+        "path": "/paths/~1accounttransfers/get/operationId",
+        "value": "retrieveAccountTransfers" //retrieveAll_18
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1accounttransfers/post/operationId",
+        "value": "createAccountTransfer" //create_4
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1accounttransfers~1{transferId}/get/operationId",
+        "value": "retrieveAccountTransfer" //retrieveOne_9
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1accounttransfers~1template/get/operationId",
+        "value": "retrieveAccountTransferTemplate" //template_5
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1accounttransfers~1template/get/operationId",
+        "value": "retrieveAccountTransferTemplate" //template_5
+    }
+];
+
 patches = [
     ...userPatches,
     ...authPatches,
@@ -775,7 +803,8 @@ patches = [
     ...clientPatches,
     ...codeValuePatches,
     ...savingsAccountPatches,
-    ...savingsAccountTransactionPatches
+    ...savingsAccountTransactionPatches,
+    ...accountTransferPatches
 ]
 
 module.exports = patches;

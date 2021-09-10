@@ -49,9 +49,9 @@ export const AccountTransfersApiAxiosParamCreator = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create4: async (postAccountTransfersRequest: PostAccountTransfersRequest, options: any = {}): Promise<RequestArgs> => {
+        createAccountTransfer: async (postAccountTransfersRequest: PostAccountTransfersRequest, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'postAccountTransfersRequest' is not null or undefined
-            assertParamExists('create4', 'postAccountTransfersRequest', postAccountTransfersRequest)
+            assertParamExists('createAccountTransfer', 'postAccountTransfersRequest', postAccountTransfersRequest)
             const localVarPath = `/accounttransfers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -86,87 +86,15 @@ export const AccountTransfersApiAxiosParamCreator = function (configuration?: Co
             };
         },
         /**
-         * Lists account\'s transfers  Example Requests:    accounttransfers
-         * @summary List account transfers
-         * @param {string} [sqlSearch] sqlSearch
-         * @param {string} [externalId] externalId
-         * @param {number} [offset] offset
-         * @param {number} [limit] 
-         * @param {string} [orderBy] orderBy
-         * @param {string} [sortOrder] sortOrder
-         * @param {number} [accountDetailId] accountDetailId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveAll18: async (sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, accountDetailId?: number, options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/accounttransfers`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication basicAuth required
-            // http basic authentication required
-            setBasicAuthToObject(localVarRequestOptions, configuration)
-
-            // authentication tenantid required
-            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
-
-            if (sqlSearch !== undefined) {
-                localVarQueryParameter['sqlSearch'] = sqlSearch;
-            }
-
-            if (externalId !== undefined) {
-                localVarQueryParameter['externalId'] = externalId;
-            }
-
-            if (offset !== undefined) {
-                localVarQueryParameter['offset'] = offset;
-            }
-
-            if (limit !== undefined) {
-                localVarQueryParameter['limit'] = limit;
-            }
-
-            if (orderBy !== undefined) {
-                localVarQueryParameter['orderBy'] = orderBy;
-            }
-
-            if (sortOrder !== undefined) {
-                localVarQueryParameter['sortOrder'] = sortOrder;
-            }
-
-            if (accountDetailId !== undefined) {
-                localVarQueryParameter['accountDetailId'] = accountDetailId;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Retrieves account transfer  Example Requests :    accounttransfers/1
          * @summary Retrieve account transfer
          * @param {number} transferId transferId
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOne9: async (transferId: number, options: any = {}): Promise<RequestArgs> => {
+        retrieveAccountTransfer: async (transferId: number, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'transferId' is not null or undefined
-            assertParamExists('retrieveOne9', 'transferId', transferId)
+            assertParamExists('retrieveAccountTransfer', 'transferId', transferId)
             const localVarPath = `/accounttransfers/{transferId}`
                 .replace(`{${"transferId"}}`, encodeURIComponent(String(transferId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -212,7 +140,7 @@ export const AccountTransfersApiAxiosParamCreator = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        template5: async (fromOfficeId?: number, fromClientId?: number, fromAccountId?: number, fromAccountType?: number, toOfficeId?: number, toClientId?: number, toAccountId?: number, toAccountType?: number, options: any = {}): Promise<RequestArgs> => {
+        retrieveAccountTransferTemplate: async (fromOfficeId?: number, fromClientId?: number, fromAccountId?: number, fromAccountType?: number, toOfficeId?: number, toClientId?: number, toAccountId?: number, toAccountType?: number, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/accounttransfers/template`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -262,6 +190,78 @@ export const AccountTransfersApiAxiosParamCreator = function (configuration?: Co
 
             if (toAccountType !== undefined) {
                 localVarQueryParameter['toAccountType'] = toAccountType;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Lists account\'s transfers  Example Requests:    accounttransfers
+         * @summary List account transfers
+         * @param {string} [sqlSearch] sqlSearch
+         * @param {string} [externalId] externalId
+         * @param {number} [offset] offset
+         * @param {number} [limit] 
+         * @param {string} [orderBy] orderBy
+         * @param {string} [sortOrder] sortOrder
+         * @param {number} [accountDetailId] accountDetailId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveAccountTransfers: async (sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, accountDetailId?: number, options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/accounttransfers`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication basicAuth required
+            // http basic authentication required
+            setBasicAuthToObject(localVarRequestOptions, configuration)
+
+            // authentication tenantid required
+            await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+            if (sqlSearch !== undefined) {
+                localVarQueryParameter['sqlSearch'] = sqlSearch;
+            }
+
+            if (externalId !== undefined) {
+                localVarQueryParameter['externalId'] = externalId;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (orderBy !== undefined) {
+                localVarQueryParameter['orderBy'] = orderBy;
+            }
+
+            if (sortOrder !== undefined) {
+                localVarQueryParameter['sortOrder'] = sortOrder;
+            }
+
+            if (accountDetailId !== undefined) {
+                localVarQueryParameter['accountDetailId'] = accountDetailId;
             }
 
 
@@ -412,25 +412,8 @@ export const AccountTransfersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async create4(postAccountTransfersRequest: PostAccountTransfersRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostAccountTransfersResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.create4(postAccountTransfersRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Lists account\'s transfers  Example Requests:    accounttransfers
-         * @summary List account transfers
-         * @param {string} [sqlSearch] sqlSearch
-         * @param {string} [externalId] externalId
-         * @param {number} [offset] offset
-         * @param {number} [limit] 
-         * @param {string} [orderBy] orderBy
-         * @param {string} [sortOrder] sortOrder
-         * @param {number} [accountDetailId] accountDetailId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveAll18(sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, accountDetailId?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetAccountTransfersResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAll18(sqlSearch, externalId, offset, limit, orderBy, sortOrder, accountDetailId, options);
+        async createAccountTransfer(postAccountTransfersRequest: PostAccountTransfersRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostAccountTransfersResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createAccountTransfer(postAccountTransfersRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -440,8 +423,8 @@ export const AccountTransfersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveOne9(transferId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetAccountTransfersPageItems>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveOne9(transferId, options);
+        async retrieveAccountTransfer(transferId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetAccountTransfersPageItems>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAccountTransfer(transferId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -458,8 +441,25 @@ export const AccountTransfersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async template5(fromOfficeId?: number, fromClientId?: number, fromAccountId?: number, fromAccountType?: number, toOfficeId?: number, toClientId?: number, toAccountId?: number, toAccountType?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetAccountTransfersTemplateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.template5(fromOfficeId, fromClientId, fromAccountId, fromAccountType, toOfficeId, toClientId, toAccountId, toAccountType, options);
+        async retrieveAccountTransferTemplate(fromOfficeId?: number, fromClientId?: number, fromAccountId?: number, fromAccountType?: number, toOfficeId?: number, toClientId?: number, toAccountId?: number, toAccountType?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetAccountTransfersTemplateResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAccountTransferTemplate(fromOfficeId, fromClientId, fromAccountId, fromAccountType, toOfficeId, toClientId, toAccountId, toAccountType, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Lists account\'s transfers  Example Requests:    accounttransfers
+         * @summary List account transfers
+         * @param {string} [sqlSearch] sqlSearch
+         * @param {string} [externalId] externalId
+         * @param {number} [offset] offset
+         * @param {number} [limit] 
+         * @param {string} [orderBy] orderBy
+         * @param {string} [sortOrder] sortOrder
+         * @param {number} [accountDetailId] accountDetailId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieveAccountTransfers(sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, accountDetailId?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetAccountTransfersResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveAccountTransfers(sqlSearch, externalId, offset, limit, orderBy, sortOrder, accountDetailId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -508,24 +508,8 @@ export const AccountTransfersApiFactory = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        create4(postAccountTransfersRequest: PostAccountTransfersRequest, options?: any): AxiosPromise<PostAccountTransfersResponse> {
-            return localVarFp.create4(postAccountTransfersRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Lists account\'s transfers  Example Requests:    accounttransfers
-         * @summary List account transfers
-         * @param {string} [sqlSearch] sqlSearch
-         * @param {string} [externalId] externalId
-         * @param {number} [offset] offset
-         * @param {number} [limit] 
-         * @param {string} [orderBy] orderBy
-         * @param {string} [sortOrder] sortOrder
-         * @param {number} [accountDetailId] accountDetailId
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveAll18(sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, accountDetailId?: number, options?: any): AxiosPromise<GetAccountTransfersResponse> {
-            return localVarFp.retrieveAll18(sqlSearch, externalId, offset, limit, orderBy, sortOrder, accountDetailId, options).then((request) => request(axios, basePath));
+        createAccountTransfer(postAccountTransfersRequest: PostAccountTransfersRequest, options?: any): AxiosPromise<PostAccountTransfersResponse> {
+            return localVarFp.createAccountTransfer(postAccountTransfersRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves account transfer  Example Requests :    accounttransfers/1
@@ -534,8 +518,8 @@ export const AccountTransfersApiFactory = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveOne9(transferId: number, options?: any): AxiosPromise<GetAccountTransfersPageItems> {
-            return localVarFp.retrieveOne9(transferId, options).then((request) => request(axios, basePath));
+        retrieveAccountTransfer(transferId: number, options?: any): AxiosPromise<GetAccountTransfersPageItems> {
+            return localVarFp.retrieveAccountTransfer(transferId, options).then((request) => request(axios, basePath));
         },
         /**
          * This is a convenience resource. It can be useful when building maintenance user interface screens for client applications. The template data returned consists of any or all of:    Field Defaults  Allowed Value Lists  Example Requests:    accounttransfers/template?fromAccountType=2&fromOfficeId=1    accounttransfers/template?fromAccountType=2&fromOfficeId=1&fromClientId=1    accounttransfers/template?fromClientId=1&fromAccountType=2&fromAccountId=1
@@ -551,8 +535,24 @@ export const AccountTransfersApiFactory = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        template5(fromOfficeId?: number, fromClientId?: number, fromAccountId?: number, fromAccountType?: number, toOfficeId?: number, toClientId?: number, toAccountId?: number, toAccountType?: number, options?: any): AxiosPromise<GetAccountTransfersTemplateResponse> {
-            return localVarFp.template5(fromOfficeId, fromClientId, fromAccountId, fromAccountType, toOfficeId, toClientId, toAccountId, toAccountType, options).then((request) => request(axios, basePath));
+        retrieveAccountTransferTemplate(fromOfficeId?: number, fromClientId?: number, fromAccountId?: number, fromAccountType?: number, toOfficeId?: number, toClientId?: number, toAccountId?: number, toAccountType?: number, options?: any): AxiosPromise<GetAccountTransfersTemplateResponse> {
+            return localVarFp.retrieveAccountTransferTemplate(fromOfficeId, fromClientId, fromAccountId, fromAccountType, toOfficeId, toClientId, toAccountId, toAccountType, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Lists account\'s transfers  Example Requests:    accounttransfers
+         * @summary List account transfers
+         * @param {string} [sqlSearch] sqlSearch
+         * @param {string} [externalId] externalId
+         * @param {number} [offset] offset
+         * @param {number} [limit] 
+         * @param {string} [orderBy] orderBy
+         * @param {string} [sortOrder] sortOrder
+         * @param {number} [accountDetailId] accountDetailId
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieveAccountTransfers(sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, accountDetailId?: number, options?: any): AxiosPromise<GetAccountTransfersResponse> {
+            return localVarFp.retrieveAccountTransfers(sqlSearch, externalId, offset, limit, orderBy, sortOrder, accountDetailId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves Refund of an Active Loan by Transfer TemplateExample Requests :    accounttransfers/templateRefundByTransfer?fromAccountId=2&fromAccountType=1& toAccountId=1&toAccountType=2&toClientId=1&toOfficeId=1
@@ -599,26 +599,8 @@ export class AccountTransfersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AccountTransfersApi
      */
-    public create4(postAccountTransfersRequest: PostAccountTransfersRequest, options?: any) {
-        return AccountTransfersApiFp(this.configuration).create4(postAccountTransfersRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Lists account\'s transfers  Example Requests:    accounttransfers
-     * @summary List account transfers
-     * @param {string} [sqlSearch] sqlSearch
-     * @param {string} [externalId] externalId
-     * @param {number} [offset] offset
-     * @param {number} [limit] 
-     * @param {string} [orderBy] orderBy
-     * @param {string} [sortOrder] sortOrder
-     * @param {number} [accountDetailId] accountDetailId
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AccountTransfersApi
-     */
-    public retrieveAll18(sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, accountDetailId?: number, options?: any) {
-        return AccountTransfersApiFp(this.configuration).retrieveAll18(sqlSearch, externalId, offset, limit, orderBy, sortOrder, accountDetailId, options).then((request) => request(this.axios, this.basePath));
+    public createAccountTransfer(postAccountTransfersRequest: PostAccountTransfersRequest, options?: any) {
+        return AccountTransfersApiFp(this.configuration).createAccountTransfer(postAccountTransfersRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -629,8 +611,8 @@ export class AccountTransfersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AccountTransfersApi
      */
-    public retrieveOne9(transferId: number, options?: any) {
-        return AccountTransfersApiFp(this.configuration).retrieveOne9(transferId, options).then((request) => request(this.axios, this.basePath));
+    public retrieveAccountTransfer(transferId: number, options?: any) {
+        return AccountTransfersApiFp(this.configuration).retrieveAccountTransfer(transferId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -648,8 +630,26 @@ export class AccountTransfersApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof AccountTransfersApi
      */
-    public template5(fromOfficeId?: number, fromClientId?: number, fromAccountId?: number, fromAccountType?: number, toOfficeId?: number, toClientId?: number, toAccountId?: number, toAccountType?: number, options?: any) {
-        return AccountTransfersApiFp(this.configuration).template5(fromOfficeId, fromClientId, fromAccountId, fromAccountType, toOfficeId, toClientId, toAccountId, toAccountType, options).then((request) => request(this.axios, this.basePath));
+    public retrieveAccountTransferTemplate(fromOfficeId?: number, fromClientId?: number, fromAccountId?: number, fromAccountType?: number, toOfficeId?: number, toClientId?: number, toAccountId?: number, toAccountType?: number, options?: any) {
+        return AccountTransfersApiFp(this.configuration).retrieveAccountTransferTemplate(fromOfficeId, fromClientId, fromAccountId, fromAccountType, toOfficeId, toClientId, toAccountId, toAccountType, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Lists account\'s transfers  Example Requests:    accounttransfers
+     * @summary List account transfers
+     * @param {string} [sqlSearch] sqlSearch
+     * @param {string} [externalId] externalId
+     * @param {number} [offset] offset
+     * @param {number} [limit] 
+     * @param {string} [orderBy] orderBy
+     * @param {string} [sortOrder] sortOrder
+     * @param {number} [accountDetailId] accountDetailId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AccountTransfersApi
+     */
+    public retrieveAccountTransfers(sqlSearch?: string, externalId?: string, offset?: number, limit?: number, orderBy?: string, sortOrder?: string, accountDetailId?: number, options?: any) {
+        return AccountTransfersApiFp(this.configuration).retrieveAccountTransfers(sqlSearch, externalId, offset, limit, orderBy, sortOrder, accountDetailId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
