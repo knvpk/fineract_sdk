@@ -21,6 +21,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { GetRecurringDepositAccountsRecurringDepositAccountIdTransactionsTransactionIdResponse } from '../models';
+// @ts-ignore
 import { ManageSavingsAccountsTransaction } from '../models';
 // @ts-ignore
 import { ManageSavingsAccountsTransactionResponse } from '../models';
@@ -258,7 +260,7 @@ export const SavingsAccountTransactionsApiFp = function(configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveSavingsAccountTransaction(savingsId: number, transactionId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async retrieveSavingsAccountTransaction(savingsId: number, transactionId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetRecurringDepositAccountsRecurringDepositAccountIdTransactionsTransactionIdResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveSavingsAccountTransaction(savingsId, transactionId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -312,7 +314,7 @@ export const SavingsAccountTransactionsApiFactory = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveSavingsAccountTransaction(savingsId: number, transactionId: number, options?: any): AxiosPromise<string> {
+        retrieveSavingsAccountTransaction(savingsId: number, transactionId: number, options?: any): AxiosPromise<GetRecurringDepositAccountsRecurringDepositAccountIdTransactionsTransactionIdResponse> {
             return localVarFp.retrieveSavingsAccountTransaction(savingsId, transactionId, options).then((request) => request(axios, basePath));
         },
         /**

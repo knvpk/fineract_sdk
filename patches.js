@@ -156,13 +156,13 @@ let glAccountPatches = [
         "path": "/paths/~1glaccounts/post/operationId",
         "value": "createGLAccount"
     },
-    
+
     {
         "op": "replace",
         "path": "/paths/~1glaccounts~1{glAccountId}/put/operationId",
         "value": "updateGLAccount"
     },
-   
+
     {
         "op": "replace",
         "path": "/paths/~1glaccounts~1{glAccountId}/delete/operationId",
@@ -220,7 +220,7 @@ let glAccountPatches = [
             }
         }
     },
-   
+
 ]
 
 //SavingsProduct create related fields
@@ -563,7 +563,7 @@ let clientPatches = [
 
 let codeValuePatches = [
     {
-        "op":"add",
+        "op": "add",
         "path": "/components/schemas/PostCodeValuesDataRequest/properties/isActive",
         "value": {
             "type": "boolean",
@@ -571,7 +571,7 @@ let codeValuePatches = [
         }
     },
     {
-        "op":"add",
+        "op": "add",
         "path": "/components/schemas/PutCodeValuesDataRequest/properties/isActive",
         "value": {
             "type": "boolean",
@@ -665,44 +665,44 @@ let savingsAccountTransactionPatches = [
         "value": {
             "type": "object",
             "properties": {
-              "dateFormat": {
-                "type": "string",
-                "example": "dd MMMM yyyy"
-              },
-              "locale": {
-                "type": "string",
-                "example": "en"
-              },
-              "transactionDate": {
-                "type": "string",
-                "format": "date",
-                "example": "05 September 2014"
-              },
-              "transactionAmount": {
-                "type": "string",
-              },
-              "routingCode": {
-                "type": "string",
-              },
-              "receiptNumber": {
-                "type": "string",
-              },
-              "paymentTypeId": {
-                "type": "int",
-                "format": "int64"
-              },
-              "note": {
-                "type": "string",
-              },
-              "checkNumber": {
-                "type": "string",
-              },
-              "bankNumber": {
-                "type": "string",
-              },
-              "accountNumber": {
-                "type": "string",
-              },
+                "dateFormat": {
+                    "type": "string",
+                    "example": "dd MMMM yyyy"
+                },
+                "locale": {
+                    "type": "string",
+                    "example": "en"
+                },
+                "transactionDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "05 September 2014"
+                },
+                "transactionAmount": {
+                    "type": "string",
+                },
+                "routingCode": {
+                    "type": "string",
+                },
+                "receiptNumber": {
+                    "type": "string",
+                },
+                "paymentTypeId": {
+                    "type": "int",
+                    "format": "int64"
+                },
+                "note": {
+                    "type": "string",
+                },
+                "checkNumber": {
+                    "type": "string",
+                },
+                "bankNumber": {
+                    "type": "string",
+                },
+                "accountNumber": {
+                    "type": "string",
+                },
             },
             "description": "ManageSavingsAccountsTransaction"
         }
@@ -720,24 +720,24 @@ let savingsAccountTransactionPatches = [
         "value": {
             "type": "object",
             "properties": {
-              
-              "officeId": {
-                "type": "int",
-                "format": "int64"
-              },
-              "clientId": {
-                "type": "int",
-                "format": "int64"
-              },
-              "savingsId": {
-                "type": "int",
-                "format": "int64"
-              },
-              "resourceId": {
-                "type": "int",
-                "format": "int64"
-              },
-            
+
+                "officeId": {
+                    "type": "int",
+                    "format": "int64"
+                },
+                "clientId": {
+                    "type": "int",
+                    "format": "int64"
+                },
+                "savingsId": {
+                    "type": "int",
+                    "format": "int64"
+                },
+                "resourceId": {
+                    "type": "int",
+                    "format": "int64"
+                },
+
             },
             "description": "ManageSavingsAccountsTransactionResponse"
         }
@@ -749,10 +749,119 @@ let savingsAccountTransactionPatches = [
             "$ref": "#/components/schemas/ManageSavingsAccountsTransactionResponse"
         }
     },
+    //Just alias
+    // {
+    //     "op": "add",
+    //     "path": "/components/schemas/SavingsAccountsTransactionData",
+    //     "value": {
+    //         "$ref": "#/components/schemas/GetRecurringDepositAccountsRecurringDepositAccountIdTransactionsTransactionIdResponse"
+    //     }
+    // },
+    // {
+    //     "op": "add",
+    //     "path": "/components/schemas/SavingsPaymentDetailData",
+    //     "value": {
+    //         "type": "object",
+    //         "properties": {
+    //           "id": {
+    //             "type": "integer",
+    //             "format": "int32",
+    //             "example": 62
+    //           },
+    //           "paymentType": {
+    //             "$ref": "#/components/schemas/GetSelfSavingsPaymentType"
+    //           },
+    //           "accountNumber": {
+    //             "type": "integer",
+    //             "format": "int32"
+    //           },
+    //           "checkNumber": {
+    //             "type": "integer",
+    //             "format": "int32"
+    //           },
+    //           "routingCode": {
+    //             "type": "integer",
+    //             "format": "int32"
+    //           },
+    //           "receiptNumber": {
+    //             "type": "integer",
+    //             "format": "int32"
+    //           },
+    //           "bankNumber": {
+    //             "type": "integer",
+    //             "format": "int32"
+    //           }
+    //         }
+    //     },
+    // },
+    // {
+    //     "op": "add",
+    //     "path": "/components/schemas/SavingsAccountsTransactionData",
+    //     "value": {
+    //         "type": "object",
+    //         "properties": {
+    //             "id": {
+    //                 "type": "int",
+    //                 "format": "int64"
+    //             },
+    //             "transactionType": { //TODO
+    //                 "type": "int",
+    //                 "format": "int64"
+    //             },
+    //             "accountId": {
+    //                 "type": "int",
+    //                 "format": "int64"
+    //             },
+    //             "accountNo": {
+    //                 "type": "string"
+    //             },
+    //             "date": {
+    //                 "type": "string",
+    //                 "format": "date"
+    //             },
+    //             "currency": {
+    //                 "$ref": "#/components/schemas/GetAccountsCurrency"
+    //             },
+    //         "paymentDetailData": { 
+    //                 "$ref": "#/components/schemas/SavingsPaymentDetailData"
+    //             },
+    //             "amount": {
+    //                 "type": "number",
+    //             },
+    //             "runningBalance": {
+    //                 "type": "number",
+    //             },
+    //             "reversed": {
+    //                 "type": "boolean",
+    //                 "example": false
+    //             },
+    //             "submittedOnDate": {
+    //                 "type": "string",
+    //                 "format": "date"
+    //             },
+    //             "interestedPostedAsOn": {
+    //                 "type": "boolean",
+    //                 "example": false
+    //             },
+    //             "submittedByUsername": {
+    //                 "type": "string"
+    //             },
+
+    //         },
+    //         "description": "ManageSavingsAccountsTransactionResponse"
+    //     }
+    // },
     {
         "op": "replace",
         "path": "/paths/~1savingsaccounts~1{savingsId}~1transactions~1{transactionId}/get/operationId",
         "value": "retrieveSavingsAccountTransaction" //retrieveOne_23
+    },
+    {
+        "op": "replace",
+        "path": "/paths/~1savingsaccounts~1{savingsId}~1transactions~1{transactionId}/get/responses/default/content/application~1json/schema",
+        "value": {
+            "$ref": "#/components/schemas/GetRecurringDepositAccountsRecurringDepositAccountIdTransactionsTransactionIdResponse"
+        }
     },
     {
         "op": "replace",
@@ -798,7 +907,7 @@ patches = [
     ...officePatches,
     ...financialActivityPatches,
     ...glAccountPatches,
-    ...savingsProductPatches, 
+    ...savingsProductPatches,
     ...savingsProductPatchesAuto,
     ...clientPatches,
     ...codeValuePatches,
