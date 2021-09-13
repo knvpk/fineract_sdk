@@ -458,12 +458,13 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
          * Retrieves a savings application/account  Example Requests :  savingsaccounts/1   savingsaccounts/1?associations=all
          * @summary Retrieve a savings application/account
          * @param {number} accountId accountId
+         * @param {string} [associations] Related models
          * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
          * @param {string} [chargeStatus] chargeStatus
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveSavingsAccount: async (accountId: number, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options: any = {}): Promise<RequestArgs> => {
+        retrieveSavingsAccount: async (accountId: number, associations?: string, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'accountId' is not null or undefined
             assertParamExists('retrieveSavingsAccount', 'accountId', accountId)
             const localVarPath = `/savingsaccounts/{accountId}`
@@ -485,6 +486,10 @@ export const SavingsAccountApiAxiosParamCreator = function (configuration?: Conf
 
             // authentication tenantid required
             await setApiKeyToObject(localVarHeaderParameter, "fineract-platform-tenantid", configuration)
+
+            if (associations !== undefined) {
+                localVarQueryParameter['associations'] = associations;
+            }
 
             if (staffInSelectedOfficeOnly !== undefined) {
                 localVarQueryParameter['staffInSelectedOfficeOnly'] = staffInSelectedOfficeOnly;
@@ -862,13 +867,14 @@ export const SavingsAccountApiFp = function(configuration?: Configuration) {
          * Retrieves a savings application/account  Example Requests :  savingsaccounts/1   savingsaccounts/1?associations=all
          * @summary Retrieve a savings application/account
          * @param {number} accountId accountId
+         * @param {string} [associations] Related models
          * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
          * @param {string} [chargeStatus] chargeStatus
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieveSavingsAccount(accountId: number, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSavingsAccountsAccountIdResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveSavingsAccount(accountId, staffInSelectedOfficeOnly, chargeStatus, options);
+        async retrieveSavingsAccount(accountId: number, associations?: string, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSavingsAccountsAccountIdResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveSavingsAccount(accountId, associations, staffInSelectedOfficeOnly, chargeStatus, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1035,13 +1041,14 @@ export const SavingsAccountApiFactory = function (configuration?: Configuration,
          * Retrieves a savings application/account  Example Requests :  savingsaccounts/1   savingsaccounts/1?associations=all
          * @summary Retrieve a savings application/account
          * @param {number} accountId accountId
+         * @param {string} [associations] Related models
          * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
          * @param {string} [chargeStatus] chargeStatus
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieveSavingsAccount(accountId: number, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options?: any): AxiosPromise<GetSavingsAccountsAccountIdResponse> {
-            return localVarFp.retrieveSavingsAccount(accountId, staffInSelectedOfficeOnly, chargeStatus, options).then((request) => request(axios, basePath));
+        retrieveSavingsAccount(accountId: number, associations?: string, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options?: any): AxiosPromise<GetSavingsAccountsAccountIdResponse> {
+            return localVarFp.retrieveSavingsAccount(accountId, associations, staffInSelectedOfficeOnly, chargeStatus, options).then((request) => request(axios, basePath));
         },
         /**
          * Lists savings applications/accounts  Example Requests:  savingsaccounts   savingsaccounts?fields=name
@@ -1218,14 +1225,15 @@ export class SavingsAccountApi extends BaseAPI {
      * Retrieves a savings application/account  Example Requests :  savingsaccounts/1   savingsaccounts/1?associations=all
      * @summary Retrieve a savings application/account
      * @param {number} accountId accountId
+     * @param {string} [associations] Related models
      * @param {boolean} [staffInSelectedOfficeOnly] staffInSelectedOfficeOnly
      * @param {string} [chargeStatus] chargeStatus
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SavingsAccountApi
      */
-    public retrieveSavingsAccount(accountId: number, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options?: any) {
-        return SavingsAccountApiFp(this.configuration).retrieveSavingsAccount(accountId, staffInSelectedOfficeOnly, chargeStatus, options).then((request) => request(this.axios, this.basePath));
+    public retrieveSavingsAccount(accountId: number, associations?: string, staffInSelectedOfficeOnly?: boolean, chargeStatus?: string, options?: any) {
+        return SavingsAccountApiFp(this.configuration).retrieveSavingsAccount(accountId, associations, staffInSelectedOfficeOnly, chargeStatus, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

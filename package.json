@@ -1,6 +1,6 @@
 {
   "name": "fineract_sdk",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Wrapper around fineract api.",
   "author": {
     "email": "katakampavan.btech@gmail.com",
@@ -22,7 +22,6 @@
   "scripts": {
     "build": "tsc --outDir dist/",
     "pub": "yarn patch && yarn generate &&  tsc --outDir dist/",
-    "prepublishOnly": "yarn pub",
     "generator": "openapi-generator-cli",
     "generate": "openapi-generator-cli generate -i openapi.json -g typescript-axios -o ./ -c ./config.json -t ./templates",
     "templates": "openapi-generator-cli author template -g typescript-axios -o ./templates",

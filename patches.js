@@ -607,6 +607,19 @@ let savingsAccountPatches = [
         "value": "retrieveSavingsAccount" //retrieveOne_24
     },
     {
+        "op": "add",
+        "path": "/paths/~1savingsaccounts~1{accountId}/get/parameters/",
+        "value": {
+            "name": "associations",
+            "in": "query",
+            "description": "Related models",
+            "schema": {
+              "type": "string",
+              "default": "all"
+            }
+        } 
+    },
+    {
         "op": "replace",
         "path": "/paths/~1savingsaccounts~1{accountId}/put/operationId",
         "value": "updateSavingsAccount" //update_19

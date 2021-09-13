@@ -21,3 +21,4 @@ An wrapper for fineract api to work in nodejs. The base is generated using [open
 2. ~~Changing the json file using patches.~~ (Solved usong json-patch library to modify base.json)
    1. Mapping of operationIds to custom names (for more readability).
 3. Either provide name for inline object or move the objects to schemas in which we can gove it a name.
+4. Common parameters like associations, fields are not being documented, need to keep them as well.
